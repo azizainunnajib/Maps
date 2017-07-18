@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "308244867903",
+    "firebase_url": "https://my-project-1479543973833.firebaseio.com",
+    "project_id": "my-project-1479543973833",
+    "storage_bucket": "my-project-1479543973833.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308244867903:android:125b28a2e80675c1",
+        "android_client_info": {
+          "package_name": "com.example.azizainun.maps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308244867903-93s6pttm4ber2ngbleqjue2um6fjqlci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7QFqyZ_kxfJFg9kaGHrgh7dY43d8ZHAg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

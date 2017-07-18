@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/tema">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:id="@+id/editgambar_editprofil"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/gambarprofil_editprofil" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="change_picture"
+        android:layout_below="@+id/gambarprofil_editprofil"
+        android:textSize="6pt"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"/>
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Nama"
+            android:id="@+id/nama_editprofil0"
+            android:layout_weight="2"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:inputType="textCapWords"
+            android:backgroundTint="@color/transparant"
+            android:hint="Nama"
+            android:ems="13"
+            android:layout_weight="1"
+            android:id="@+id/nama_editprofil1" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Email"
+            android:textStyle="bold"
+            android:id="@+id/email_editprofil0"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="2" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:backgroundTint="@color/transparant"
+            android:inputType="textEmailAddress"
+            android:ems="13"
+            android:hint="Email"
+            android:layout_weight="1"
+            android:id="@+id/email_editprofil1" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Lahir"
+            android:textStyle="bold"
+            android:id="@+id/lahir_editprofil0"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="2" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:backgroundTint="@color/transparant"
+            android:inputType="textEmailAddress"
+            android:ems="13"
+            android:hint="Lahir"
+            android:layout_weight="1"
+            android:id="@+id/lahir_editprofil1" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="7dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Deskripsi"/>
+
+        <EditText
+            android:paddingTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="50dp"
+        android:id="@+id/simpan_editprofil"
+        android:gravity="center"
+        android:textSize="8pt"
+        android:textStyle="bold"
+        android:text="SIMPAN"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tema"
+    tools:context="com.example.azizainun.maps.Register">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:gravity="center_horizontal"
+        android:hint="Email"
+        android:backgroundTint="@color/White"
+        android:textColorHint="#575757"
+        android:textColor="@color/White"
+        android:id="@+id/email_reg"
+        android:layout_marginTop="160dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:gravity="center_horizontal"
+        android:hint="Password"
+        android:textColorHint="#575757"
+        android:textColor="@color/White"
+        android:backgroundTint="@color/White"
+        android:ems="10"
+        android:id="@+id/password_reg1"
+        android:layout_below="@+id/email_reg"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:gravity="center_horizontal"
+        android:hint="Repeat Password"
+        android:textColorHint="#575757"
+        android:textColor="@color/White"
+        android:backgroundTint="@color/White"
+        android:ems="10"
+        android:id="@+id/password_reg2"
+        android:layout_below="@+id/password_reg1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/OkeRegister"
+        android:layout_marginTop="47dp"
+        android:background="@color/colorAccent"
+        android:layout_below="@+id/password_reg2"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show"
+        android:textSize="9pt"
+        android:id="@+id/show_pass_reg"
+        android:onClick="ShowPass"
+        android:layout_below="@+id/password_reg2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
