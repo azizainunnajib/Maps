@@ -41,6 +41,7 @@ public class Login extends AppCompatActivity {
     private EditText eUser, ePass;
     private RequestQueue requestQueue;
     private StringRequest request;
+    private String UID;
     private FirebaseAuth mFirebaseAuth;
     private Button LogButton;
     private TextWatcher textWatcher = new TextWatcher() {
@@ -100,6 +101,9 @@ public class Login extends AppCompatActivity {
                                     i.addFlags((Intent.FLAG_ACTIVITY_CLEAR_TASK));
                                     startActivity(i);
                                     mFirebaseAuth.getCurrentUser();
+                                    UID = mFirebaseAuth.getCurrentUser().getUid();
+                                    Constants userid = new Constants();
+                                    userid.setUID(UID);
                                 } else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
                                     builder.setMessage(task.getException().getMessage())

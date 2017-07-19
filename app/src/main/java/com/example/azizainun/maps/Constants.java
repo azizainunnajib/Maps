@@ -6,7 +6,16 @@ import java.util.Stack;
  * Created by aziza on 4/6/2017.
  */
 public class Constants {
+    String UID;
     public static final String ROOT_URL = "http://192.168.0.20/";
     public static final String URL_REGISTER = ROOT_URL + "registerUser.php";
     public static final String URL_LOGIN = ROOT_URL + "userLogin.php";
+    public String  getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
+    }
+
 }

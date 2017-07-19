@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(i);
         } else {
             UID = mFirebaseUser.getUid();
+            Constants userid= new Constants();
+            userid.setUID(UID);
         }
         /*Fragment f;
         f = new CardFragment();

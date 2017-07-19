@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.signature.StringSignature;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -35,6 +36,7 @@ public class Profil extends Fragment implements View.OnClickListener {
         Glide.with(this)
                 .using(new FirebaseImageLoader())
                 .load(pathstorage)
+                .signature(new StringSignature(String.valueOf(System.currentTimeMillis())))
                 .into(image);
         return provilView;
     }

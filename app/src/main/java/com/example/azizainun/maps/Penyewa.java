@@ -65,13 +65,14 @@ public class Penyewa extends Fragment {
 
                 model.setPrice(Stest1);
                 model.setLokasi(Stest2);
-                mFirebaseInstance.getReference().child("Home").setValue(model);
-                mFirebaseInstance.getReference().child("Home").addValueEventListener(new ValueEventListener() {
-
+                DatabaseReference fush = mFirebaseInstance.getReference().child("Home").push();
+                fush.setValue(model);
+                String postId = fush.getKey();
+                mFirebaseInstance.getReference().child("Home").child(postId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Model sewa = dataSnapshot.getValue(Model.class);
-
+                        System.out.println(sewa);
                         String klm = sewa.getLokasi();
                         hasil1.setText(klm);
                     }
@@ -88,7 +89,7 @@ public class Penyewa extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setType("image*//*");
+                intent.setType("image/*");
                 intent.setAction(Intent.ACTION_PICK);
                 startActivityForResult(Intent.createChooser(intent, "Select Image"),PICK_IMAGE_REQUEST);
             }
