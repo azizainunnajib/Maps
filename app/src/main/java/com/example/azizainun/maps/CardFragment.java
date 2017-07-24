@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * Created by aziza on 6/9/2017.
  */
 public class CardFragment extends Fragment{
-    ArrayList<Model> listitem = new ArrayList<>();
+    ArrayList<Modelr> listitem = new ArrayList<>();
     RecyclerView myRecyclerView;
     String Bangunan[] = {"Hotel", "Chichen Itza","Christ the Redeemer","Great Wall of China","Machu Picchu"};
     int Imag [] = {R.drawable.sukses, R.drawable.ic_exit, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses};
@@ -50,9 +50,9 @@ public class CardFragment extends Fragment{
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
-        private ArrayList<Model> list;
+        private ArrayList<Modelr> list;
 
-        public MyAdapter(ArrayList<Model> Data) {
+        public MyAdapter(ArrayList<Modelr> Data) {
             list = Data;
         }
 
@@ -94,7 +94,7 @@ public class CardFragment extends Fragment{
         listitem.clear();
 
         for (int i=0; i<4 ; i++) {
-            Model item = new Model();
+            Modelr item = new Modelr();
             item.setLokasi(Bangunan[i]);
             item.setPrice(Bangunan[i]);
             item.setUrut(Imag[i]);

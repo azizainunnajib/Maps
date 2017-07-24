@@ -3,8 +3,8 @@ package com.example.azizainun.maps;
 /**
  * Created by aziza on 6/9/2017.
  */
-public class Model {
-    String namaTempat, lokasi;
+public class Modelr {
+    String namaTempat, lokasi, UID_;
     int urut;
 
     public String getPrice() {
@@ -29,5 +29,13 @@ public class Model {
 
     public void setUrut(int urut) {
         this.urut = urut;
+    }
+
+    public void setUID(String UID__) {
+        this.UID_ = UID__;
+    }
+
+    public String  getUID() {
+        return UID_;
     }
 }

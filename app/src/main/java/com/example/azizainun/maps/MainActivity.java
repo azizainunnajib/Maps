@@ -2,14 +2,10 @@ package com.example.azizainun.maps;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.provider.MediaStore;
-import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,13 +19,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.List;
 
@@ -43,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     protected FirebaseAuth mFirebaseAuth;
     protected FirebaseUser mFirebaseUser;
-    private String UID;
+    private String UIDp;
     protected FirebaseStorage storage = FirebaseStorage.getInstance();
     protected StorageReference storageReference = storage.getReferenceFromUrl("gs://my-project-1479543973833.appspot.com");
     @Override
@@ -75,9 +68,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             i.addFlags(i.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
         } else {
-            UID = mFirebaseUser.getUid();
-            Constants userid= new Constants();
-            userid.setUID(UID);
+            UIDp = mFirebaseUser.getUid();
+            Modelr userid= new Modelr();
+            userid.setUID(UIDp);
         }
         /*Fragment f;
         f = new CardFragment();

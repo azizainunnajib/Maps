@@ -1,14 +1,8 @@
 package com.example.azizainun.maps;
 
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.test.suitebuilder.TestMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /*import com.firebase.client.Config;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;*/
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -38,6 +33,8 @@ public class Penyewa extends Fragment {
 
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
+    protected FirebaseAuth mFirebaseAuth;
+    protected FirebaseUser mFirebaseUser;
     private String Userid;
     private EditText test1, test2;
     private int PICK_IMAGE_REQUEST = 1409;
@@ -61,17 +58,23 @@ public class Penyewa extends Fragment {
                 String Stest1 = test1.getText().toString().trim();
                 String Stest2 = test2.getText().toString().trim();
 
-                final Model model = new Model();
+                final Modelr modelr = new Modelr();
+                final Modelr cons = new Modelr();
 
-                model.setPrice(Stest1);
-                model.setLokasi(Stest2);
-                DatabaseReference fush = mFirebaseInstance.getReference().child("Home").push();
-                fush.setValue(model);
+                modelr.setPrice(Stest1);
+                modelr.setLokasi(Stest2);
+                mFirebaseAuth = FirebaseAuth.getInstance().getInstance();
+                mFirebaseUser = mFirebaseAuth.getCurrentUser();
+                Userid = mFirebaseUser.getUid();
+                cons.setUID(Userid);
+                String y = cons.getUID();
+                DatabaseReference fush = mFirebaseInstance.getReference().child("Home").child(y);
+                fush.setValue(modelr);
                 String postId = fush.getKey();
                 mFirebaseInstance.getReference().child("Home").child(postId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Model sewa = dataSnapshot.getValue(Model.class);
+                        Modelr sewa = dataSnapshot.getValue(Modelr.class);
                         System.out.println(sewa);
                         String klm = sewa.getLokasi();
                         hasil1.setText(klm);
