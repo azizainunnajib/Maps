@@ -6,7 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/White"
+    android:background="@color/tema"
     tools:openDrawer="start">
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -26,10 +26,25 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:background="@color/tema"
-                android:minHeight="?attr/actionBarSize"
-                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/tema"
+                        android:text="alskdskdlfj"
+                        android:textSize="19sp"
+                        tools:ignore="HardcodedText" />
+
+
+                </FrameLayout>
+            </android.support.v7.widget.Toolbar>
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_below="@id/toolbar"

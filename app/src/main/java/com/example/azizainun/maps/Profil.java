@@ -4,12 +4,15 @@ package com.example.azizainun.maps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.StringSignature;
@@ -26,8 +29,6 @@ public class Profil extends Fragment implements View.OnClickListener {
 
         RelativeLayout editProfil = (RelativeLayout) provilView.findViewById(R.id.profil);
         editProfil.setOnClickListener(this);
-
-
 
         StorageReference pathstorage = storage.getReference().child("images/image.jpg");
         ImageView image = (ImageView) provilView.findViewById(R.id.gambar_profil);

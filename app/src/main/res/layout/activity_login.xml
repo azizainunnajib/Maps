@@ -3,78 +3,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/background_login">
+    android:background="@color/tema">
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
         android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_above="@+id/show_pass"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="73dp"
+        android:gravity="center"
+        android:background="@drawable/shape"
         android:hint="Username or Email"
-        android:textColorHint="#575757"
-        android:textColor="@color/White"
-        android:layout_alignParentTop="true"
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/black"
+        android:textColorHint="#575757" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/show_pass"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="156dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape"
         android:ems="10"
-        android:id="@+id/password"
         android:hint="Password"
-        android:textColor="@color/White"
-        android:textColorHint="#575757"
-        android:layout_below="@+id/username"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:gravity="center"
+        android:inputType="textPassword"
+        android:textColor="@android:color/black"
+        android:textColorHint="#575757" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/LoginButton"
-        android:nestedScrollingEnabled="false"
-        android:src="@drawable/go__"
-        android:layout_below="@+id/password"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show"
-        android:textSize="9pt"
-        android:id="@+id/show_pass"
-        android:onClick="ShowPass"
-        android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_below="@+id/password"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Register"
+        android:layout_marginTop="22dp"
+        android:text="LOGIN"
+        android:textSize="9pt"
+        android:textStyle=""
+        android:background="@drawable/button"
+        android:visibility="visible" />
 
     <TextView
+        android:id="@+id/show_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="9pt"
-        android:id="@+id/Register"
-        android:onClick="RegisterButton"
-        android:layout_below="@+id/password"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:onClick="ShowPass"
+        android:text="Show"
+        android:textColor="@android:color/black"
+        android:textSize="7pt" />
 
-    Button
+    <TextView
+        android:id="@+id/Register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button3"
-        android:layout_below="@+id/Register"
-        android:layout_toRightOf="@+id/LoginButton"
-        android:layout_toEndOf="@+id/LoginButton"
-        android:layout_marginTop="78dp" />
+        android:layout_alignBaseline="@+id/show_pass"
+        android:layout_alignBottom="@+id/show_pass"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:onClick="RegisterButton"
+        android:text="Register"
+        android:textColor="@android:color/black"
+        android:textSize="7pt" />
 
 </RelativeLayout>

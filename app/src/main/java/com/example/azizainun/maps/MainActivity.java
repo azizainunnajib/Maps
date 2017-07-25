@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void MainDisplay () {
         Fragment f;
-            f = new CardFragment();
+        f = new CardFragment();
             if (f != null) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, f);

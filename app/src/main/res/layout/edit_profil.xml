@@ -32,6 +32,8 @@
             android:id="@+id/nama_editprofil0"
             android:layout_weight="2"
             android:textStyle="bold"
+            android:layout_alignBaseline="@+id/nama_editprofil1"
+            android:layout_alignBottom="@+id/nama_editprofil1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -40,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:gravity="right"
+            android:layout_alignLeft="@+id/nama_editprofil0"
             android:inputType="textCapWords"
             android:backgroundTint="@color/transparant"
             android:hint="Nama"
@@ -54,14 +57,17 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp">
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Email"
             android:textStyle="bold"
             android:id="@+id/email_editprofil0"
+            android:layout_weight="2"
+            android:layout_alignBaseline="@+id/email_editprofil1"
+            android:layout_alignBottom="@+id/email_editprofil1"
             android:layout_alignParentLeft="true"
-            android:layout_weight="2" />
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -73,6 +79,7 @@
             android:ems="13"
             android:hint="Email"
             android:layout_weight="1"
+            android:layout_alignLeft="@+id/email_editprofil0"
             android:id="@+id/email_editprofil1" />
     </RelativeLayout>
 
@@ -87,8 +94,11 @@
             android:text="Lahir"
             android:textStyle="bold"
             android:id="@+id/lahir_editprofil0"
+            android:layout_weight="2"
+            android:layout_alignBaseline="@+id/lahir_editprofil1"
+            android:layout_alignBottom="@+id/lahir_editprofil1"
             android:layout_alignParentLeft="true"
-            android:layout_weight="2" />
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -100,13 +110,14 @@
             android:ems="13"
             android:hint="Lahir"
             android:layout_weight="1"
+            android:layout_alignLeft="@+id/lahir_editprofil0"
             android:id="@+id/lahir_editprofil1" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="7dp">
+        android:paddingTop="30dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,8 +127,10 @@
 
         <EditText
             android:paddingTop="30dp"
+            android:backgroundTint="@android:color/black"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"/>
     </RelativeLayout>
 
     <LinearLayout

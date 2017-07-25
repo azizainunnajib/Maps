@@ -1,6 +1,7 @@
 package com.example.azizainun.maps;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.text.style.TypefaceSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,18 +56,19 @@ public class Login extends AppCompatActivity {
         eUser = (EditText) findViewById(R.id.username);
         ePass.addTextChangedListener(textWatcher);
         eUser.addTextChangedListener(textWatcher);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "font/Raleway-Light.ttf");
+        ePass.setTypeface(typeface);
+        eUser.setTypeface(typeface);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         LogButton= (Button) findViewById(R.id.LoginButton);
+        LogButton.setTypeface(typeface);
 
         LogButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                eUser = (EditText) findViewById(R.id.username);
-                ePass = (EditText) findViewById(R.id.password);
-
                 String username = eUser.getText().toString().trim();
                 String password = ePass.getText().toString().trim();
 
@@ -108,18 +111,17 @@ public class Login extends AppCompatActivity {
 
 
     public void ShowPass(View view) {
-
-        ePass = (EditText) findViewById(R.id.password);
-        eUser = (EditText) findViewById(R.id.username);
         Toast.makeText(this, "oke", Toast.LENGTH_SHORT).show();
         TextView t= (TextView) findViewById(R.id.show_pass);
         String o = (String) t.getText();
         if (o.equals("Show")) {
             ePass.setTransformationMethod(null);
             t.setText("Hide");
+            ePass.setSelection(ePass.getText().length());
         } else {
             ePass.setTransformationMethod(new PasswordTransformationMethod());
             t.setText("Show");
+            ePass.setSelection(ePass.getText().length());
         }
     }
 
@@ -183,9 +185,6 @@ public class Login extends AppCompatActivity {
     }*/
 
     public void OkeLogin(View view) {
-        eUser = (EditText) findViewById(R.id.username);
-        ePass = (EditText) findViewById(R.id.password);
-
         String username = eUser.getText().toString();
         String password = ePass.getText().toString();
 
