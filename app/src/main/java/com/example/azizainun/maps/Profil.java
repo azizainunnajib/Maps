@@ -11,9 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
+import android.widget.ViewSwitcher;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.StringSignature;
@@ -24,13 +26,20 @@ import com.google.firebase.storage.StorageReference;
 public class Profil extends Fragment implements View.OnClickListener {
     public ImageView imageProfil;
     TextView penyewa;
+    ViewSwitcher viewSwitcher;
     protected FirebaseStorage storage = FirebaseStorage.getInstance();
     protected StorageReference storageReference = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/my-project-1479543973833.appspot.com/o/images%2Fimage.jpg?alt=media&token=6073e4c4-5c6e-47e3-9427-90a1a99f151d");
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View provilView = inflater.inflate(R.layout.activity_profil,container, false);
         penyewa = (TextView) provilView.findViewById(R.id.sewa_profil);
+
         RelativeLayout editProfil = (RelativeLayout) provilView.findViewById(R.id.profil);
         editProfil.setOnClickListener(this);
+
+        viewSwitcher = (ViewSwitcher) provilView.findViewById(R.id.my_switcher);
+        viewSwitcher.setOnClickListener(this);
+
+
 
         StorageReference pathstorage = storage.getReference().child("images/image.jpg");
         ImageView image = (ImageView) provilView.findViewById(R.id.gambar_profil);
@@ -45,21 +54,35 @@ public class Profil extends Fragment implements View.OnClickListener {
         penyewa.setText(User.getUID());
         return provilView;
     }
-
     /*public void editProfil (View v) {
 
     }*/
     @Override
     public void onClick (View v) {
-        Toast.makeText(getContext(), "edit profil", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(getContext(), EditProfil.class);
-        startActivity(i);
+        switch(v.getId()) {
+            case R.id.profil:
+                Toast.makeText(getContext(), "edit profil", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getContext(), EditProfil.class);
+                startActivity(i);
+                break;
+            case R.id.my_switcher:
+                viewSwitcher.showNext();
+                TextView myTV = (TextView) viewSwitcher.findViewById(R.id.clickable_text_view);
+                myTV.setText("value");
+
+        }
 //        Fragment fragment = new EditProfil1();
 //        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
 //        ft.replace(R.id.content_frame, fragment).addToBackStack(null);
 //        ft.commit();
     }
 
+    public void TextViewClicked() {
+        ViewSwitcher switcher = (ViewSwitcher) getView().findViewById(R.id.my_switcher);
+        switcher.showNext(); //or switcher.showPrevious();
+        TextView myTV = (TextView) switcher.findViewById(R.id.clickable_text_view);
+        myTV.setText("value");
+    }
 //    public void onViewCreated(View view, Bundle savedInstanceState) {
 //        super.onViewCreated(view, savedInstanceState);
 //        getActivity().setTitle("homeses");
