@@ -2,7 +2,6 @@ package com.example.azizainun.maps;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
  * Created by aziza on 6/9/2017.
  */
 public class CardFragment extends Fragment{
-    ArrayList<Modelr> listitem = new ArrayList<>();
+    ArrayList<Model> listitem = new ArrayList<>();
     RecyclerView myRecyclerView;
     String Bangunan[] = {"Hotel", "Chichen Itza","Christ the Redeemer","Great Wall of China","Machu Picchu"};
     int Imag [] = {R.drawable.sukses, R.drawable.ic_exit, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses};
@@ -51,9 +50,9 @@ public class CardFragment extends Fragment{
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
-        private ArrayList<Modelr> list;
+        private ArrayList<Model> list;
 
-        public MyAdapter(ArrayList<Modelr> Data) {
+        public MyAdapter(ArrayList<Model> Data) {
             list = Data;
         }
 
@@ -95,7 +94,7 @@ public class CardFragment extends Fragment{
         listitem.clear();
 
         for (int i=0; i<4 ; i++) {
-            Modelr item = new Modelr();
+            Model item = new Model();
             item.setLokasi(Bangunan[i]);
             item.setPrice(Bangunan[i]);
             item.setUrut(Imag[i]);

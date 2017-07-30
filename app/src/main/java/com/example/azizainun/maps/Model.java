@@ -3,7 +3,7 @@ package com.example.azizainun.maps;
 /**
  * Created by aziza on 6/9/2017.
  */
-public class Modelr {
+public class Model {
     String namaTempat, lokasi, UID_;
     int urut;
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -22,11 +23,12 @@ import com.google.firebase.storage.StorageReference;
 
 public class Profil extends Fragment implements View.OnClickListener {
     public ImageView imageProfil;
+    TextView penyewa;
     protected FirebaseStorage storage = FirebaseStorage.getInstance();
     protected StorageReference storageReference = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/my-project-1479543973833.appspot.com/o/images%2Fimage.jpg?alt=media&token=6073e4c4-5c6e-47e3-9427-90a1a99f151d");
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View provilView = inflater.inflate(R.layout.activity_profil,container, false);
-
+        penyewa = (TextView) provilView.findViewById(R.id.sewa_profil);
         RelativeLayout editProfil = (RelativeLayout) provilView.findViewById(R.id.profil);
         editProfil.setOnClickListener(this);
 
@@ -39,6 +41,8 @@ public class Profil extends Fragment implements View.OnClickListener {
                 .load(pathstorage)
                 .signature(new StringSignature(String.valueOf(System.currentTimeMillis())))
                 .into(image);
+
+        penyewa.setText(User.getUID());
         return provilView;
     }
 

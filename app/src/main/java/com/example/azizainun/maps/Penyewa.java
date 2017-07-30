@@ -58,23 +58,23 @@ public class Penyewa extends Fragment {
                 String Stest1 = test1.getText().toString().trim();
                 String Stest2 = test2.getText().toString().trim();
 
-                final Modelr modelr = new Modelr();
-                final Modelr cons = new Modelr();
+                final Model model = new Model();
+                final Model cons = new Model();
 
-                modelr.setPrice(Stest1);
-                modelr.setLokasi(Stest2);
-                mFirebaseAuth = FirebaseAuth.getInstance().getInstance();
+                model.setPrice(Stest1);
+                model.setLokasi(Stest2);
+                mFirebaseAuth = FirebaseAuth.getInstance();
                 mFirebaseUser = mFirebaseAuth.getCurrentUser();
                 Userid = mFirebaseUser.getUid();
                 cons.setUID(Userid);
                 String y = cons.getUID();
-                DatabaseReference fush = mFirebaseInstance.getReference().child("Home").child(y);
-                fush.setValue(modelr);
-                String postId = fush.getKey();
+                DatabaseReference push = mFirebaseInstance.getReference().child("Home").child(y);
+                push.setValue(model);
+                String postId = push.getKey();
                 mFirebaseInstance.getReference().child("Home").child(postId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Modelr sewa = dataSnapshot.getValue(Modelr.class);
+                        Model sewa = dataSnapshot.getValue(Model.class);
                         System.out.println(sewa);
                         String klm = sewa.getLokasi();
                         hasil1.setText(klm);

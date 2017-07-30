@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
-import android.text.style.TypefaceSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -89,9 +88,10 @@ public class Login extends AppCompatActivity {
                                     startActivity(i);
                                     mFirebaseAuth.getCurrentUser();
                                     UID = mFirebaseAuth.getCurrentUser().getUid();
-                                    Modelr useridw = new Modelr();
+                                    Model useridw = new Model();
                                     useridw.setUID(UID);
                                     String era = useridw.getUID();
+
                                 } else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
                                     builder.setMessage(task.getException().getMessage())
