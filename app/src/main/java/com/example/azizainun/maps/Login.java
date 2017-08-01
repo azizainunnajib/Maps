@@ -88,9 +88,8 @@ public class Login extends AppCompatActivity {
                                     startActivity(i);
                                     mFirebaseAuth.getCurrentUser();
                                     UID = mFirebaseAuth.getCurrentUser().getUid();
-                                    Model useridw = new Model();
-                                    useridw.setUID(UID);
-                                    String era = useridw.getUID();
+                                    User user = new User();
+                                    user.setUID();
 
                                 } else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);

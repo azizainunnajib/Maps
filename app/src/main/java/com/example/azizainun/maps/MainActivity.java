@@ -26,6 +26,8 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
+import static com.example.azizainun.maps.User.mFirebaseAuth;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button choose_image, upload_image;
     ImageView imageView;
@@ -34,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ProgressDialog progressDialog;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
-//    protected FirebaseAuth mFirebaseAuth;
-//    protected FirebaseUser mFirebaseUser;
+    protected FirebaseAuth mFirebaseAuth;
+    protected FirebaseUser mFirebaseUser;
     private String UIDp;
     protected FirebaseStorage storage = FirebaseStorage.getInstance();
     protected StorageReference storageReference = storage.getReferenceFromUrl("gs://my-project-1479543973833.appspot.com");
@@ -58,12 +60,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         imageView = (ImageView) findViewById(R.id.image_upload);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("uploading");
-        User user = new User();
-        user.setUID();
-        UIDp = user.getUID();
-//        mFirebaseAuth = FirebaseAuth.getInstance();
-//        mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        if (UIDp == null) {
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        if (mFirebaseUser == null) {
             Intent i = new Intent(this, Login.class);
             i.addFlags(i.FLAG_ACTIVITY_CLEAR_TASK);
             i.addFlags(i.FLAG_ACTIVITY_NEW_TASK);
@@ -190,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.logout:
                 Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show();
-                User.mFirebaseAuth.signOut();
+                mFirebaseAuth.signOut();
                 Intent i = new Intent(this, Login.class);
                 startActivity(i);
                 finish();
