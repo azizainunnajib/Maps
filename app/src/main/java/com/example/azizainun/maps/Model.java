@@ -1,9 +1,11 @@
 package com.example.azizainun.maps;
 
+import java.io.Serializable;
+
 /**
  * Created by aziza on 6/9/2017.
  */
-public class Model {
+public class Model implements Serializable {
     String namaTempat, lokasi, UID_;
     int urut;
 
