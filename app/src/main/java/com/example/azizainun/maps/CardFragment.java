@@ -145,7 +145,7 @@ public class CardFragment extends Fragment {
         listitem.clear();
 
         FirebaseDatabase databaseReference = FirebaseDatabase.getInstance();
-        databaseReference.getReference().child("Home").child("ZrUnzGpRW3PrRk9f56B8VcWPxMJ3").limitToLast(4).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.getReference().child("Home").child("ZrUnzGpRW3PrRk9f56B8VcWPxMJ3").orderByKey().startAt("-KqhvQrkeomsjuXe9ziW").endAt("-KqhzG7-56gqZpGtkBZQ").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int i = 0;
@@ -154,17 +154,16 @@ public class CardFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Model model = snapshot.getValue(Model.class);
 //                    mod.add(sewa);
-                    String lokasi = model.getLokasi();
-                    String price = model.getPrice();
-                    int urut = model.getUrut();
-                    item.setLokasi(lokasi);
-                    item.setPrice(price);
-                    item.setUrut(urut);
-                    listitem.add(item);
+//                    String lokasi = model.getLokasi();
+//                    String price = model.getPrice();
+//                    int urut = model.getUrut();
+//                    item.setLokasi(lokasi);
+//                    item.setPrice(price);
+//                    item.setUrut(urut);
+                    listitem.add(model);
                     ArrayList s = listitem;
-                    String aw = lokasi;
-                    Bangunan [i] = lokasi;
-                    String asq = Bangunan[0];
+//                    Bangunan [i] = lokasi;
+//                    String asq = Bangunan[0];
                     i++;
                 }
 
