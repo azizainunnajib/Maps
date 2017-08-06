@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        MainDisplay();
 
         choose_image = (Button) findViewById(R.id.choose_image);
         upload_image = (Button) findViewById(R.id.upload_image);
@@ -73,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            Model userid= new Model();
 //            userid.setUID(UIDp);
         }
+
+        MainDisplay();
         /*Fragment f;
         f = new CardFragment();
         if (f != null) {

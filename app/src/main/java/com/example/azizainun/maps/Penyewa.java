@@ -69,9 +69,11 @@ public class Penyewa extends Fragment {
                 cons.setUID(Userid);
                 String y = cons.getUID();
                 DatabaseReference push = mFirebaseInstance.getReference().child("Home").child(y);
-                push.setValue(model);
+                DatabaseReference push1 = push.push();
+                String postidkey = push1.getKey();
+                push1.setValue(model);
                 String postId = push.getKey();
-                mFirebaseInstance.getReference().child("Home").child(postId).addValueEventListener(new ValueEventListener() {
+                mFirebaseInstance.getReference().child("Home").child(y).child(postidkey).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Model sewa = dataSnapshot.getValue(Model.class);

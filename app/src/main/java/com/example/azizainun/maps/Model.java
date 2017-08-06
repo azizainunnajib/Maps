@@ -6,7 +6,11 @@ import java.io.Serializable;
  * Created by aziza on 6/9/2017.
  */
 public class Model implements Serializable {
-    String namaTempat, lokasi, UID_;
+
+    public Model() {
+    }
+
+    public String namaTempat, lokasi, UID_;
     int urut;
 
     public String getPrice() {
