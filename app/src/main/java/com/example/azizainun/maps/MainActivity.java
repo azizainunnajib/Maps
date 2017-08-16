@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(i);
         } else {
             UIDp = User.getUID();
+            User.setUID();
 //            UIDp = mFirebaseUser.getUid();
 //            Model userid= new Model();
 //            userid.setUID(UIDp);

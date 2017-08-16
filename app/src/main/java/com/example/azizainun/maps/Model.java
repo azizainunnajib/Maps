@@ -1,5 +1,7 @@
 package com.example.azizainun.maps;
 
+import android.net.Uri;
+
 import java.io.Serializable;
 
 /**
@@ -10,15 +12,16 @@ public class Model implements Serializable {
     public Model() {
     }
 
-    public String namaTempat, lokasi, UID_;
+    public String harga, lokasi, UID_;
+    public String url;
     int urut;
 
-    public String getPrice() {
-        return namaTempat;
+    public String getHarga() {
+        return harga;
     }
 
-    public void setPrice(String namaTempat) {
-        this.namaTempat = namaTempat;
+    public void setHarga(String harga) {
+        this.harga = harga;
     }
 
     public String getLokasi() {
@@ -37,11 +40,11 @@ public class Model implements Serializable {
         this.urut = urut;
     }
 
-    public void setUID(String UID__) {
-        this.UID_ = UID__;
+    public String getUrl() {
+     return url;
     }
 
-    public String  getUID() {
-        return UID_;
+    public void setUrl(String url) {
+        this.url=url;
     }
 }

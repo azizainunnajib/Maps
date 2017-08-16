@@ -27,12 +27,6 @@
         android:id="@+id/upload__"
         android:layout_gravity="center_horizontal" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/pilihgambar"
-        android:layout_gravity="center_horizontal" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,6 +46,12 @@
         android:layout_height="100dp"
         android:id="@+id/hasilgambar"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/addunit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="addunit" />
 
 
 </LinearLayout>

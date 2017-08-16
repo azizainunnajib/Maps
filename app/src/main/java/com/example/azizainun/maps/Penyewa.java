@@ -1,7 +1,12 @@
 package com.example.azizainun.maps;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +29,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * Created by aziza on 6/23/2017.
  */
@@ -37,9 +44,9 @@ public class Penyewa extends Fragment {
     protected FirebaseUser mFirebaseUser;
     private String Userid;
     private EditText test1, test2;
-    private int PICK_IMAGE_REQUEST = 1409;
+    private int RESULT_LOAD_IMAGE = 1409;
 
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         final String TAG = Penyewa.class.getSimpleName();
         View view = inflater.inflate(R.layout.penyewa, container, false);
         final EditText test1 = (EditText) view.findViewById(R.id.test1);
@@ -48,7 +55,7 @@ public class Penyewa extends Fragment {
         Button pilih= (Button) view.findViewById(R.id.choose_images);
         final TextView hasil1 = (TextView) view.findViewById(R.id.hasil1);
         TextView hasil2 = (TextView) view.findViewById(R.id.hasil2);
-        ImageView pilihgambar = (ImageView) view.findViewById(R.id.pilihgambar);
+//        ImageView pilihgambar = (ImageView) view.findViewById(R.id.pilihgambar);
         final ImageView hasilgambar = (ImageView) view.findViewById(R.id.hasilgambar);
 
         mFirebaseInstance = FirebaseDatabase.getInstance();
@@ -61,19 +68,18 @@ public class Penyewa extends Fragment {
                 final Model model = new Model();
                 final Model cons = new Model();
 
-                model.setPrice(Stest1);
+//                model.setPrice(Stest1);
                 model.setLokasi(Stest2);
                 mFirebaseAuth = FirebaseAuth.getInstance();
                 mFirebaseUser = mFirebaseAuth.getCurrentUser();
                 Userid = mFirebaseUser.getUid();
-                cons.setUID(Userid);
-                String y = cons.getUID();
-                DatabaseReference push = mFirebaseInstance.getReference().child("Home").child(y);
+//                cons.setUID(Userid);
+//                String y = cons.getUID();
+                DatabaseReference push = mFirebaseInstance.getReference().child("Home").child("uyt");
                 DatabaseReference push1 = push.push();
                 String postidkey = push1.getKey();
                 push1.setValue(model);
-                String postId = push.getKey();
-                mFirebaseInstance.getReference().child("Home").child(y).child(postidkey).addValueEventListener(new ValueEventListener() {
+                /*mFirebaseInstance.getReference().child("Home").child(y).child(postidkey).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Model sewa = dataSnapshot.getValue(Model.class);
@@ -86,17 +92,24 @@ public class Penyewa extends Fragment {
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
-                });
+                });*/
             }
         });
 
         pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_PICK);
-                startActivityForResult(Intent.createChooser(intent, "Select Image"),PICK_IMAGE_REQUEST);
+                Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        Button Add = (Button) view.findViewById(R.id.addunit);
+        Add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddUnit.class);
+                startActivity(intent);
             }
         });
 
@@ -109,5 +122,25 @@ public class Penyewa extends Fragment {
                 .dontAnimate()
                 .into(hasilgambar);
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ImageView imageView = (ImageView) getView().findViewById(R.id.gambarprofil_editprofil);
+        String a ="asdf";
+        requestCode = resultCode;
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImg = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getActivity().getContentResolver().query(selectedImg,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            ImageView imgcover = (ImageView) getView().findViewById(R.id.hasilgambar);
+            imgcover.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            cursor.close();
+        }
     }
 }

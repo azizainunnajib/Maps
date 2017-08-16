@@ -10,9 +10,9 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 
 public class User {
-    final String FIREBASE_DATABASE = "https://my-project-1479543973833.firebaseio.com/";
-    private DatabaseReference mFirebaseDatabase;
-    private FirebaseDatabase mFirebaseInstance;
+    static String FIREBASE_DATABASE = "https://my-project-1479543973833.firebaseio.com/";
+    static DatabaseReference mFirebaseDatabase;
+    static FirebaseDatabase mFirebaseInstance;
     static FirebaseAuth mFirebaseAuth;
     static FirebaseUser mFirebaseUser;
     static String Userid;

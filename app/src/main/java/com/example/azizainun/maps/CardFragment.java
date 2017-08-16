@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,14 +30,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Map;
 
+import static com.example.azizainun.maps.R.id.coverImageView;
 import static com.example.azizainun.maps.R.id.info;
+import static com.example.azizainun.maps.R.id.thing_proto;
 
 /**
  * Created by aziza on 6/9/2017.
  */
 public class CardFragment extends Fragment {
     RecyclerView myRecyclerView;
-    ArrayList<Model> listitem = new ArrayList<>();
+    final static ArrayList<Model> listitem = new ArrayList<>();
     String Bangunan[] = {"Hotel", "Chichen Itza","Christ the Redeemer","Great Wall of China","Machu Picchu"};
     int Imag [] = {R.drawable.sukses, R.drawable.ic_exit, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses};
 
@@ -87,8 +90,17 @@ public class CardFragment extends Fragment {
         @Override
         public void onBindViewHolder(final MyViewHolder holder, int position) {
             holder.titlePlace.setText(list.get(position).getLokasi());
-            holder.titlePrice.setText(list.get(position).getPrice());
-            holder.coverImageView.setImageResource(list.get(position).getUrut());
+            holder.titlePrice.setText(list.get(position).getHarga());
+//            holder.coverImageView.setImageResource(list.get(position).getUrut());
+
+            Glide
+                    .with(context)
+                    .load(list.get(position).getUrl())
+                    .placeholder(R.drawable.sukses)
+                    .centerCrop()
+                    .crossFade()
+                    .dontAnimate()
+                    .into(holder.coverImageView);
 
             holder.setItemClickCard(new ItemClickCard() {
                 @Override
@@ -145,7 +157,7 @@ public class CardFragment extends Fragment {
         listitem.clear();
 
         FirebaseDatabase databaseReference = FirebaseDatabase.getInstance();
-        databaseReference.getReference().child("Home").child("ZrUnzGpRW3PrRk9f56B8VcWPxMJ3").orderByKey().startAt("-KqhvQrkeomsjuXe9ziW").endAt("-KqhzG7-56gqZpGtkBZQ").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.getReference().child("Home").child(User.getUID())  /*.orderByKey().startAt("-KqhvQrkeomsjuXe9ziW").endAt("-KqhzG7-56gqZpGtkBZQ")*/  .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int i = 0;
@@ -188,7 +200,7 @@ public class CardFragment extends Fragment {
         /*for (int i=0; i<4 ; i++) {
             Model item = new Model();
             item.setLokasi(Bangunan[i]);
-            item.setPrice(Bangunan[i]);
+            item.setHarga(Bangunan[i]);
             item.setUrut(Imag[i]);
             listitem.add(item);
         }*/
