@@ -23,10 +23,6 @@ public class User {
     static void setUID() {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        if (mFirebaseUser == null) {
-            Userid = null;
-        } else {
-            Userid = mFirebaseUser.getUid();
-        }
+        Userid = mFirebaseUser.getUid();
     }
 }

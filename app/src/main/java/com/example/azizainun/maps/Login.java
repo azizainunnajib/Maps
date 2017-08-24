@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
     private RequestQueue requestQueue;
     private StringRequest request;
     private String UID;
-    private FirebaseAuth mFirebaseAuth;
+    private static FirebaseAuth mFirebaseAuth;
     private Button LogButton;
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -88,9 +88,7 @@ public class Login extends AppCompatActivity {
                                     startActivity(i);
                                     mFirebaseAuth.getCurrentUser();
                                     UID = mFirebaseAuth.getCurrentUser().getUid();
-                                    User user = new User();
-                                    user.setUID();
-
+                                    User.setUID();
                                 } else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
                                     builder.setMessage(task.getException().getMessage())

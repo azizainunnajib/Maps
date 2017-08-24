@@ -11,7 +11,7 @@ public class DetailUnit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_unit);
 
-        Model model = (Model) getIntent().getExtras().getSerializable("Model");
+        Model model = (Model) getIntent().getExtras().getSerializable("detail");
 
         EditText editText = (EditText)findViewById(R.id.editText90);
         editText.setText((model.getLokasi()));

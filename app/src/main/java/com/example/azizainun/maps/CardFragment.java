@@ -7,6 +7,7 @@ import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,30 +40,52 @@ import static com.example.azizainun.maps.R.id.thing_proto;
  */
 public class CardFragment extends Fragment {
     RecyclerView myRecyclerView;
-    final static ArrayList<Model> listitem = new ArrayList<>();
+    static ArrayList<Model> listitem = new ArrayList<>();
+    ArrayList<Model> listunit = new ArrayList<>();
     String Bangunan[] = {"Hotel", "Chichen Itza","Christ the Redeemer","Great Wall of China","Machu Picchu"};
     int Imag [] = {R.drawable.sukses, R.drawable.ic_exit, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Initialist();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_card, container, false);
-        myRecyclerView = (RecyclerView) view.findViewById(R.id.cardView);
-        myRecyclerView.setHasFixedSize(true);
-        LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
-        MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        myRecyclerView.setLayoutManager(MyLayoutManager);
-        if  (listitem.size() > 0 & myRecyclerView != null) {
-            myRecyclerView.setAdapter(new MyAdapter(listitem));
-        }
+        Initialist();
+        String UID = User.getUID();
+        final View view = inflater.inflate(R.layout.fragment_card, container, false);
+        new Database().mReadDataOnce("Home/" + UID, new Database.OnGetDataListener() {
+            @Override
+            public void onStart() {
 
-        int t = listitem.size();
+            }
+
+            @Override
+            public void onSuccess(DataSnapshot data) {
+                Model item = new Model();
+                for (DataSnapshot snapshot : data.getChildren()) {
+                    Model model = snapshot.getValue(Model.class);
+                    listunit.add(model);
+                }
+                myRecyclerView = (RecyclerView) view.findViewById(R.id.cardView);
+                myRecyclerView.setHasFixedSize(true);
+                LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
+                MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                myRecyclerView.setLayoutManager(MyLayoutManager);
+                if  (listunit.size() > 0 & myRecyclerView != null) {
+                    myRecyclerView.setAdapter(new MyAdapter(listunit));
+                }
+                int t = listunit.size();
+                int v= t++;
+            }
+
+            @Override
+            public void onFailed(DatabaseError databaseError) {
+
+            }
+        });
 
         return view;
     }
@@ -94,11 +117,8 @@ public class CardFragment extends Fragment {
 //            holder.coverImageView.setImageResource(list.get(position).getUrut());
 
             Glide
-                    .with(context)
+                    .with(getActivity())
                     .load(list.get(position).getUrl())
-                    .placeholder(R.drawable.sukses)
-                    .centerCrop()
-                    .crossFade()
                     .dontAnimate()
                     .into(holder.coverImageView);
 
@@ -107,7 +127,7 @@ public class CardFragment extends Fragment {
                 public void onClick(View view, int position) {
                     Intent intent = new Intent(getContext(), DetailUnit.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("Model", list.get(position));
+                    bundle.putSerializable("detail", list.get(position));
                     intent.putExtras(bundle);
                     getContext().startActivity(intent);
 
@@ -154,55 +174,39 @@ public class CardFragment extends Fragment {
     }
 
     public void Initialist() {
-        listitem.clear();
-
+//        listener.onStart();
+        /*listitem.clear();
+        User.setUID();
+        ArrayList<Model> el;
+        String d = User.getUID();
         FirebaseDatabase databaseReference = FirebaseDatabase.getInstance();
-        databaseReference.getReference().child("Home").child(User.getUID())  /*.orderByKey().startAt("-KqhvQrkeomsjuXe9ziW").endAt("-KqhzG7-56gqZpGtkBZQ")*/  .addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference firebaseDatabaseref = databaseReference.getReference().child("Home").child(User.getUID());
+        databaseReference.getReference().child("Home").child(User.getUID())  .orderByKey().startAt("-KqhvQrkeomsjuXe9ziW").endAt("-KqhzG7-56gqZpGtkBZQ")  .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int i = 0;
                 Model item = new Model();
-//                ArrayList<Model> mod = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Model model = snapshot.getValue(Model.class);
-//                    mod.add(sewa);
-//                    String lokasi = model.getLokasi();
-//                    String price = model.getPrice();
-//                    int urut = model.getUrut();
-//                    item.setLokasi(lokasi);
-//                    item.setPrice(price);
-//                    item.setUrut(urut);
                     listitem.add(model);
-                    ArrayList s = listitem;
-//                    Bangunan [i] = lokasi;
-//                    String asq = Bangunan[0];
-                    i++;
+                    ListFragment frag = new ListFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("data", listitem);
+                    frag.setArguments(bundle);
                 }
-
-                ArrayList qw = listitem;
-                int w = listitem.size();
             }
-
-            String as = Bangunan[0];
-            String as1 = Bangunan[1];
-            String as2 = Bangunan[2];
-            String as3 = Bangunan[3];
-            String as4 = Bangunan[4];
-            String a = User.getUID();
-            String a1 = User.getUID();
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
         /*for (int i=0; i<4 ; i++) {
             Model item = new Model();
             item.setLokasi(Bangunan[i]);
             item.setHarga(Bangunan[i]);
             item.setUrut(Imag[i]);
-            listitem.add(item);
+            listunit.add(item);
         }*/
     }
 }

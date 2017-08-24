@@ -69,12 +69,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             UIDp = User.getUID();
             User.setUID();
+            MainDisplay();
 //            UIDp = mFirebaseUser.getUid();
 //            Model userid= new Model();
 //            userid.setUID(UIDp);
         }
-
-        MainDisplay();
         /*Fragment f;
         f = new CardFragment();
         if (f != null) {

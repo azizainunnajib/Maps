@@ -1,13 +1,15 @@
 package com.example.azizainun.maps;
 
 import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.io.Serializable;
 
 /**
  * Created by aziza on 6/9/2017.
  */
-public class Model implements Serializable {
+public class Model implements Serializable{
 
     public Model() {
     }
