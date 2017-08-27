@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     package="com.example.azizainun.maps">
 
     <!--
@@ -34,7 +35,6 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".activity_nav" />
         <activity android:name=".MainActivity">
             android:windowSoftInputMode="stateVisible|adjustResize"
             android:theme="@style/AppTheme.NoActionBar" >

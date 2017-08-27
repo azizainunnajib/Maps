@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.azizainun.maps"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -37,6 +37,7 @@ dependencies {
     compile 'com.google.firebase:firebase-database:11.0.2'
     compile 'com.google.firebase:firebase-storage:11.0.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.zhihu.android:matisse:0.4.3'
     testCompile 'junit:junit:4.12'
 }
 

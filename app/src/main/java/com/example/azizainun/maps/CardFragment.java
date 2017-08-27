@@ -40,7 +40,6 @@ import static com.example.azizainun.maps.R.id.thing_proto;
  */
 public class CardFragment extends Fragment {
     RecyclerView myRecyclerView;
-    static ArrayList<Model> listitem = new ArrayList<>();
     ArrayList<Model> listunit = new ArrayList<>();
     String Bangunan[] = {"Hotel", "Chichen Itza","Christ the Redeemer","Great Wall of China","Machu Picchu"};
     int Imag [] = {R.drawable.sukses, R.drawable.ic_exit, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses};
@@ -48,45 +47,48 @@ public class CardFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        listunit.clear();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Initialist();
         String UID = User.getUID();
         final View view = inflater.inflate(R.layout.fragment_card, container, false);
-        new Database().mReadDataOnce("Home/" + UID, new Database.OnGetDataListener() {
-            @Override
-            public void onStart() {
+        myRecyclerView = (RecyclerView) view.findViewById(R.id.cardView);
+        if (listunit.size() == 0) {
+            new Database().mReadDataOnce("Home/" + UID, new Database.OnGetDataListener() {
+                @Override
+                public void onStart() {
 
-            }
-
-            @Override
-            public void onSuccess(DataSnapshot data) {
-                Model item = new Model();
-                for (DataSnapshot snapshot : data.getChildren()) {
-                    Model model = snapshot.getValue(Model.class);
-                    listunit.add(model);
                 }
-                myRecyclerView = (RecyclerView) view.findViewById(R.id.cardView);
-                myRecyclerView.setHasFixedSize(true);
-                LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
-                MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                myRecyclerView.setLayoutManager(MyLayoutManager);
-                if  (listunit.size() > 0 & myRecyclerView != null) {
-                    myRecyclerView.setAdapter(new MyAdapter(listunit));
+
+                @Override
+                public void onSuccess(DataSnapshot data) {
+                    Model item = new Model();
+                    for (DataSnapshot snapshot : data.getChildren()) {
+                        Model model = snapshot.getValue(Model.class);
+                        listunit.add(model);
+                    }
+                    myRecyclerView.setHasFixedSize(true);
+                    LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
+                    MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                    myRecyclerView.setLayoutManager(MyLayoutManager);
+                    if (listunit.size() > 0 & myRecyclerView != null) {
+                        myRecyclerView.setAdapter(new MyAdapter(listunit));
+                    }
+                    int t = listunit.size();
+                    int v = t++;
                 }
-                int t = listunit.size();
-                int v= t++;
-            }
 
-            @Override
-            public void onFailed(DatabaseError databaseError) {
+                @Override
+                public void onFailed(DatabaseError databaseError) {
 
-            }
-        });
-
+                }
+            });
+        } else {
+            Initialist(myRecyclerView);
+        }
         return view;
     }
 
@@ -116,11 +118,13 @@ public class CardFragment extends Fragment {
             holder.titlePrice.setText(list.get(position).getHarga());
 //            holder.coverImageView.setImageResource(list.get(position).getUrut());
 
-            Glide
+            /*Glide
                     .with(getActivity())
                     .load(list.get(position).getUrl())
+                    .asBitmap()
+//                    .override(50, 50)
                     .dontAnimate()
-                    .into(holder.coverImageView);
+                    .into(holder.coverImageView);*/
 
             holder.setItemClickCard(new ItemClickCard() {
                 @Override
@@ -173,34 +177,14 @@ public class CardFragment extends Fragment {
         }
     }
 
-    public void Initialist() {
-//        listener.onStart();
-        /*listitem.clear();
-        User.setUID();
-        ArrayList<Model> el;
-        String d = User.getUID();
-        FirebaseDatabase databaseReference = FirebaseDatabase.getInstance();
-        DatabaseReference firebaseDatabaseref = databaseReference.getReference().child("Home").child(User.getUID());
-        databaseReference.getReference().child("Home").child(User.getUID())  .orderByKey().startAt("-KqhvQrkeomsjuXe9ziW").endAt("-KqhzG7-56gqZpGtkBZQ")  .addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Model item = new Model();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Model model = snapshot.getValue(Model.class);
-                    listitem.add(model);
-                    ListFragment frag = new ListFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("data", listitem);
-                    frag.setArguments(bundle);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
-
+    public void Initialist(RecyclerView myRecyclerView) {
+        myRecyclerView.setHasFixedSize(true);
+        LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
+        MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        myRecyclerView.setLayoutManager(MyLayoutManager);
+        if (listunit.size() > 0 & myRecyclerView != null) {
+            myRecyclerView.setAdapter(new MyAdapter(listunit));
+        }
         /*for (int i=0; i<4 ; i++) {
             Model item = new Model();
             item.setLokasi(Bangunan[i]);

@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by aziza on 6/9/2017.
@@ -15,7 +16,7 @@ public class Model implements Serializable{
     }
 
     public String harga, lokasi, UID_;
-    public String url;
+    public ArrayList<String> url;
     int urut;
 
     public String getHarga() {
@@ -42,11 +43,11 @@ public class Model implements Serializable{
         this.urut = urut;
     }
 
-    public String getUrl() {
+    public ArrayList<String> getUrl() {
      return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(ArrayList<String> url) {
         this.url=url;
     }
 }
