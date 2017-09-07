@@ -47,7 +47,9 @@
         <activity android:name=".Register" />
         <activity android:name=".EditProfil" />
         <activity android:name=".DetailUnit" />
-        <activity android:name=".AddUnit"></activity>
+        <activity android:name=".AddUnit1" />
+        <activity android:name=".AddUnitAkhir" />
+        <activity android:name=".AddUnit0"></activity>
     </application>
 
 </manifest>

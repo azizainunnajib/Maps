@@ -52,7 +52,7 @@
         android:text="LOGIN"
         android:textSize="9pt"
         android:textStyle=""
-        android:background="@drawable/button"
+        android:background="@drawable/ripple_button_normal"
         android:visibility="visible" />
 
     <TextView

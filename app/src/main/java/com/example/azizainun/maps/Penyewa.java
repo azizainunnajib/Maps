@@ -2,7 +2,6 @@ package com.example.azizainun.maps;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,9 +22,6 @@ import com.firebase.client.FirebaseError;*/
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -108,7 +104,7 @@ public class Penyewa extends Fragment {
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddUnit.class);
+                Intent intent = new Intent(getContext(), AddUnit0.class);
                 startActivity(intent);
             }
         });

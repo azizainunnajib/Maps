@@ -1,16 +1,14 @@
 package com.example.azizainun.maps;
 
 import android.content.Context;
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,10 +17,10 @@ import java.util.List;
 
 public class GridView_Adapter extends BaseAdapter {
     private Context context;
-    private List<Uri> imageUrls;
+    private List<Bitmap> imageUrls;
     private SparseBooleanArray mSparseBooleanArray;//Variable to store selected Images
 
-    public GridView_Adapter(Context context, List<Uri> imageUrls) {
+    public GridView_Adapter(Context context, List<Bitmap> imageUrls) {
         this.context = context;
         this.imageUrls = imageUrls;
     }
@@ -55,9 +53,11 @@ public class GridView_Adapter extends BaseAdapter {
         }
 
         try {
-            imageView.setImageURI(imageUrls.get(position));
+            imageView.setImageBitmap(imageUrls.get(position));
         }catch (NullPointerException e) {}
 
+        memoryCache clear = new memoryCache();
+        clear.clear();
         return imageView;
     }
 }

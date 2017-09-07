@@ -1,0 +1,462 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/tema"
+    android:orientation="vertical"
+    tools:context="com.example.azizainun.maps.AddUnit2">
+
+
+    <RelativeLayout
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="16">
+
+        <com.example.azizainun.maps.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Berapa jumlah tamu yang bisa tinggal?"
+            android:textSize="16.18pt" />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="9">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/all"/>
+
+        <Button
+            android:id="@+id/next3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/ripple_button_normal"
+            android:text="Button" />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:id="@+id/total_tamu">
+
+                <com.example.azizainun.maps.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="53sp"
+                    android:layout_marginBottom="10sp"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button"
+                    android:text="Kapasitas Tamu"
+                    android:textSize="20sp"
+                    android:layout_weight="0.75"/>
+                <com.example.azizainun.maps.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="53sp"
+                    android:layout_marginBottom="10sp"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button"
+                    android:textSize="20sp"
+                    android:layout_weight="1.25"
+                    android:id="@+id/total_tamu_0"/>
+                </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/total_kamar"
+        android:layout_below="@+id/total_tamu"
+        android:weightSum="2">
+
+        <com.example.azizainun.maps.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="53sp"
+            android:layout_marginBottom="10sp"
+            android:gravity="center"
+            android:background="@drawable/ripple_button"
+            android:text="Total Kamar"
+            android:textSize="9pt"
+            android:layout_weight="0.75"/>
+        <com.example.azizainun.maps.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="53sp"
+            android:layout_marginBottom="10sp"
+            android:gravity="center"
+            android:background="@drawable/ripple_button"
+            android:textSize="20sp"
+            android:layout_weight="1.25"
+            android:id="@+id/total_kamar_0"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/total_kasur"
+        android:layout_below="@+id/total_kamar"
+        android:weightSum="2">
+
+        <com.example.azizainun.maps.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="53sp"
+            android:layout_marginBottom="10sp"
+            android:gravity="center"
+            android:background="@drawable/ripple_button"
+            android:text="Total Kasur"
+            android:textSize="9pt"
+            android:layout_weight="0.75"/>
+        <com.example.azizainun.maps.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="53sp"
+            android:layout_marginBottom="10sp"
+            android:gravity="center"
+            android:background="@drawable/ripple_button"
+            android:textSize="20sp"
+            android:layout_weight="1.25"
+            android:id="@+id/total_kasur_0"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/option_kasur"
+        android:layout_below="@+id/total_kasur"
+        android:weightSum="2">
+
+        <com.example.azizainun.maps.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="53sp"
+            android:layout_marginBottom="10sp"
+            android:gravity="center"
+            android:background="@drawable/ripple_button"
+            android:text="Jenis Kasur"
+            android:textSize="9pt"
+            android:layout_weight="0.75"/>
+        <com.example.azizainun.maps.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="53sp"
+            android:layout_marginBottom="10sp"
+            android:gravity="center"
+            android:background="@drawable/ripple_button"
+            android:textSize="20sp"
+            android:layout_weight="1.25"
+            android:id="@+id/kasur"/>
+
+    </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:id="@+id/pilihan_tamu"
+                    android:orientation="vertical"
+                    android:animateLayoutChanges="true"
+                    android:weightSum="8"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/total_tamu_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="1 Tamu" />
+
+                    <TextView
+                        android:id="@+id/total_tamu_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="2 Tamu" />
+
+                    <TextView
+                        android:id="@+id/total_tamu_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="3 Tamu" />
+
+                    <TextView
+                        android:id="@+id/total_tamu_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="4 Tamu" />
+
+                    <TextView
+                        android:id="@+id/total_tamu_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="5 Tamu" />
+
+                    <TextView
+                        android:id="@+id/total_tamu_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="6 Tamu" />
+
+                    <TextView
+                        android:id="@+id/total_tamu_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="7 Tamu" />
+
+                    <TextView
+                        android:id="@+id/total_tamu_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="8+ Tamu" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:id="@+id/pilihan_kamar"
+                    android:orientation="vertical"
+                    android:animateLayoutChanges="true"
+                    android:weightSum="8"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/total_kamar_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="1 Kamar" />
+
+                    <TextView
+                        android:id="@+id/total_kamar_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="2 Kamar" />
+
+                    <TextView
+                        android:id="@+id/total_kamar_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="3 Kamar" />
+
+                    <TextView
+                        android:id="@+id/total_kamar_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="4 Kamar" />
+
+                    <TextView
+                        android:id="@+id/total_kamar_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="5 Kamar" />
+
+                    <TextView
+                        android:id="@+id/total_kamar_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="6 Kamar" />
+
+                    <TextView
+                        android:id="@+id/total_kamar_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="7 Kamar" />
+
+                    <TextView
+                        android:id="@+id/total_kamar_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="8+ Kamar" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:id="@+id/pilihan_kasur"
+                    android:orientation="vertical"
+                    android:animateLayoutChanges="true"
+                    android:weightSum="8"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/total_kasur_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="1 Kasur" />
+
+                    <TextView
+                        android:id="@+id/total_kasur_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="2 Kasur" />
+
+                    <TextView
+                        android:id="@+id/total_kasur_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="3 Kasur" />
+
+                    <TextView
+                        android:id="@+id/total_kasur_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="4 Kasur" />
+
+                    <TextView
+                        android:id="@+id/total_kasur_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="5 Kasur" />
+
+                    <TextView
+                        android:id="@+id/total_kasur_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="6 Kasur" />
+
+                    <TextView
+                        android:id="@+id/total_kasur_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="7 Kasur" />
+
+                    <TextView
+                        android:id="@+id/total_kasur_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="@drawable/ripple_button_normal"
+                        android:layout_weight="1"
+                        android:text="8+ Kasur" />
+
+                </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:id="@+id/jenis_kasur"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true"
+            android:weightSum="8"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/jenis_kasur_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_weight="1"
+                android:text="Springbed" />
+
+            <TextView
+                android:id="@+id/jenis_kasur_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_weight="1"
+                android:text="Busa" />
+
+            <TextView
+                android:id="@+id/jenis_kasur_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_weight="1"
+                android:text="Kapuk" />
+
+        </LinearLayout>
+
+            </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

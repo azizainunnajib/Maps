@@ -3,12 +3,10 @@
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
-android:background="@color/tema">
+android:background="@color/White">
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
-tools:context="com.example.azizainun.maps.AddUnit"
-tools:layout_editor_absoluteY="25dp"
-tools:layout_editor_absoluteX="0dp">
+tools:context="com.example.azizainun.maps.AddUnitAkhir">
 
 
     <android.support.design.widget.TextInputLayout
@@ -76,32 +74,31 @@ tools:layout_editor_absoluteX="0dp">
             android:layout_height="wrap_content"
             android:hint="hint" />
     </android.support.design.widget.TextInputLayout>
-
-    <GridView
-        android:id="@+id/gridGallery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:numColumns="3"
-        android:padding="0dp"
-        android:layout_below="@+id/upload" />
-
     <Button
-        android:id="@+id/pilih"
+        android:id="@+id/pilihNX"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pilih"
+        android:text="Pilih__"
 
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_below="@+id/textInputLayout4"/>
     <Button
-        android:id="@+id/upload"
+        android:id="@+id/uploadNX"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="upload"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_below="@+id/pilih"/>
+        android:layout_alignParentBottom="true"/>
+
+    <GridView
+        android:id="@+id/gridGalleryNX"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:numColumns="1"
+        android:padding="0dp"
+        android:layout_below="@+id/pilihNX" />
 
 </RelativeLayout>

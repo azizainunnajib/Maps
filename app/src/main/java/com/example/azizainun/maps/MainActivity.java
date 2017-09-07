@@ -26,8 +26,6 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
-import static com.example.azizainun.maps.User.mFirebaseAuth;
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button choose_image, upload_image;
     ImageView imageView;
@@ -183,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.setting:
                 Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+                fragment = new AddUnitAkhir();
                 break;
             case R.id.search:
                 Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show();

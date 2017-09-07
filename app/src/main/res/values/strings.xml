@@ -6,7 +6,16 @@
     <string name="drawer_close">Close</string>
     <string name="login_error_title">Please Create Account first</string>
     <string name="register_error_title">Please Check Your Internet</string>
+    <string name="spinner_tipe_bangunan">Tipe Bangunan</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="country_arrays">
+        <item>Pilih Tipe Bangunan</item>
+        <item>Kamar</item>
+        <item>Rumah</item>
+        <item>Apartemen</item>
+        <item>Villa</item>
+    </string-array>
 </resources>
