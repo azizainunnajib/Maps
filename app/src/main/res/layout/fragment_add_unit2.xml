@@ -1,24 +1,30 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/add_unit2"
+    tools:context="com.example.azizainun.maps.AddUnit2">
+<LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/tema"
-    android:orientation="vertical"
-    tools:context="com.example.azizainun.maps.AddUnit2">
+    android:orientation="vertical">
 
 
     <RelativeLayout
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="16">
+        android:layout_weight="29">
 
         <com.example.azizainun.maps.MyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:layout_marginTop="25sp"
             android:text="Berapa jumlah tamu yang bisa tinggal?"
-            android:textSize="16.18pt" />
+            android:textSize="32.36sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -153,310 +159,568 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/total_toilet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/option_kasur"
+        android:layout_weight="0.75"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <com.example.azizainun.maps.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="53sp"
+            android:layout_marginBottom="10sp"
+            android:layout_weight="0.75"
+            android:background="@drawable/ripple_button"
+            android:gravity="center"
+            android:text="Total Toilet"
+            android:textSize="9pt" />
+
+        <com.example.azizainun.maps.MyTextView
+            android:id="@+id/total_toilet_0"
+            android:layout_width="match_parent"
+            android:layout_height="53sp"
+            android:layout_marginBottom="10sp"
+            android:layout_weight="1.25"
+            android:background="@drawable/ripple_button"
+            android:gravity="center"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/total_toilet"
+        android:layout_above="@+id/next3"
+        android:id="@+id/pilihan_tamu"
+        android:weightSum="2"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:weightSum="4"
+            android:animateLayoutChanges="true"
+            android:orientation="horizontal"
+            android:layout_marginBottom="7sp">
+
+            <TextView
+                android:id="@+id/total_tamu_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_button_normal"
+                android:gravity="center"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="1 Tamu" />
+
+            <TextView
+                android:id="@+id/total_tamu_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_button_normal"
+                android:gravity="center"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="2 Tamu" />
+
+            <TextView
+                android:id="@+id/total_tamu_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_button_normal"
+                android:gravity="center"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="3 Tamu" />
+
+            <TextView
+                android:id="@+id/total_tamu_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_button_normal"
+                android:gravity="center"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="4 Tamu" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:animateLayoutChanges="true"
+            android:layout_marginBottom="7sp"
+            android:weightSum="4">
+            <TextView
+                android:id="@+id/total_tamu_5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="5 Tamu" />
+
+            <TextView
+                android:id="@+id/total_tamu_6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="6 Tamu" />
+
+            <TextView
+                android:id="@+id/total_tamu_7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="7 Tamu" />
+
+            <TextView
+                android:id="@+id/total_tamu_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="8+ Tamu" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/total_toilet"
+        android:layout_above="@+id/next3"
+        android:id="@+id/pilihan_kamar"
+        android:weightSum="2"
+        android:orientation="vertical"
+        android:visibility="gone">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:animateLayoutChanges="true"
+                android:layout_marginBottom="7sp"
+                android:weightSum="4">
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.5" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/total_kamar_1"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:id="@+id/pilihan_tamu"
-                    android:orientation="vertical"
-                    android:animateLayoutChanges="true"
-                    android:weightSum="8"
-                    android:visibility="gone">
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="1 Kamar" />
 
-                    <TextView
-                        android:id="@+id/total_tamu_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="1 Tamu" />
-
-                    <TextView
-                        android:id="@+id/total_tamu_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="2 Tamu" />
-
-                    <TextView
-                        android:id="@+id/total_tamu_3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="3 Tamu" />
-
-                    <TextView
-                        android:id="@+id/total_tamu_4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="4 Tamu" />
-
-                    <TextView
-                        android:id="@+id/total_tamu_5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="5 Tamu" />
-
-                    <TextView
-                        android:id="@+id/total_tamu_6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="6 Tamu" />
-
-                    <TextView
-                        android:id="@+id/total_tamu_7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="7 Tamu" />
-
-                    <TextView
-                        android:id="@+id/total_tamu_8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="8+ Tamu" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/total_kamar_2"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:id="@+id/pilihan_kamar"
-                    android:orientation="vertical"
-                    android:animateLayoutChanges="true"
-                    android:weightSum="8"
-                    android:visibility="gone">
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="2 Kamar" />
 
-                    <TextView
-                        android:id="@+id/total_kamar_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="1 Kamar" />
-
-                    <TextView
-                        android:id="@+id/total_kamar_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="2 Kamar" />
-
-                    <TextView
-                        android:id="@+id/total_kamar_3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="3 Kamar" />
-
-                    <TextView
-                        android:id="@+id/total_kamar_4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="4 Kamar" />
-
-                    <TextView
-                        android:id="@+id/total_kamar_5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="5 Kamar" />
-
-                    <TextView
-                        android:id="@+id/total_kamar_6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="6 Kamar" />
-
-                    <TextView
-                        android:id="@+id/total_kamar_7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="7 Kamar" />
-
-                    <TextView
-                        android:id="@+id/total_kamar_8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="8+ Kamar" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/total_kamar_3"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:id="@+id/pilihan_kasur"
-                    android:orientation="vertical"
-                    android:animateLayoutChanges="true"
-                    android:weightSum="8"
-                    android:visibility="gone">
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="3 Kamar" />
 
-                    <TextView
-                        android:id="@+id/total_kasur_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="1 Kasur" />
+                <TextView
+                    android:id="@+id/total_kamar_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="4 Kamar" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/total_kasur_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="2 Kasur" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:animateLayoutChanges="true"
+                android:layout_marginBottom="7sp"
+                android:weightSum="4">
+                <TextView
+                    android:id="@+id/total_kamar_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="5 Kamar" />
 
-                    <TextView
-                        android:id="@+id/total_kasur_3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="3 Kasur" />
+                <TextView
+                    android:id="@+id/total_kamar_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="6 Kamar" />
 
-                    <TextView
-                        android:id="@+id/total_kasur_4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="4 Kasur" />
+                <TextView
+                    android:id="@+id/total_kamar_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="7 Kamar" />
 
-                    <TextView
-                        android:id="@+id/total_kasur_5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="5 Kasur" />
-
-                    <TextView
-                        android:id="@+id/total_kasur_6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="6 Kasur" />
-
-                    <TextView
-                        android:id="@+id/total_kasur_7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="7 Kasur" />
-
-                    <TextView
-                        android:id="@+id/total_kasur_8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:background="@drawable/ripple_button_normal"
-                        android:layout_weight="1"
-                        android:text="8+ Kasur" />
-
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/total_kamar_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="8+ Kamar" />
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:id="@+id/jenis_kasur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/total_toilet"
+            android:layout_above="@+id/next3"
+            android:id="@+id/pilihan_kasur"
+            android:weightSum="2"
             android:orientation="vertical"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:animateLayoutChanges="true"
+                android:layout_marginBottom="7sp"
+                android:weightSum="4">
+                <TextView
+                    android:id="@+id/total_kasur_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="1 Kasur" />
+
+                <TextView
+                    android:id="@+id/total_kasur_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="2 Kasur" />
+
+                <TextView
+                    android:id="@+id/total_kasur_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="3 Kasur" />
+
+                <TextView
+                    android:id="@+id/total_kasur_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="4 Kasur" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
             android:animateLayoutChanges="true"
-            android:weightSum="8"
+            android:layout_marginBottom="7sp"
+            android:weightSum="4">
+
+            <TextView
+                android:id="@+id/total_kasur_5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="5 Kasur" />
+
+            <TextView
+                android:id="@+id/total_kasur_6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="6 Kasur" />
+
+            <TextView
+                android:id="@+id/total_kasur_7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="7 Kasur" />
+
+            <TextView
+                android:id="@+id/total_kasur_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/ripple_button_normal"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:text="8+ Kasur" />
+        </LinearLayout>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/total_toilet"
+            android:layout_above="@+id/next3"
+            android:id="@+id/jenis_kasur"
+            android:weightSum="2"
+            android:orientation="vertical"
             android:visibility="gone">
 
-            <TextView
-                android:id="@+id/jenis_kasur_1"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="@drawable/ripple_button_normal"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Springbed" />
+                android:orientation="horizontal"
+                android:animateLayoutChanges="true"
+                android:layout_marginBottom="7sp"
+                android:weightSum="3">
 
-            <TextView
-                android:id="@+id/jenis_kasur_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="@drawable/ripple_button_normal"
-                android:layout_weight="1"
-                android:text="Busa" />
+                <TextView
+                    android:id="@+id/jenis_kasur_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="Springbed" />
 
-            <TextView
-                android:id="@+id/jenis_kasur_3"
+                <TextView
+                    android:id="@+id/jenis_kasur_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="Busa" />
+
+                <TextView
+                    android:id="@+id/jenis_kasur_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="Kapuk" />
+            </LinearLayout>
+
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="@drawable/ripple_button_normal"
-                android:layout_weight="1"
-                android:text="Kapuk" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/total_toilet"
+            android:layout_above="@+id/next3"
+            android:id="@+id/pilihan_toilet"
+            android:weightSum="2"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:weightSum="4"
+                android:animateLayoutChanges="true"
+                android:orientation="horizontal"
+                android:layout_marginBottom="7sp">
+
+                <TextView
+                    android:id="@+id/total_toilet_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ripple_button_normal"
+                    android:gravity="center"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="1 Toilet" />
+
+                <TextView
+                    android:id="@+id/total_toilet_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ripple_button_normal"
+                    android:gravity="center"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="2 Toilet" />
+
+                <TextView
+                    android:id="@+id/total_toilet_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ripple_button_normal"
+                    android:gravity="center"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="3 Toilet" />
+
+                <TextView
+                    android:id="@+id/total_toilet_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ripple_button_normal"
+                    android:gravity="center"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="4 Toilet" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:animateLayoutChanges="true"
+                android:layout_marginBottom="7sp"
+                android:weightSum="4">
+                <TextView
+                    android:id="@+id/total_toilet_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="5 Toilet" />
+
+                <TextView
+                    android:id="@+id/total_toilet_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="6 Toilet" />
+
+                <TextView
+                    android:id="@+id/total_toilet_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="7 Toilet" />
+
+                <TextView
+                    android:id="@+id/total_toilet_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="@drawable/ripple_button_normal"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginRight="5sp"
+                    android:layout_weight="1"
+                    android:text="8+ Toilet" />
+            </LinearLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 
 </LinearLayout>
+    </FrameLayout>

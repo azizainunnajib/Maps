@@ -1,13 +1,71 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clickable="true"
+    android:background="@color/tema"
     tools:context="com.example.azizainun.maps.AddUnit3">
+    <FrameLayout
+        android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        <TextView
+            android:id="@+id/judul"
+            android:layout_width="match_parent"
+            android:layout_height="160sp"
+            android:text="Fasilitas apa yang kamu berikan?"
+            android:textSize="32.36sp"
+            android:layout_margin="15sp"
+            android:layout_marginTop="25sp"/>
+        <TextView
+            android:id="@+id/wifi"
+            android:layout_below="@+id/judul"
+            android:layout_width="match_parent"
+            android:layout_height="120sp"
+            android:text="Wifi"/>
+        <TextView
+            android:id="@+id/AC"
+            android:layout_below="@id/wifi"
+            android:layout_width="match_parent"
+            android:layout_height="120sp"
+            android:text="AC"
+            />
+        <TextView
+            android:id="@+id/TV"
+            android:layout_below="@id/AC"
+            android:layout_width="match_parent"
+            android:layout_height="120sp"
+            android:text="TV"
+            />
+        <TextView
+            android:id="@+id/Dapur"
+            android:layout_below="@id/TV"
+            android:layout_width="match_parent"
+            android:layout_height="120sp"
+            android:text="Dapur"/>
+        <TextView
+            android:id="@+id/Kulkas"
+            android:layout_below="@id/Dapur"
+            android:layout_width="match_parent"
+            android:layout_height="120sp"
+            android:text="Kulkas"/>
+        <TextView
+            android:id="@+id/Parkir"
+            android:layout_below="@id/Kulkas"
+            android:layout_width="match_parent"
+            android:layout_height="120sp"
+            android:text="Parkir"/>
+        <TextView
+            android:id="@+id/Air_Panas"
+            android:layout_below="@id/Parkir"
+            android:layout_width="match_parent"
+            android:layout_height="120sp"
+            android:text="Air Panas"/>
 
-</FrameLayout>
+    </RelativeLayout>
+    </FrameLayout>
+</ScrollView>

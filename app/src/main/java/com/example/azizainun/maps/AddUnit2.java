@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -26,8 +27,13 @@ import android.widget.Toast;
 import com.google.android.gms.vision.text.Line;
 
 import static com.example.azizainun.maps.R.id.cancel_action;
+import static com.example.azizainun.maps.R.id.index_entity_types;
 import static com.example.azizainun.maps.R.id.nama_editprofil0;
 import static com.example.azizainun.maps.R.id.time;
+import static com.example.azizainun.maps.R.id.total_toilet;
+import static com.example.azizainun.maps.R.id.view_offset_helper;
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.valueOf;
 
 
 public class AddUnit2 extends Fragment implements View.OnClickListener {
@@ -57,6 +63,7 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
     String Tkamar;
     String Tkasur;
     String Jkasur;
+    String Ttoilet;
 
     Button next3;
 
@@ -64,6 +71,7 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
     MyTextView total_kamar_0;
     MyTextView total_kasur_0;
     MyTextView kasur;
+    MyTextView total_toilet_0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,16 +90,19 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
         LinearLayout total_kamar = (LinearLayout) view.findViewById(R.id.total_kamar);
         LinearLayout total_kasur = (LinearLayout) view.findViewById(R.id.total_kasur);
         LinearLayout option_kasur = (LinearLayout) view.findViewById(R.id.option_kasur);
+        LinearLayout total_toilet = (LinearLayout) view.findViewById(R.id.total_toilet);
 
         total_tamu_0 = (MyTextView) view.findViewById(R.id.total_tamu_0);
         total_kamar_0 = (MyTextView) view.findViewById(R.id.total_kamar_0);
         total_kasur_0 = (MyTextView) view.findViewById(R.id.total_kasur_0);
         kasur = (MyTextView) view.findViewById(R.id.kasur);
+        total_toilet_0 = (MyTextView) view.findViewById(R.id.total_toilet_0);
 
         LinearLayout pilihan_tamu = (LinearLayout) view.findViewById(R.id.pilihan_tamu);
         LinearLayout pilihan_kamar = (LinearLayout) view.findViewById(R.id.pilihan_kamar);
         LinearLayout pilihan_kasur = (LinearLayout) view.findViewById(R.id.pilihan_kasur);
         LinearLayout jenis_kasur = (LinearLayout) view.findViewById(R.id.jenis_kasur);
+        LinearLayout pilihan_toilet = (LinearLayout) view.findViewById(R.id.pilihan_toilet);
 
         TextView total_tamu_1 = (TextView) view.findViewById(R.id.total_tamu_1);
         TextView total_tamu_2 = (TextView) view.findViewById(R.id.total_tamu_2);
@@ -124,6 +135,15 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
         TextView jenis_kasur_2 = (TextView) view.findViewById(R.id.jenis_kasur_2);
         TextView jenis_kasur_3 = (TextView) view.findViewById(R.id.jenis_kasur_3);
 
+        TextView total_toilet_1 = (TextView) view.findViewById(R.id.total_toilet_1);
+        TextView total_toilet_2 = (TextView) view.findViewById(R.id.total_toilet_2);
+        TextView total_toilet_3 = (TextView) view.findViewById(R.id.total_toilet_3);
+        TextView total_toilet_4 = (TextView) view.findViewById(R.id.total_toilet_4);
+        TextView total_toilet_5 = (TextView) view.findViewById(R.id.total_toilet_5);
+        TextView total_toilet_6 = (TextView) view.findViewById(R.id.total_toilet_6);
+        TextView total_toilet_7 = (TextView) view.findViewById(R.id.total_toilet_7);
+        TextView total_toilet_8 = (TextView) view.findViewById(R.id.total_toilet_8);
+
         next3 = (Button) view.findViewById(R.id.next3);
 
         all.setOnClickListener(this);
@@ -132,6 +152,7 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
         total_kamar.setOnClickListener(this);
         total_kasur.setOnClickListener(this);
         option_kasur.setOnClickListener(this);
+        total_toilet.setOnClickListener(this);
 
         total_tamu_1.setOnClickListener(this);
         total_tamu_2.setOnClickListener(this);
@@ -164,12 +185,23 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
         jenis_kasur_2.setOnClickListener(this);
         jenis_kasur_3.setOnClickListener(this);
 
+        total_toilet_1.setOnClickListener(this);
+        total_toilet_2.setOnClickListener(this);
+        total_toilet_3.setOnClickListener(this);
+        total_toilet_4.setOnClickListener(this);
+        total_toilet_5.setOnClickListener(this);
+        total_toilet_6.setOnClickListener(this);
+        total_toilet_7.setOnClickListener(this);
+        total_toilet_8.setOnClickListener(this);
+
+
         next3.setOnClickListener(this);
 
         total_tamu_0.addTextChangedListener(textWatcher);
         total_kamar_0.addTextChangedListener(textWatcher);
         total_kasur_0.addTextChangedListener(textWatcher);
         kasur.addTextChangedListener(textWatcher);
+        total_toilet_0.addTextChangedListener(textWatcher);
 
         Cek();
 
@@ -187,6 +219,7 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
         LinearLayout pilihan_kamar = (LinearLayout) getView().findViewById(R.id.pilihan_kamar);
         LinearLayout pilihan_kasur = (LinearLayout) getView().findViewById(R.id.pilihan_kasur);
         LinearLayout jenis_kasur = (LinearLayout) getView().findViewById(R.id.jenis_kasur);
+        LinearLayout pilihan_toilet = (LinearLayout) getView().findViewById(R.id.pilihan_toilet);
 
         switch (v.getId()) {
             case R.id.all:
@@ -194,6 +227,7 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
                 pilihan_kamar.setVisibility(View.GONE);
                 pilihan_kasur.setVisibility(View.GONE);
                 jenis_kasur.setVisibility(View.GONE);
+                pilihan_toilet.setVisibility(View.GONE);
                 break;
             case R.id.total_tamu:
                 if(pilihan_tamu.getVisibility() == View.GONE){
@@ -201,12 +235,14 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
                     pilihan_kamar.setVisibility(View.GONE);
                     pilihan_kasur.setVisibility(View.GONE);
                     jenis_kasur.setVisibility(View.GONE);
+                    pilihan_toilet.setVisibility(View.GONE);
 
                 } else {
                     pilihan_tamu.setVisibility(View.GONE);
                     pilihan_kamar.setVisibility(View.GONE);
                     pilihan_kasur.setVisibility(View.GONE);
                     jenis_kasur.setVisibility(View.GONE);
+                    pilihan_toilet.setVisibility(View.GONE);
                 }
                 break;
             case R.id.total_kamar:
@@ -215,11 +251,13 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
                     pilihan_kamar.setVisibility(View.VISIBLE);
                     pilihan_kasur.setVisibility(View.GONE);
                     jenis_kasur.setVisibility(View.GONE);
+                    pilihan_toilet.setVisibility(View.GONE);
                 } else {
                     pilihan_tamu.setVisibility(View.GONE);
                     pilihan_kamar.setVisibility(View.GONE);
                     pilihan_kasur.setVisibility(View.GONE);
                     jenis_kasur.setVisibility(View.GONE);
+                    pilihan_toilet.setVisibility(View.GONE);
                 }
                 break;
             case R.id.total_kasur:
@@ -228,11 +266,13 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
                     pilihan_kamar.setVisibility(View.GONE);
                     pilihan_kasur.setVisibility(View.VISIBLE);
                     jenis_kasur.setVisibility(View.GONE);
+                    pilihan_toilet.setVisibility(View.GONE);
                 } else {
                     pilihan_tamu.setVisibility(View.GONE);
                     pilihan_kamar.setVisibility(View.GONE);
                     pilihan_kasur.setVisibility(View.GONE);
                     jenis_kasur.setVisibility(View.GONE);
+                    pilihan_toilet.setVisibility(View.GONE);
                 }
                 break;
             case R.id.option_kasur:
@@ -241,11 +281,28 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
                     pilihan_kamar.setVisibility(View.GONE);
                     pilihan_kasur.setVisibility(View.GONE);
                     jenis_kasur.setVisibility(View.VISIBLE);
+                    pilihan_toilet.setVisibility(View.GONE);
                 } else {
                     pilihan_tamu.setVisibility(View.GONE);
                     pilihan_kamar.setVisibility(View.GONE);
                     pilihan_kasur.setVisibility(View.GONE);
                     jenis_kasur.setVisibility(View.GONE);
+                    pilihan_toilet.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.total_toilet:
+                if(pilihan_toilet.getVisibility() == View.GONE){
+                    pilihan_tamu.setVisibility(View.GONE);
+                    pilihan_kamar.setVisibility(View.GONE);
+                    pilihan_kasur.setVisibility(View.GONE);
+                    jenis_kasur.setVisibility(View.GONE);
+                    pilihan_toilet.setVisibility(View.VISIBLE);
+                } else {
+                    pilihan_tamu.setVisibility(View.GONE);
+                    pilihan_kamar.setVisibility(View.GONE);
+                    pilihan_kasur.setVisibility(View.GONE);
+                    jenis_kasur.setVisibility(View.GONE);
+                    pilihan_toilet.setVisibility(View.GONE);
                 }
                 break;
             case R.id.total_tamu_1:
@@ -383,23 +440,80 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
                 Jkasur = kasur.getText().toString();
                 jenis_kasur.setVisibility(View.GONE);
                 break;
+            case R.id.total_toilet_1:
+                total_toilet_0.setText(((TextView) v).getText());
+                Ttoilet = total_toilet_0.getText().toString();
+                pilihan_toilet.setVisibility(View.GONE);
+                break;
+            case R.id.total_toilet_2:
+                total_toilet_0.setText(((TextView) v).getText());
+                Ttoilet = total_toilet_0.getText().toString();
+                pilihan_toilet.setVisibility(View.GONE);
+                break;
+            case R.id.total_toilet_3:
+                total_toilet_0.setText(((TextView) v).getText());
+                Ttoilet = total_toilet_0.getText().toString();
+                pilihan_toilet.setVisibility(View.GONE);
+                break;
+            case R.id.total_toilet_4:
+                total_toilet_0.setText(((TextView) v).getText());
+                Ttoilet = total_toilet_0.getText().toString();
+                pilihan_toilet.setVisibility(View.GONE);
+                break;
+            case R.id.total_toilet_5:
+                total_toilet_0.setText(((TextView) v).getText());
+                Ttoilet = total_toilet_0.getText().toString();
+                pilihan_toilet.setVisibility(View.GONE);
+                break;
+            case R.id.total_toilet_6:
+                total_toilet_0.setText(((TextView) v).getText());
+                Ttoilet = total_toilet_0.getText().toString();
+                pilihan_toilet.setVisibility(View.GONE);
+                break;
+            case R.id.total_toilet_7:
+                total_toilet_0.setText(((TextView) v).getText());
+                Ttoilet = total_toilet_0.getText().toString();
+                pilihan_toilet.setVisibility(View.GONE);
+                break;
+            case R.id.total_toilet_8:
+                total_toilet_0.setText(((TextView) v).getText());
+                Ttoilet = total_toilet_0.getText().toString();
+                pilihan_toilet.setVisibility(View.GONE);
+                break;
             case R.id.next3:
-                Next3(Ttamu, Tkamar, Tkasur, Jkasur);
+                Next3(Ttamu, Tkamar, Tkasur, Jkasur, Ttoilet);
                 break;
         }
     }
 
-    public void Next3(String total_tamu_, String total_kamar, String total_kasur, String Jkasur) {
+    public void Next3(String total_tamu, String total_kamar, String total_kasur, String Jkasur, String total_toilet) {
         Toast.makeText(getContext(), "oke", Toast.LENGTH_SHORT).show();
         Model_Detail argument = getArguments().getParcelable("next");
-//        Model_Detail model_detail =(Model_Detail) argument.get("next");
+
+        total_tamu = total_tamu.replace("Tamu", "").trim();
+        total_kamar = total_kamar.replace("Kamar", "").trim();
+        total_kasur = total_kasur.replace("Kasur", "").trim();
+        total_toilet = total_toilet.replace("Toilet", "").trim();
+
+        int Ttamu = parseInt(total_tamu);
+        int Tkamar = parseInt(total_kamar);
+        int Tkasur = parseInt(total_kasur);
+        int Ttoilet = parseInt(total_toilet);
+
         String k = argument.getTipe_tempat();
-        argument.setLokasi(total_tamu_);
+        argument.setTotal_tamu(Ttamu);
+        argument.setTotal_kamar(Tkamar);
+        argument.setTotal_kasur(Tkasur);
+        argument.setJenis_kasur(Jkasur);
+        argument.setTotal_toilet(Ttoilet);
         Bundle bundle = new Bundle();
         bundle.putParcelable("next3", argument);
         AddUnit3 fNext3 = new AddUnit3();
         fNext3.setArguments(bundle);
-        Model_Detail lm = argument;
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.content_frame_next, fNext3).addToBackStack(null);
+        ft.commit();
+//        Model_Detail lm = argument;
     }
 
     public interface OnFragmentInteractionListener {
@@ -412,6 +526,8 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
         String s2 = total_kamar_0.getText().toString();
         String s3 = total_kasur_0.getText().toString();
         String s4 = kasur.getText().toString();
-        next3.setEnabled(!s1.trim().isEmpty() && !s2.trim().isEmpty() && !s3.trim().isEmpty() && !s4.trim().isEmpty());
+        String s5 = total_toilet_0.getText().toString();
+        next3.setEnabled(!s1.trim().isEmpty() && !s2.trim().isEmpty() && !s3.trim().isEmpty()
+                && !s4.trim().isEmpty() &&!s5.trim().isEmpty());
     }
 }

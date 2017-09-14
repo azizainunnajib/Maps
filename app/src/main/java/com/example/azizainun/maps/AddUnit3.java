@@ -27,7 +27,7 @@ public class AddUnit3 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+//    private OnFragmentInteractionListener mListener;
 
     public AddUnit3() {
         // Required empty public constructor
@@ -57,6 +57,8 @@ public class AddUnit3 extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            Model_Detail argument = getArguments().getParcelable("next3");
+            int k = argument.getTotal_kasur();
         }
     }
 
@@ -65,16 +67,20 @@ public class AddUnit3 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_unit3, container, false);
+
+
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+ /*   public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
@@ -83,13 +89,13 @@ public class AddUnit3 extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
+    }*/
 
     /**
      * This interface must be implemented by activities that contain this
@@ -101,8 +107,8 @@ public class AddUnit3 extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+ /*   public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
+    }*/
 }

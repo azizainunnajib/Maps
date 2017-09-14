@@ -10,8 +10,8 @@ import java.util.ArrayList;
  */
 
 public class Model_Detail implements Parcelable{
-    public String harga, lokasi, UID_, tipe_tempat, tipe_bangunan;
-    int total_tamu, total_kamar, total_kasur;
+    public String harga, lokasi, UID_, tipe_tempat, tipe_bangunan, jenis_kasur;
+    int total_tamu, total_kamar, total_kasur, total_toilet;
     public ArrayList<String> url;
     int urut;
 
@@ -24,9 +24,11 @@ public class Model_Detail implements Parcelable{
         UID_ = in.readString();
         tipe_tempat = in.readString();
         tipe_bangunan = in.readString();
+        jenis_kasur = in.readString();
         total_tamu = in.readInt();
         total_kamar = in.readInt();
         total_kasur = in.readInt();
+        total_toilet = in.readInt();
         url = in.createStringArrayList();
         urut = in.readInt();
     }
@@ -42,6 +44,14 @@ public class Model_Detail implements Parcelable{
             return new Model_Detail[size];
         }
     };
+
+    public String getJenis_kasur() {
+        return jenis_kasur;
+    }
+
+    public void setJenis_kasur(String jenis_kasur) {
+        this.jenis_kasur = jenis_kasur;
+    }
 
     public int getTotal_tamu() {
         return total_tamu;
@@ -65,6 +75,14 @@ public class Model_Detail implements Parcelable{
 
     public void setTotal_kasur(int total_kasur) {
         this.total_kasur = total_kasur;
+    }
+
+    public int getTotal_toilet() {
+        return total_toilet;
+    }
+
+    public void setTotal_toilet(int total_toilet) {
+        this.total_toilet = total_toilet;
     }
 
     public String getHarga() {
@@ -130,7 +148,9 @@ public class Model_Detail implements Parcelable{
         dest.writeInt(total_kamar);
         dest.writeInt(total_kasur);
         dest.writeInt(total_tamu);
+        dest.writeInt(total_toilet);
         dest.writeStringList(url);
         dest.writeInt(urut);
+        dest.writeString(jenis_kasur);
     }
 }
