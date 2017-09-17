@@ -9,63 +9,126 @@
     tools:context="com.example.azizainun.maps.AddUnit3">
     <FrameLayout
         android:layout_width="match_parent" android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
 
-        <TextView
-            android:id="@+id/judul"
-            android:layout_width="match_parent"
-            android:layout_height="160sp"
-            android:text="Fasilitas apa yang kamu berikan?"
-            android:textSize="32.36sp"
-            android:layout_margin="15sp"
-            android:layout_marginTop="25sp"/>
-        <TextView
-            android:id="@+id/wifi"
-            android:layout_below="@+id/judul"
-            android:layout_width="match_parent"
-            android:layout_height="120sp"
-            android:text="Wifi"/>
-        <TextView
-            android:id="@+id/AC"
-            android:layout_below="@id/wifi"
-            android:layout_width="match_parent"
-            android:layout_height="120sp"
-            android:text="AC"
-            />
-        <TextView
-            android:id="@+id/TV"
-            android:layout_below="@id/AC"
-            android:layout_width="match_parent"
-            android:layout_height="120sp"
-            android:text="TV"
-            />
-        <TextView
-            android:id="@+id/Dapur"
-            android:layout_below="@id/TV"
-            android:layout_width="match_parent"
-            android:layout_height="120sp"
-            android:text="Dapur"/>
-        <TextView
-            android:id="@+id/Kulkas"
-            android:layout_below="@id/Dapur"
-            android:layout_width="match_parent"
-            android:layout_height="120sp"
-            android:text="Kulkas"/>
-        <TextView
-            android:id="@+id/Parkir"
-            android:layout_below="@id/Kulkas"
-            android:layout_width="match_parent"
-            android:layout_height="120sp"
-            android:text="Parkir"/>
-        <TextView
-            android:id="@+id/Air_Panas"
-            android:layout_below="@id/Parkir"
-            android:layout_width="match_parent"
-            android:layout_height="120sp"
-            android:text="Air Panas"/>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-    </RelativeLayout>
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/judul"
+                android:layout_width="match_parent"
+                android:layout_height="160sp"
+                android:layout_margin="15sp"
+                android:layout_marginTop="25sp"
+                android:text="Fasilitas apa yang kamu berikan?"
+                android:textSize="32.36sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/wifi"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@+id/judul"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="Wifi"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/AC"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/wifi"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="AC"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/TV"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/AC"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="TV"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/Dapur"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/TV"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="Dapur"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/Kulkas"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/Dapur"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="Kulkas"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/Parkir"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/Kulkas"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="Parkir"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/Air_Panas"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/Parkir"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="Air Panas"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/syariah"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/Air_Panas"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="Syariah"
+                android:textSize="25sp" />
+
+            <View
+                android:layout_below="@+id/syariah"
+                android:id="@+id/space"
+                android:layout_width="match_parent"
+                android:layout_height="100sp"/>
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/next4"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/space"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_button"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"
+                android:text="NEXT"
+                android:textSize="25sp" />
+
+        </RelativeLayout>
     </FrameLayout>
 </ScrollView>

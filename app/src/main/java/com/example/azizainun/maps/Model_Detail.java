@@ -10,7 +10,9 @@ import java.util.ArrayList;
  */
 
 public class Model_Detail implements Parcelable{
-    public String harga, lokasi, UID_, tipe_tempat, tipe_bangunan, jenis_kasur;
+    public String harga, lokasi, UID_, tipe_tempat, tipe_bangunan, jenis_kasur,
+            wifi, ac, tv, dapur, kulkas, parkir, airpanas, syariah,
+            minimarket, angkot, ojek_daring, atm;
     int total_tamu, total_kamar, total_kasur, total_toilet;
     public ArrayList<String> url;
     int urut;
@@ -29,6 +31,18 @@ public class Model_Detail implements Parcelable{
         total_kamar = in.readInt();
         total_kasur = in.readInt();
         total_toilet = in.readInt();
+        wifi = in.readString();
+        ac = in.readString();
+        tv = in.readString();
+        dapur = in.readString();
+        kulkas = in.readString();
+        parkir = in.readString();
+        airpanas = in.readString();
+        syariah = in.readString();
+        minimarket = in.readString();
+        angkot = in.readString();
+        ojek_daring = in.readString();
+        atm = in.readString();
         url = in.createStringArrayList();
         urut = in.readInt();
     }
@@ -44,6 +58,102 @@ public class Model_Detail implements Parcelable{
             return new Model_Detail[size];
         }
     };
+
+    public String getMinimarket() {
+        return minimarket;
+    }
+
+    public void setMinimarket(String minimarket) {
+        this.minimarket = minimarket;
+    }
+
+    public String getAngkot() {
+        return angkot;
+    }
+
+    public void setAngkot(String angkot) {
+        this.angkot = angkot;
+    }
+
+    public String getOjek_daring() {
+        return ojek_daring;
+    }
+
+    public void setOjek_daring(String ojek_daring) {
+        this.ojek_daring = ojek_daring;
+    }
+
+    public String getAtm() {
+        return atm;
+    }
+
+    public void setAtm(String atm) {
+        this.atm = atm;
+    }
+
+    public String getWifi() {
+        return wifi;
+    }
+
+    public void setWifi(String wifi) {
+        this.wifi = wifi;
+    }
+
+    public String getAc() {
+        return ac;
+    }
+
+    public void setAc(String ac) {
+        this.ac = ac;
+    }
+
+    public String getTv() {
+        return tv;
+    }
+
+    public void setTv(String tv) {
+        this.tv = tv;
+    }
+
+    public String getDapur() {
+        return dapur;
+    }
+
+    public void setDapur(String dapur) {
+        this.dapur = dapur;
+    }
+
+    public String getKulkas() {
+        return kulkas;
+    }
+
+    public void setKulkas(String kulkas) {
+        this.kulkas = kulkas;
+    }
+
+    public String getParkir() {
+        return parkir;
+    }
+
+    public void setParkir(String parkir) {
+        this.parkir = parkir;
+    }
+
+    public String getAirpanas() {
+        return airpanas;
+    }
+
+    public void setAirpanas(String airpanas) {
+        this.airpanas = airpanas;
+    }
+
+    public String getSyariah() {
+        return syariah;
+    }
+
+    public void setSyariah(String syariah) {
+        this.syariah = syariah;
+    }
 
     public String getJenis_kasur() {
         return jenis_kasur;
@@ -149,8 +259,20 @@ public class Model_Detail implements Parcelable{
         dest.writeInt(total_kasur);
         dest.writeInt(total_tamu);
         dest.writeInt(total_toilet);
+        dest.writeString(jenis_kasur);
+        dest.writeString(wifi);
+        dest.writeString(ac);
+        dest.writeString(tv);
+        dest.writeString(dapur);
+        dest.writeString(kulkas);
+        dest.writeString(parkir);
+        dest.writeString(airpanas);
+        dest.writeString(syariah);
+        dest.writeString(minimarket);
+        dest.writeString(angkot);
+        dest.writeString(ojek_daring);
+        dest.writeString(atm);
         dest.writeStringList(url);
         dest.writeInt(urut);
-        dest.writeString(jenis_kasur);
     }
 }

@@ -9,4 +9,7 @@
     <color name="putih_trans">#80FFFFFF</color>
     <color name="transparant">#00000000</color>
     <color name="hitam_trans">#37000000</color>
+    <color name="green_">#370ABDA0</color>
+    <color name="green">#3700FA9A</color>
+    <color name="red">#37FF0000</color>
 </resources>

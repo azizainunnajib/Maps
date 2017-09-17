@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tema"
+    tools:context="com.example.azizainun.maps.AddUnit5">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:layout_below="@+id/mapView"/>
+    <fragment
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_height="300sp"/>
+    <com.google.android.gms.maps.MapView
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:id="@+id/map_2"
+        android:layout_below="@+id/text"
+        map:mapType= "normal"
+        map:liteMode="true"/>
+    <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:id="@+id/map_1"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        map:cameraZoom="13"
+        map:mapType="normal"
+        android:layout_below="@+id/text"
+        map:liteMode="true"/>-->
+</RelativeLayout>

@@ -490,10 +490,10 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
         Toast.makeText(getContext(), "oke", Toast.LENGTH_SHORT).show();
         Model_Detail argument = getArguments().getParcelable("next");
 
-        total_tamu = total_tamu.replace("Tamu", "").trim();
-        total_kamar = total_kamar.replace("Kamar", "").trim();
-        total_kasur = total_kasur.replace("Kasur", "").trim();
-        total_toilet = total_toilet.replace("Toilet", "").trim();
+        total_tamu =total_tamu.substring(0,1).trim();
+        total_kamar = total_kamar.substring(0,1).trim();
+        total_kasur = total_kasur.substring(0,1).trim();
+        total_toilet = total_toilet.substring(0,1).trim();
 
         int Ttamu = parseInt(total_tamu);
         int Tkamar = parseInt(total_kamar);
@@ -514,6 +514,12 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
         ft.add(R.id.content_frame_next, fNext3).addToBackStack(null);
         ft.commit();
 //        Model_Detail lm = argument;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        this.getArguments().clear();
     }
 
     public interface OnFragmentInteractionListener {

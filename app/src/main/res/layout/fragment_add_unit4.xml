@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clickable="true"
+    android:background="@color/tema"
+    tools:context="com.example.azizainun.maps.AddUnit3">
+    <FrameLayout
+        android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/judul"
+                android:layout_width="match_parent"
+                android:layout_height="160sp"
+                android:layout_margin="15sp"
+                android:layout_marginTop="25sp"
+                android:text="Fasilitas umum apa yang ada disekitar?"
+                android:textSize="32.36sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/minimarket"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@+id/judul"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="Minimarket"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/angkot"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/minimarket"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="Angkutan Kota"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/ojek_daring"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/angkot"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="Ojek Daring"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/atm"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_below="@id/ojek_daring"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_merah"
+                android:gravity="center"
+                android:text="ATM"
+                android:textSize="25sp" />
+
+            <com.example.azizainun.maps.MyTextView
+                android:id="@+id/next5"
+                android:layout_width="match_parent"
+                android:layout_height="53sp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="5sp"
+                android:background="@drawable/ripple_button"
+                android:gravity="center"
+                android:text="NEXT"
+                android:textSize="25sp" />
+
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>
