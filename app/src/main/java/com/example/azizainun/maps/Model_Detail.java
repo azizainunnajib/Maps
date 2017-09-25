@@ -3,6 +3,8 @@ package com.example.azizainun.maps;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 /**
@@ -13,6 +15,7 @@ public class Model_Detail implements Parcelable{
     public String harga, lokasi, UID_, tipe_tempat, tipe_bangunan, jenis_kasur,
             wifi, ac, tv, dapur, kulkas, parkir, airpanas, syariah,
             minimarket, angkot, ojek_daring, atm;
+    double Long, Lat;
     int total_tamu, total_kamar, total_kasur, total_toilet;
     public ArrayList<String> url;
     int urut;
@@ -21,6 +24,8 @@ public class Model_Detail implements Parcelable{
     }
 
     protected Model_Detail(Parcel in) {
+        Long = in.readDouble();
+        Lat = in.readDouble();
         harga = in.readString();
         lokasi = in.readString();
         UID_ = in.readString();
@@ -58,6 +63,22 @@ public class Model_Detail implements Parcelable{
             return new Model_Detail[size];
         }
     };
+
+    public double getLong() {
+        return Long;
+    }
+
+    public void setLong(double aLong) {
+        Long = aLong;
+    }
+
+    public double getLat() {
+        return Lat;
+    }
+
+    public void setLat(double lat) {
+        Lat = lat;
+    }
 
     public String getMinimarket() {
         return minimarket;
@@ -250,6 +271,8 @@ public class Model_Detail implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(Long);
+        dest.writeDouble(Lat);
         dest.writeString(harga);
         dest.writeString(lokasi);
         dest.writeString(UID_);

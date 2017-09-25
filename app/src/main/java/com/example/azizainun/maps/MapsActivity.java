@@ -1,18 +1,27 @@
 package com.example.azizainun.maps;
 
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
 
     private GoogleMap mMap;
+    Bundle bundle;
+    LatLng latLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +31,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        bundle = getIntent().getExtras();
+        Button oke = (Button) findViewById(R.id.floatingActionButton);
+        oke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putDouble("Long", latLng.longitude);
+                bundle.putDouble("Lat", latLng.latitude);
+                AddUnit5 addUnit5 = new AddUnit5();
+                addUnit5.setArguments(bundle);
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.content_frame_next, addUnit5).addToBackStack(null);
+                ft.commit();
+            }
+        });
     }
 
 
@@ -36,10 +60,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        double Long = bundle.getDouble("Long");
+        double Lat = bundle.getDouble("Lat");
         mMap = googleMap;
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(6.1751, 106.8650);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        CameraPosition oke = CameraPosition.builder().target(new LatLng(Lat, Long)).zoom(15).build();
+        LatLng sydney = new LatLng(Lat, Long);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney")).setDraggable(true);
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
+        mMap.setOnMapLongClickListener(this);
+        mMap.setOnMarkerDragListener(this);
+    }
+
+    @Override
+    public void onMapLongClick(LatLng latLng) {
+    }
+
+    @Override
+    public void onMarkerDragStart(Marker marker) {
+
+    }
+
+    @Override
+    public void onMarkerDrag(Marker marker) {
+
+    }
+
+    @Override
+    public void onMarkerDragEnd(Marker marker) {
+        latLng = marker.getPosition();
+        CameraPosition oke = CameraPosition.builder().target(latLng).zoom(15).build();
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
     }
 }

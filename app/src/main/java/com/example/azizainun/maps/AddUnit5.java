@@ -1,17 +1,33 @@
 package com.example.azizainun.maps;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.icu.text.DateFormat;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -20,18 +36,23 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.Date;
+
+import pugman.com.simplelocationgetter.SimpleLocationGetter;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AddUnit5.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link AddUnit5#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddUnit5 extends Fragment implements OnMapReadyCallback {
+public class AddUnit5 extends Fragment implements OnMapReadyCallback, SimpleLocationGetter.OnLocationGetListener,
+        GoogleMap.OnMapClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -42,10 +63,11 @@ public class AddUnit5 extends Fragment implements OnMapReadyCallback {
     private String mParam2;
 
     MapView mapView;
+    double Long;
+    double Lat;
     GoogleMap Gmap;
-
-    private OnFragmentInteractionListener mListener;
-
+//    LocationRequest mLocationRequest;
+//    GoogleApiClient mGoogleApiClient;
     public AddUnit5() {
         // Required empty public constructor
     }
@@ -74,6 +96,7 @@ public class AddUnit5 extends Fragment implements OnMapReadyCallback {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+//            mGoogleApiClient.connect();
         }
     }
 
@@ -81,55 +104,115 @@ public class AddUnit5 extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_unit5, container, false);
+        SimpleLocationGetter getter = new SimpleLocationGetter(getActivity(), this);
+        getter.getLastLocation();
+        mapView = (MapView) view.findViewById(R.id.map_2);
+        Button button = (Button) view.findViewById(R.id.button3);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Model_Detail argument = getArguments().getParcelable("next5");
+                String k = Double.toString(Long);
+                String l = Double.toString(Lat);
+                argument.setLong(Long);
+                argument.setLat(Lat);
+                Toast.makeText(getContext(), k + " dan " + l, Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("next6", argument);
+                AddUnitAkhir fNextakhir = new AddUnitAkhir();
+                fNextakhir.setArguments(bundle);
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.content_frame_next, fNextakhir, "gomaps").addToBackStack(null);
+                ft.commit();
+            }
+        });
+
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        mapView.getMapAsync(this);
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mapView = (MapView) view.findViewById(R.id.map_2);
         mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this);
     }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
         Gmap = googleMap;
-        if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+//        Gmap.setOnMapLongClickListener(this);
+        Gmap.setOnMapClickListener(this);
+        Gmap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        if (Gmap != null) {
+            Gmap.addMarker(new MarkerOptions().position(new LatLng(Lat, Long)));
+            CameraPosition oke = CameraPosition.builder().target(new LatLng(Lat, Long)).zoom(15).build();
+            Gmap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
         }
-        Gmap.setMyLocationEnabled(true);
-        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(23.6345,-102.5528)));
-        CameraPosition oke = CameraPosition.builder().target(new LatLng(0,0)).build();
-        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
+        if (getArguments() != null){
+            if (getArguments().containsKey("Long")){
+                Bundle bundle = new Bundle();
+                Long = getArguments().getDouble("Long");
+                Lat = getArguments().getDouble("Lat");
+                String k = Double.toString(Long);
+                String l = Double.toString(Lat);
+                Gmap.addMarker(new MarkerOptions().position(new LatLng(Lat, Long)));
+                CameraPosition oke = CameraPosition.builder().target(new LatLng(Lat, Long)).zoom(15).build();
+                Gmap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
+                Toast.makeText(getContext(), k + " dan " + l, Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+    public void onLocationReady(Location location) {
+        Long = location.getLongitude();
+        GoogleMap m = Gmap;
+        Lat = location.getLatitude();
+        if (Gmap != null) {
+            Gmap.addMarker(new MarkerOptions().position(new LatLng(Lat, Long)));
+            CameraPosition oke = CameraPosition.builder().target(new LatLng(Lat, Long)).zoom(15).build();
+            Gmap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
+            Log.d("LOCATION", "onLocationReady: lat=" + location.getLatitude() + " lon=" + location.getLongitude());
+        }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void onError(String s) {
+        Log.e("LOCATION", "Error: ");
+    }
+
+    /*@Override
+    public void onMapLongClick(LatLng latLng) {
+        double Lat = latLng.latitude;
+        double Long = latLng.longitude;
+        Gmap.addMarker(new MarkerOptions().position(new LatLng(Lat, Long))).setDraggable(true);
+//        CameraPosition oke = CameraPosition.builder().target(new LatLng(Lat, Long)).zoom(15).build();
+//        Gmap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
+    }*/
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        Bundle bundle = new Bundle();
+        double k = Long;
+        double l = Lat;
+        bundle.putDouble("Long", Long);
+        bundle.putDouble("Lat", Lat);
+        AddUnitMaps addUnitMaps = new AddUnitMaps();
+        addUnitMaps.setArguments(bundle);
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.content_frame_next, addUnitMaps, "maps").addToBackStack(null);
+        ft.commit();
+//        Intent i = new Intent(getContext(), MapsActivity.class);
+//        i.putExtras(bundle);
+//        startActivity(i);
     }
 }

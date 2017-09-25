@@ -171,7 +171,7 @@ public class AddUnit4 extends Fragment implements View.OnClickListener {
         AddUnit5 fNext5 = new AddUnit5();
         fNext5.setArguments(bundle);
         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.content_frame_next, fNext5).addToBackStack(null);
+        ft.add(R.id.content_frame_next, fNext5, "gomaps").addToBackStack(null);
         ft.commit();
     }
 

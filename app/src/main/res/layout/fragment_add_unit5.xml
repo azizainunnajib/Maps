@@ -7,24 +7,28 @@
     tools:context="com.example.azizainun.maps.AddUnit5">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.example.azizainun.maps.MyTextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
-        android:layout_below="@+id/mapView"/>
-    <fragment
-        android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_height="300sp"/>
+        android:layout_height="160sp"
+        android:layout_margin="15sp"
+        android:layout_marginTop="25sp"
+        android:textSize="32.36sp"
+        android:text="Dimanakah letak tempat yang akan disewakan?"/>
     <com.google.android.gms.maps.MapView
         android:layout_width="match_parent"
         android:layout_height="200sp"
         android:id="@+id/map_2"
+        android:clickable="false"
         android:layout_below="@+id/text"
-        map:mapType= "normal"
         map:liteMode="true"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:layout_below="@+id/map_2"/>
     <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         android:name="com.google.android.gms.maps.MapFragment"

@@ -16,6 +16,7 @@ import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -335,4 +336,5 @@ public class AddUnit1 extends Fragment implements View.OnClickListener {
                 checkFieldsForEmptyValues(tipe_tempat, tipe_bangunan);
         }
     }
+
 }
