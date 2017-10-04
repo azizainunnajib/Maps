@@ -7,7 +7,7 @@
     tools:context="com.example.azizainun.maps.AddUnit6">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.example.azizainun.maps.MyTextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="206dp"

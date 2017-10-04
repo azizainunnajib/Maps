@@ -10,7 +10,7 @@
     <com.example.azizainun.maps.MyTextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="160sp"
+        android:layout_height="128sp"
         android:layout_margin="15sp"
         android:layout_marginTop="25sp"
         android:textSize="32.36sp"
@@ -20,15 +20,27 @@
         android:layout_height="200sp"
         android:id="@+id/map_2"
         android:clickable="false"
+        map:liteMode="true"
         android:layout_below="@+id/text"
-        map:liteMode="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <com.example.azizainun.maps.MyTextView
+        android:id="@+id/kota"
+        android:layout_width="match_parent"
+        android:layout_height="128sp"
+        android:layout_below="@+id/map_2"
+        android:textSize="32.36sp"
+        android:layout_margin="15sp"
+        android:layout_marginTop="25sp"
+        android:text="Kota/kabupaten dari tempat yang disewakan"/>
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        android:layout_below="@+id/map_2"/>
+        android:layout_below="@+id/kota"/>
     <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         android:name="com.google.android.gms.maps.MapFragment"
