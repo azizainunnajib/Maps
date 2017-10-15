@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
@@ -182,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.setting:
                 Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
-                fragment = new AddUnit5();
+                fragment = new AddUnitAkhir();
                 break;
             case R.id.search:
                 Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show();

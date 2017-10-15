@@ -69,10 +69,9 @@
         android:id="@+id/next2"
         android:layout_width="match_parent"
         android:layout_height="53sp"
+        android:layout_marginBottom="10sp"
         android:text="Next"
         android:textSize="20sp"
-        android:layout_marginBottom="10sp"
         android:background="@drawable/ripple_button_normal" />
-
 
 </LinearLayout>

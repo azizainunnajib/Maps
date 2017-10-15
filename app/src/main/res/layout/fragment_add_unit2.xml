@@ -37,14 +37,16 @@
             android:layout_height="match_parent"
             android:id="@+id/all"/>
 
-        <Button
+        <com.example.azizainun.maps.MyTextView
             android:id="@+id/next3"
             android:layout_width="match_parent"
             android:layout_height="53sp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10sp"
+            android:gravity="center"
+            android:textSize="20sp"
             android:background="@drawable/ripple_button_normal"
-            android:text="Button" />
+            android:text="NEXT" />
 
         <LinearLayout
                 android:layout_width="match_parent"

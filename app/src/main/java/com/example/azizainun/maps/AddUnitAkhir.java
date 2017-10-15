@@ -1,5 +1,6 @@
 package com.example.azizainun.maps;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -10,6 +11,7 @@ import android.graphics.Paint;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -20,19 +22,34 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
+import static com.example.azizainun.maps.User.mFirebaseInstance;
 
 public class AddUnitAkhir extends Fragment implements View.OnClickListener{
 
+    List<Uri> filePath;
+    ArrayList<String> URi = new ArrayList<String>();
+    ProgressDialog progressDialog;
+    protected FirebaseStorage storage = FirebaseStorage.getInstance();
+    protected StorageReference storageReference = storage.getReferenceFromUrl("gs://my-project-1479543973833.appspot.com");
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,27 +58,109 @@ public class AddUnitAkhir extends Fragment implements View.OnClickListener{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)  {
-        View view = inflater.inflate(R.layout.activity_add_unit_akhir, container, false);
-        EditText lokasi_ = (EditText) view.findViewById(R.id.lokasi);
-        String lokasi = lokasi_.getText().toString();
-        Button pilih = (Button) view.findViewById(R.id.uploadNX);
+        final View view = inflater.inflate(R.layout.activity_add_unit_akhir, container, false);
+        Button pilih = (Button) view.findViewById(R.id.pilihNX);
+        Button upload = (Button) view.findViewById(R.id.uploadNX);
         final int PICK = 1;
         pilih.setOnClickListener(this);
-        /*pilih.setOnClickListener(new View.OnClickListener() {
+        upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Matisse.from(AddUnit1.this)
-                        .choose(MimeType.allOf())
-                        .countable(true)
-                        .maxSelectable(50)
-                        .imageEngine(new GlideEngine())
-                        .forResult(PICK);
-                Intent intent = new Intent(getActivity(), AddUnitAkhir.class);
-                intent.setType("image");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                getActivity().startActivityForResult(Intent.createChooser(intent, "Select Image"),PICK);
+                final Model_Detail model = getArguments().getParcelable("nextakhir");
+                final Model modelHome = new Model();
+
+                final String nama_tempat = model.getJudul();
+                final String kota = model.getKotakab();
+                final String harga = model.getHarga();
+                final String tipe_bangunan = model.getTipe_bangunan();
+
+                if (filePath !=null) {
+                    progressDialog = new ProgressDialog(getActivity());
+                    progressDialog.setMessage("Menunggu..");
+                    progressDialog.setTitle("Mengunggah");
+                    progressDialog.setIndeterminate(false);
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+                    final String UID = User.getUID();
+
+                    final DatabaseReference push = mFirebaseInstance.getInstance().getReference().child("User/"+ UID + "/Tempat_sewa/" + nama_tempat);
+                    DatabaseReference push1 = push.push();
+                    final String postidkey = push1.getKey();
+                    final DatabaseReference pushHome = mFirebaseInstance.getInstance().getReference().child("Home/" + postidkey);
+//                    push1.setValue(model);
+
+                    int i = 1;
+
+                    for (Uri photo:filePath) {
+                        StorageReference childRef = storageReference.child("User/"+ UID + "/Tempat_sewa/"+ nama_tempat +"/"+ i +".jpg");
+                        UploadTask uploadTask = childRef.putFile(photo);
+                        /*if (i == 1){
+
+                        } else {
+
+                        }*/
+
+                        new Database_unggah().mUnggahData(uploadTask, new Database_unggah.OnUnggahDataListener() {
+                            @Override
+                            public void onStart() {
+
+                            }
+
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                String rl = taskSnapshot.getDownloadUrl().toString();
+                                URi.add(rl);
+                                if (URi.size() == filePath.size()) {
+                                    model.setKeyid(postidkey);
+                                    model.setUrl(URi);
+                                    model.setUid_(UID);
+                                    push.setValue(model);
+                                    progressDialog.dismiss();
+                                } else if (URi.size() == 1) {
+                                    modelHome.setHarga(harga);
+                                    modelHome.setKotakab(kota);
+                                    modelHome.setUrl(URi.get(0));
+                                    modelHome.setNama_tempat(nama_tempat);
+                                    modelHome.setTipe_bangunan(tipe_bangunan);
+                                    modelHome.setUid(UID);
+                                    pushHome.setValue(modelHome);
+                                }
+                            }
+
+                            @Override
+                            public void onFailed(@NonNull Exception e) {
+
+                            }
+                        });
+
+                        /*uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                TextView maya = (TextView) view.findViewById(R.id.maya);
+                                String rl = taskSnapshot.getDownloadUrl().toString();
+                                Log.d("hitung", "nomor");
+                                maya.setText(rl);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getContext(), "Upload Failed" + e, Toast.LENGTH_SHORT).show();
+                            }
+                        });*/
+                        TextView maya = (TextView) view.findViewById(R.id.maya);
+                        String ur = maya.getText().toString();
+                        Log.d("memati", "mematikan");
+                        i = i+1;
+                    }
+                    /*model.setKeyid(postidkey);
+                    model.setUrl(URi);
+                    model.setUid_(UID);
+                    push.setValue(model);*/
+                } else {
+                    Toast.makeText(getContext(), "asgagaw", Toast.LENGTH_SHORT).show();
+                }
             }
-        });*/
+        });
 
         return view;
 //        return super.onCreateView(inflater, container, savedInstanceState);
@@ -96,7 +195,6 @@ public class AddUnitAkhir extends Fragment implements View.OnClickListener{
 
         if (requestCode == 2999 && resultCode == RESULT_OK) {
             mSelected = Matisse.obtainResult(data);
-            List<Uri> filePath;
             filePath = mSelected;
             for (Uri temp : mSelected) {
                 String stringTemp = temp.toString();

@@ -1,55 +1,140 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/tema"
-    tools:context="com.example.azizainun.maps.AddUnit6">
+    android:clickable="true"
+    android:layout_height="match_parent"
+    tools:context="com.example.azizainun.maps.AddUnit5">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
     <com.example.azizainun.maps.MyTextView
-        android:id="@+id/textView4"
+        android:id="@+id/text_peraturan"
         android:layout_width="match_parent"
         android:layout_height="206dp"
         android:textSize="32.36sp"
+        android:layout_margin="15sp"
+        android:layout_marginTop="25sp"
         android:text="Peraturan apa yang kamu berlakukan untuk tempat yang akan disewakan?" />
 
     <TextView
+        android:id="@+id/ketper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:text="*contoh, tidak boleh membawa anjing, narkoba, dan lainnya atau peraturan dari masyarakat"/>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:id="@+id/textInputLayout1"
-        android:focusable="true"
-        android:background="@drawable/shape"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="harga"
-            android:id="@+id/harga"/>
-    </android.support.design.widget.TextInputLayout>
+        android:layout_marginLeft="15sp"
+        android:text="*contoh, tidak boleh membawa anjing, narkoba, dan lainnya atau peraturan dari masyarakat"
+        android:layout_below="@id/text_peraturan"/>
 
     <ScrollView
+        android:id="@+id/peraturan_"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="200sp"
+        android:layout_below="@id/ketper">
         <EditText
+            android:id="@+id/peraturan"
             android:paddingTop="30dp"
             android:textSize="9pt"
+            android:hint="Peraturan"
             android:backgroundTint="@android:color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15sp"
             android:inputType="textMultiLine"/>
     </ScrollView>
 
-</LinearLayout>
+    <com.example.azizainun.maps.MyTextView
+        android:id="@+id/text_deskripsi"
+        android:layout_width="match_parent"
+        android:layout_height="206dp"
+        android:textSize="32.36sp"
+        android:layout_margin="15sp"
+        android:layout_marginTop="25sp"
+        android:text="Deskripsikan tempat yang akan kamu sewakan"
+        android:layout_below="@+id/peraturan_"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/ketdes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginLeft="15sp"
+        android:text="*keterangan, apa keunggulan tempat mu. hal ini untuk memikat para penyewa. semakin bagus dan menggambarkan,kemungkinan penyewa lebih besar"
+        android:layout_below="@id/text_deskripsi"/>
+    <ScrollView
+        android:id="@+id/deskripsi_"
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:layout_below="@id/ketdes">
+        <EditText
+            android:id="@+id/deskripsi"
+            android:paddingTop="30dp"
+            android:textSize="9pt"
+            android:hint="Deskripsi"
+            android:backgroundTint="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:inputType="textMultiLine"/>
+    </ScrollView>
+
+    <com.example.azizainun.maps.MyTextView
+        android:id="@+id/checkin_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check in tamu"
+        android:layout_margin="15sp"
+        android:textSize="32.36sp"
+        android:layout_below="@+id/deskripsi_"/>
+
+    <com.example.azizainun.maps.MyTextView
+        android:id="@+id/checkin"
+        android:layout_width="match_parent"
+        android:layout_height="53sp"
+        android:textSize="9pt"
+        android:gravity="center"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
+        android:background="@drawable/shape"
+        android:layout_below="@+id/checkin_"/>
+
+    <com.example.azizainun.maps.MyTextView
+        android:id="@+id/checkout_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Check out tamu"
+        android:textSize="32.36sp"
+        android:layout_margin="15sp"
+        android:layout_below="@+id/checkin"/>
+
+    <com.example.azizainun.maps.MyTextView
+        android:id="@+id/checkout"
+        android:layout_width="match_parent"
+        android:layout_height="53sp"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:textSize="9pt"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
+        android:layout_marginBottom="40sp"
+        android:layout_below="@+id/checkout_"/>
+
+    <com.example.azizainun.maps.MyTextView
+        android:id="@+id/next7"
+        android:layout_width="match_parent"
+        android:layout_height="53sp"
+        android:layout_margin="5sp"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/ripple_button_normal"
+        android:text="NEXT"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_below="@id/checkout"/>
+
+</RelativeLayout>
+</ScrollView>

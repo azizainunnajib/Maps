@@ -1,7 +1,5 @@
 package com.example.azizainun.maps;
 
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +7,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 
 /**
@@ -30,10 +27,10 @@ public class AddUnit4 extends Fragment implements View.OnClickListener {
     private String mParam1;
     private String mParam2;
 
-    String minimarket;
-    String angkot;
-    String ojek;
-    String atm;
+    String sminimarket;
+    String sangkot;
+    String sojek;
+    String satm;
     MyTextView next5;
 
     private OnFragmentInteractionListener mListener;
@@ -86,6 +83,12 @@ public class AddUnit4 extends Fragment implements View.OnClickListener {
         ojek.setOnClickListener(this);
         atm.setOnClickListener(this);
         next5.setOnClickListener(this);
+
+        sminimarket = minimarket.getText().toString();
+        sangkot = angkot.getText().toString();
+        sojek = ojek.getText().toString();
+        satm = atm.getText().toString();
+
         return view;
     }
 
@@ -101,67 +104,59 @@ public class AddUnit4 extends Fragment implements View.OnClickListener {
             case R.id.minimarket:
                 if (v.isSelected()) {
                     v.setBackgroundResource(R.drawable.ripple_merah);
-                     minimarket = "";
+                     sminimarket = "";
                     v.setSelected(false);
                 } else {
                     v.setBackgroundResource(R.drawable.ripple_hijau);
                     v.setSelected(true);
-                    minimarket = "Minimarket";
+                    sminimarket = "Minimarket";
                 }
                 break;
             case R.id.angkot:
                 if (v.isSelected()) {
                     v.setBackgroundResource(R.drawable.ripple_merah);
-                    angkot = "";
+                    sangkot = "";
                     v.setSelected(false);
                 } else {
                     v.setBackgroundResource(R.drawable.ripple_hijau);
                     v.setSelected(true);
-                    angkot = "Angkutan Kota";
+                    sangkot = "Angkutan Kota";
                 }
                 break;
             case R.id.ojek_daring:
                 if (v.isSelected()) {
                     v.setBackgroundResource(R.drawable.ripple_merah);
-                    ojek = "";
+                    sojek = "";
                     v.setSelected(false);
                 } else {
                     v.setBackgroundResource(R.drawable.ripple_hijau);
                     v.setSelected(true);
-                    ojek = "Ojek Daring";
+                    sojek = "Ojek Daring";
                 }
                 break;
             case R.id.atm:
                 if (v.isSelected()) {
                     v.setBackgroundResource(R.drawable.ripple_merah);
-                    atm = "";
+                    satm = "";
                     v.setSelected(false);
                 } else {
                     v.setBackgroundResource(R.drawable.ripple_hijau);
                     v.setSelected(true);
-                    atm = "ATM";
+                    satm = "ATM";
                 }
                 break;
             case R.id.next5:
-                Next5(minimarket, angkot, ojek, atm);
+                Next5(sminimarket, sangkot, sojek, satm);
                 break;
         }
     }
 
     void Next5(String minimarket, String angkot, String ojek, String atm) {
         Model_Detail argument = getArguments().getParcelable("next4");
-        if (!(minimarket == null)){
-            argument.setMinimarket(minimarket);
-        }
-        if (!(angkot == null)) {
-            argument.setAngkot(angkot);
-        }
-        if (!(ojek == null)) {
-            argument.setOjek_daring(ojek);
-        }
-        if (!(atm == null)) {
-            argument.setAtm(atm);
-        }
+        argument.setMinimarket(minimarket);
+        argument.setAngkot(angkot);
+        argument.setOjek_daring(ojek);
+        argument.setAtm(atm);
 
         Bundle bundle = new Bundle();
         bundle.putParcelable("next5", argument);

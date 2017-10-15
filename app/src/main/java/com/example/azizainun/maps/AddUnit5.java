@@ -1,128 +1,108 @@
 package com.example.azizainun.maps;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.icu.text.DateFormat;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
+import android.app.TimePickerDialog;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.util.Date;
-
-import pugman.com.simplelocationgetter.SimpleLocationGetter;
+import android.widget.EditText;
+import android.widget.TimePicker;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
+ * {@link AddUnit5.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AddUnit5#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddUnit5 extends Fragment implements OnMapReadyCallback, SimpleLocationGetter.OnLocationGetListener,
-        GoogleMap.OnMapClickListener {
+public class AddUnit5 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    EditText peraturan;
+    EditText deskripsi;
+    MyTextView next7;
+    MyTextView checkin;
+    MyTextView checkout;
 
-    MapView mapView;
-    double Long;
-    double Lat;
-    GoogleMap Gmap;
-//    LocationRequest mLocationRequest;
-//    GoogleApiClient mGoogleApiClient;
     public AddUnit5() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AddUnit5.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AddUnit5 newInstance(String param1, String param2) {
-        AddUnit5 fragment = new AddUnit5();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-//            mGoogleApiClient.connect();
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_unit5, container, false);
-        SimpleLocationGetter getter = new SimpleLocationGetter(getActivity(), this);
-        getter.getLastLocation();
-        mapView = (MapView) view.findViewById(R.id.map_2);
-        Button button = (Button) view.findViewById(R.id.button3);
-        button.setOnClickListener(new View.OnClickListener() {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_add_unit6, container, false);
+        peraturan = (EditText) view.findViewById(R.id.peraturan);
+        deskripsi = (EditText) view.findViewById(R.id.deskripsi);
+        next7 = (MyTextView) view.findViewById(R.id.next7);
+        checkin = (MyTextView) view.findViewById(R.id.checkin);
+        checkout = (MyTextView) view.findViewById(R.id.checkout);
+
+        checkin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        checkin.setText( "" + selectedHour + ":" + selectedMinute);
+                    }
+                }, 24, 60, true);
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
+
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        checkout.setText( "" + selectedHour + ":" + selectedMinute);
+                    }
+                }, 24, 60, true);
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
+
+        if (peraturan.getText().equals("") && deskripsi.getText().equals("")) {
+            peraturan.setText("-");
+            deskripsi.setText("-");
+        }
+//        next7.setOnClickListener(this);
+        next7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String ti = checkin.getText().toString();
+                String to = checkout.getText().toString();
                 Model_Detail argument = getArguments().getParcelable("next5");
-                String k = Double.toString(Long);
-                String l = Double.toString(Lat);
-                argument.setLong(Long);
-                argument.setLat(Lat);
-                Toast.makeText(getContext(), k + " dan " + l, Toast.LENGTH_SHORT).show();
+                argument.setPeraturan(peraturan.getText().toString());
+                argument.setDeskripsi(deskripsi.getText().toString());
+                argument.setCheckin(ti);
+                argument.setCheckout(to);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("next6", argument);
-                AddUnitAkhir fNextakhir = new AddUnitAkhir();
-                fNextakhir.setArguments(bundle);
+                AddUnit6 fNext7 = new AddUnit6();
+                fNext7.setArguments(bundle);
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.content_frame_next, fNextakhir, "gomaps").addToBackStack(null);
+                ft.add(R.id.content_frame_next, fNext7).addToBackStack(null);
                 ft.commit();
             }
         });
@@ -131,88 +111,23 @@ public class AddUnit5 extends Fragment implements OnMapReadyCallback, SimpleLoca
     }
 
     @Override
-    public void onStart() {
-        mapView.getMapAsync(this);
-        super.onStart();
+    public void onDetach() {
+        super.onDetach();
+//        mListener = null;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mapView.onCreate(savedInstanceState);
-    }
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        Gmap = googleMap;
-//        Gmap.setOnMapLongClickListener(this);
-        Gmap.setOnMapClickListener(this);
-        Gmap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        if (Gmap != null) {
-            Gmap.addMarker(new MarkerOptions().position(new LatLng(Lat, Long)));
-            CameraPosition oke = CameraPosition.builder().target(new LatLng(Lat, Long)).zoom(15).build();
-            Gmap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
-        }
-        if (getArguments() != null){
-            if (getArguments().containsKey("Long")){
-                Bundle bundle = new Bundle();
-                Long = getArguments().getDouble("Long");
-                Lat = getArguments().getDouble("Lat");
-                String k = Double.toString(Long);
-                String l = Double.toString(Lat);
-                Gmap.addMarker(new MarkerOptions().position(new LatLng(Lat, Long)));
-                CameraPosition oke = CameraPosition.builder().target(new LatLng(Lat, Long)).zoom(15).build();
-                Gmap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
-                Toast.makeText(getContext(), k + " dan " + l, Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    @Override
-    public void onLocationReady(Location location) {
-        Long = location.getLongitude();
-        GoogleMap m = Gmap;
-        Lat = location.getLatitude();
-        if (Gmap != null) {
-            Gmap.addMarker(new MarkerOptions().position(new LatLng(Lat, Long)));
-            CameraPosition oke = CameraPosition.builder().target(new LatLng(Lat, Long)).zoom(15).build();
-            Gmap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
-            Log.d("LOCATION", "onLocationReady: lat=" + location.getLatitude() + " lon=" + location.getLongitude());
-        }
-    }
-
-    @Override
-    public void onError(String s) {
-        Log.e("LOCATION", "Error: ");
-    }
-
-    /*@Override
-    public void onMapLongClick(LatLng latLng) {
-        double Lat = latLng.latitude;
-        double Long = latLng.longitude;
-        Gmap.addMarker(new MarkerOptions().position(new LatLng(Lat, Long))).setDraggable(true);
-//        CameraPosition oke = CameraPosition.builder().target(new LatLng(Lat, Long)).zoom(15).build();
-//        Gmap.moveCamera(CameraUpdateFactory.newCameraPosition(oke));
-    }*/
-
-    @Override
-    public void onMapClick(LatLng latLng) {
-        Bundle bundle = new Bundle();
-        double k = Long;
-        double l = Lat;
-        bundle.putDouble("Long", Long);
-        bundle.putDouble("Lat", Lat);
-        AddUnitMaps addUnitMaps = new AddUnitMaps();
-        addUnitMaps.setArguments(bundle);
-        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.content_frame_next, addUnitMaps, "maps").addToBackStack(null);
-        ft.commit();
-//        Intent i = new Intent(getContext(), MapsActivity.class);
-//        i.putExtras(bundle);
-//        startActivity(i);
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 }

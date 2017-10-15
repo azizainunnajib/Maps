@@ -5,10 +5,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.google.android.gms.maps.model.LatLng;
-
 public class AddUnit0 extends AppCompatActivity {
-    AddUnit5 addUnit5;
+    AddUnit7 addUnit5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

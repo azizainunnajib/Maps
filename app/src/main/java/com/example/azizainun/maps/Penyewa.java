@@ -65,7 +65,7 @@ public class Penyewa extends Fragment {
                 final Model cons = new Model();
 
 //                model.setPrice(Stest1);
-                model.setLokasi(Stest2);
+                model.setKotakab(Stest2);
                 mFirebaseAuth = FirebaseAuth.getInstance();
                 mFirebaseUser = mFirebaseAuth.getCurrentUser();
                 Userid = mFirebaseUser.getUid();

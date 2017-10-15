@@ -4,11 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/tema"
-    tools:context="com.example.azizainun.maps.AddUnit5">
+    android:clickable="true"
+    tools:context="com.example.azizainun.maps.AddUnit7">
 
     <!-- TODO: Update blank fragment layout -->
     <com.example.azizainun.maps.MyTextView
+        android:id="@+id/kota"
+        android:layout_width="match_parent"
+        android:layout_height="128sp"
+        android:textSize="32.36sp"
+        android:layout_margin="15sp"
+        android:layout_marginTop="25sp"
+        android:text="Kota/kabupaten dari tempat yang disewakan"/>
+    <AutoCompleteTextView
+        android:id="@+id/kotakab"
+        android:layout_width="match_parent"
+        android:layout_height="53sp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:background="@drawable/shape"
+        android:hint="Kota/Kabupaten"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/kota"/>
+
+    <com.example.azizainun.maps.MyTextView
         android:id="@+id/text"
+        android:layout_below="@id/kotakab"
         android:layout_width="match_parent"
         android:layout_height="128sp"
         android:layout_margin="15sp"
@@ -26,21 +50,16 @@
         android:layout_alignParentStart="true" />
 
     <com.example.azizainun.maps.MyTextView
-        android:id="@+id/kota"
+        android:id="@+id/next6"
         android:layout_width="match_parent"
-        android:layout_height="128sp"
-        android:layout_below="@+id/map_2"
-        android:textSize="32.36sp"
-        android:layout_margin="15sp"
-        android:layout_marginTop="25sp"
-        android:text="Kota/kabupaten dari tempat yang disewakan"/>
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:layout_below="@+id/kota"/>
+        android:layout_height="53sp"
+        android:layout_margin="5sp"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/ripple_button_normal"
+        android:text="NEXT"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_below="@id/map_2"/>
     <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         android:name="com.google.android.gms.maps.MapFragment"

@@ -98,6 +98,15 @@ public class AddUnit3 extends Fragment implements View.OnClickListener {
         MyTextView syariah = (MyTextView) view.findViewById(R.id.syariah);
         next4 = (MyTextView) view.findViewById(R.id.next4);
 
+        swifi = wifi.getText().toString();
+        sac = ac.getText().toString();
+        stv = tv.getText().toString();
+        sdapur = dapur.getText().toString();
+        skulkas = kulkas.getText().toString();
+        sparkir = parkir.getText().toString();
+        sairpanas = airpanas.getText().toString();
+        ssyariah = syariah.getText().toString();
+
         wifi.setOnClickListener(this);
         ac.setOnClickListener(this);
         tv.setOnClickListener(this);
@@ -214,30 +223,14 @@ public class AddUnit3 extends Fragment implements View.OnClickListener {
 
     void Next4 (String swifi, String sac, String stv, String sdapur, String skulkas, String sparkir, String sairpanas, String ssyariah) {
         Model_Detail argument = getArguments().getParcelable("next3");
-        if (!(swifi == null)){
-            argument.setWifi(swifi);
-        }
-        if (!(sac == null)) {
-            argument.setAc(sac);
-        }
-        if (!(stv == null)) {
-            argument.setTv(stv);
-        }
-        if (!(sdapur == null)) {
-            argument.setDapur(sdapur);
-        }
-        if (!(skulkas == null)) {
-            argument.setKulkas(skulkas);
-        }
-        if (!(sparkir == null)) {
-            argument.setParkir(sparkir);
-        }
-        if (!(sairpanas == null)) {
-            argument.setAirpanas(sairpanas);
-        }
-        if (!(ssyariah == null)) {
-            argument.setSyariah(ssyariah);
-        }
+        argument.setWifi(swifi);
+        argument.setAc(sac);
+        argument.setTv(stv);
+        argument.setDapur(sdapur);
+        argument.setKulkas(skulkas);
+        argument.setParkir(sparkir);
+        argument.setAirpanas(sairpanas);
+        argument.setSyariah(ssyariah);
 
         Bundle bundle = new Bundle();
         bundle.putParcelable("next4", argument);

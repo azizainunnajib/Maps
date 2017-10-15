@@ -1,13 +1,11 @@
 package com.example.azizainun.maps;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.SharedElementCallback;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +13,12 @@ import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import static android.R.attr.fragment;
 
 
 /**
@@ -44,8 +39,11 @@ public class AddUnitMaps extends Fragment implements OnMapReadyCallback, GoogleM
     private String mParam1;
     private String mParam2;
     GoogleMap mMap;
+    Bundle bundle2;
+    Bundle bundle1;
     Bundle bundle;
     LatLng latLng;
+    String kotakab;
 
     private OnFragmentInteractionListener mListener;
 
@@ -84,25 +82,37 @@ public class AddUnitMaps extends Fragment implements OnMapReadyCallback, GoogleM
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_unit_maps, container, false);
-        bundle = getArguments();
+        bundle2 = getArguments();
+        bundle = bundle2.getBundle("b");
+        bundle1 = bundle2.getBundle("b1");
+        kotakab = bundle.getString("kotkab");
+
         Button oke = (Button) view.findViewById(R.id.floatingActionButton);
         oke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*Model_Detail m = getArguments().getParcelable("next5");
+                bundle1.putParcelable("next5", m);*/
                 Bundle bundle = new Bundle();
                 boolean determiner = true;
                 bundle.putDouble("Long", latLng.longitude);
                 bundle.putDouble("Lat", latLng.latitude);
                 bundle.putBoolean("determiner", determiner);
-                AddUnit5 addUnit5 = new AddUnit5();
-                addUnit5.setArguments(bundle);
+                bundle.putString("mkotkab", kotakab);
+                AddUnit7 addUnit5 = new AddUnit7();
+                Bundle bundle0 = new Bundle();
+                bundle0.putBundle("b1", bundle1);
+                bundle0.putBundle("b", bundle);
+                addUnit5.setArguments(bundle0);
+                /*addUnit5.setArguments(bundle);
+                addUnit5.setArguments(bundle1);*/
                 FragmentManager FM = getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 Fragment rf = getActivity().getSupportFragmentManager().findFragmentByTag("maps");
-                Fragment rf1 = getActivity().getSupportFragmentManager().findFragmentByTag("gomaps");
+//                Fragment rf1 = getActivity().getSupportFragmentManager().findFragmentByTag("gomaps");
                 if (rf!= null) {
                     getActivity().getSupportFragmentManager().beginTransaction().remove(rf).commit();
-                    getActivity().getSupportFragmentManager().beginTransaction().remove(rf1).commit();
+//                    getActivity().getSupportFragmentManager().beginTransaction().remove(rf1).commit();
                 }
                 ft.replace(R.id.content_frame_next, addUnit5).addToBackStack(null);
                 ft.commit();

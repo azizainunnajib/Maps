@@ -57,7 +57,7 @@ public class CardFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_card, container, false);
         myRecyclerView = (RecyclerView) view.findViewById(R.id.cardView);
         if (listunit.size() == 0) {
-            new Database().mReadDataOnce("Home/" + UID, new Database.OnGetDataListener() {
+            new Database().mReadDataOnce("Home", new Database.OnGetDataListener() {
                 @Override
                 public void onStart() {
 
@@ -114,17 +114,18 @@ public class CardFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(final MyViewHolder holder, int position) {
-            holder.titlePlace.setText(list.get(position).getLokasi());
-            holder.titlePrice.setText(list.get(position).getHarga());
+            holder.titlePrice.setText(list.get(position).getHarga() + " untuk " + list.get(position).getTipe_bangunan());
+            holder.titlePlace.setText(list.get(position).getNama_tempat());
+            holder.titlePlace.setText(list.get(position).getKotakab());
 //            holder.coverImageView.setImageResource(list.get(position).getUrut());
 
-            /*Glide
+            Glide
                     .with(getActivity())
                     .load(list.get(position).getUrl())
                     .asBitmap()
 //                    .override(50, 50)
                     .dontAnimate()
-                    .into(holder.coverImageView);*/
+                    .into(holder.coverImageView);
 
             holder.setItemClickCard(new ItemClickCard() {
                 @Override

@@ -1,7 +1,5 @@
 package com.example.azizainun.maps;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -39,7 +37,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Bundle bundle = new Bundle();
                 bundle.putDouble("Long", latLng.longitude);
                 bundle.putDouble("Lat", latLng.latitude);
-                AddUnit5 addUnit5 = new AddUnit5();
+                AddUnit7 addUnit5 = new AddUnit7();
                 addUnit5.setArguments(bundle);
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.add(R.id.content_frame_next, addUnit5).addToBackStack(null);

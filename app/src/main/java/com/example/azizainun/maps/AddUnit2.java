@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.opengl.Visibility;
 import android.os.Build;
@@ -65,7 +66,7 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
     String Jkasur;
     String Ttoilet;
 
-    Button next3;
+    MyTextView next3;
 
     MyTextView total_tamu_0;
     MyTextView total_kamar_0;
@@ -144,7 +145,7 @@ public class AddUnit2 extends Fragment implements View.OnClickListener {
         TextView total_toilet_7 = (TextView) view.findViewById(R.id.total_toilet_7);
         TextView total_toilet_8 = (TextView) view.findViewById(R.id.total_toilet_8);
 
-        next3 = (Button) view.findViewById(R.id.next3);
+        next3 = (MyTextView) view.findViewById(R.id.next3);
 
         all.setOnClickListener(this);
 

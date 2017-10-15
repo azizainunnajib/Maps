@@ -2,6 +2,7 @@ package com.example.azizainun.maps;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.provider.Contacts;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -12,23 +13,32 @@ import java.util.ArrayList;
  */
 
 public class Model_Detail implements Parcelable{
-    public String harga, lokasi, UID_, tipe_tempat, tipe_bangunan, jenis_kasur,
+    public String peraturan, deskripsi, harga, kotakab ,lokasi, uid_, tipe_tempat, tipe_bangunan, jenis_kasur,
             wifi, ac, tv, dapur, kulkas, parkir, airpanas, syariah,
-            minimarket, angkot, ojek_daring, atm;
-    double Long, Lat;
+            minimarket, angkot, ojek_daring, atm, checkin, checkout, judul, handphone, keyid;
+    double longi, lat, rating;
     int total_tamu, total_kamar, total_kasur, total_toilet;
     public ArrayList<String> url;
-    int urut;
 
     public Model_Detail()  {
     }
 
     protected Model_Detail(Parcel in) {
-        Long = in.readDouble();
-        Lat = in.readDouble();
+        keyid = in.readString();
+        uid_ = in.readString();
+        rating = in.readDouble();
+        judul = in.readString();
+        handphone = in.readString();
+        checkin = in.readString();
+        checkout = in.readString();
+        peraturan = in.readString();
+        deskripsi = in.readString();
+        kotakab = in.readString();
+        longi = in.readDouble();
+        lat = in.readDouble();
         harga = in.readString();
         lokasi = in.readString();
-        UID_ = in.readString();
+        uid_ = in.readString();
         tipe_tempat = in.readString();
         tipe_bangunan = in.readString();
         jenis_kasur = in.readString();
@@ -49,7 +59,6 @@ public class Model_Detail implements Parcelable{
         ojek_daring = in.readString();
         atm = in.readString();
         url = in.createStringArrayList();
-        urut = in.readInt();
     }
 
     public static final Creator<Model_Detail> CREATOR = new Creator<Model_Detail>() {
@@ -64,20 +73,100 @@ public class Model_Detail implements Parcelable{
         }
     };
 
-    public double getLong() {
-        return Long;
+    public String getUid_() {
+        return uid_;
     }
 
-    public void setLong(double aLong) {
-        Long = aLong;
+    public void setUid_(String uid_) {
+        this.uid_ = uid_;
+    }
+
+    public String getKeyid() {
+        return keyid;
+    }
+
+    public void setKeyid(String keyid) {
+        this.keyid = keyid;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public String getJudul() {
+        return judul;
+    }
+
+    public void setJudul(String judul) {
+        this.judul = judul;
+    }
+
+    public String getHandphone() {
+        return handphone;
+    }
+
+    public void setHandphone(String handphone) {
+        this.handphone = handphone;
+    }
+
+    public String getCheckin() {
+        return checkin;
+    }
+
+    public void setCheckin(String checkin) {
+        this.checkin = checkin;
+    }
+
+    public String getCheckout() {
+        return checkout;
+    }
+
+    public void setCheckout(String checkout) {
+        this.checkout = checkout;
+    }
+
+    public String getPeraturan() {
+        return peraturan;
+    }
+
+    public void setPeraturan(String peraturan) {
+        this.peraturan = peraturan;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
+
+    public String getKotakab() {
+        return kotakab;
+    }
+
+    public void setKotakab(String kotakab) {
+        this.kotakab = kotakab;
+    }
+
+    public double getLongi() {
+        return longi;
+    }
+
+    public void setLongi(double aLong) {
+        longi = aLong;
     }
 
     public double getLat() {
-        return Lat;
+        return lat;
     }
 
-    public void setLat(double lat) {
-        Lat = lat;
+    public void setLat(double aLat) {
+        lat = aLat;
     }
 
     public String getMinimarket() {
@@ -232,14 +321,6 @@ public class Model_Detail implements Parcelable{
         this.lokasi = lokasi;
     }
 
-    public int getUrut() {
-        return urut;
-    }
-
-    public void setUrut(int urut) {
-        this.urut = urut;
-    }
-
     public ArrayList<String> getUrl() {
         return url;
     }
@@ -271,11 +352,21 @@ public class Model_Detail implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeDouble(Long);
-        dest.writeDouble(Lat);
+        dest.writeString(keyid);
+        dest.writeString(uid_);
+        dest.writeDouble(rating);
+        dest.writeString(judul);
+        dest.writeString(handphone);
+        dest.writeString(checkin);
+        dest.writeString(checkout);
+        dest.writeString(peraturan);
+        dest.writeString(deskripsi);
+        dest.writeString(kotakab);
+        dest.writeDouble(longi);
+        dest.writeDouble(lat);
         dest.writeString(harga);
         dest.writeString(lokasi);
-        dest.writeString(UID_);
+        dest.writeString(uid_);
         dest.writeString(tipe_tempat);
         dest.writeString(tipe_bangunan);
         dest.writeInt(total_kamar);
@@ -296,6 +387,5 @@ public class Model_Detail implements Parcelable{
         dest.writeString(ojek_daring);
         dest.writeString(atm);
         dest.writeStringList(url);
-        dest.writeInt(urut);
     }
 }

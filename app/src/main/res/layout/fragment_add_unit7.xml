@@ -1,0 +1,96 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/tema"
+    android:clickable="true"
+    tools:context="com.example.azizainun.maps.AddUnit6">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.example.azizainun.maps.MyTextView
+            android:id="@+id/text_handphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="32.36sp"
+            android:layout_margin="15sp"
+            android:layout_marginTop="25sp"
+            android:text="Nomor Handphone"/>
+        <com.example.azizainun.maps.MyTextView
+            android:id="@+id/ketHP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15sp"
+            android:text="nomor HP ini akan digunakan untuk kamu menghubungi penyewa. silakan berikan nomor paling aktif."
+            android:layout_below="@+id/text_handphone"/>
+        <EditText
+            android:id="@+id/handphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="081122334455"
+            android:layout_margin="15sp"
+            android:inputType="phone"
+            android:layout_below="@+id/ketHP"/>
+        <com.example.azizainun.maps.MyTextView
+            android:id="@+id/text_judultempat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Judul Tempat"
+            android:textSize="32.36sp"
+            android:layout_margin="15sp"
+            android:layout_marginTop="25sp"
+            android:layout_below="@+id/handphone"/>
+        <com.example.azizainun.maps.MyTextView
+            android:id="@+id/ketjudul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15sp"
+            android:text="Berikan nama tempat agar mudah diingat orang, contoh rumah keong, graha Hobbit dll"
+            android:layout_below="@+id/text_judultempat"/>
+        <EditText
+            android:id="@+id/nama_tempat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Tempat"
+            android:layout_margin="15sp"
+            android:layout_below="@+id/ketjudul"/>
+        <com.example.azizainun.maps.MyTextView
+            android:id="@+id/text_harga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="32.36sp"
+            android:layout_margin="15sp"
+            android:layout_marginTop="25sp"
+            android:text="Harga"
+            android:layout_below="@+id/nama_tempat"/>
+        <com.example.azizainun.maps.MyTextView
+            android:id="@+id/ketharga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15sp"
+            android:text="Berapa harga yang ingin penyewa beri. harga ini akan bertambah sekitar 10% di display"
+            android:layout_below="@+id/text_harga"/>
+        <EditText
+            android:id="@+id/harga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:hint="120.000"
+            android:inputType="phone"
+            android:layout_below="@+id/ketharga"/>
+
+        <com.example.azizainun.maps.MyTextView
+            android:id="@+id/next8"
+            android:layout_width="match_parent"
+            android:layout_height="53sp"
+            android:layout_margin="5sp"
+            android:layout_marginBottom="10sp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/ripple_button_normal"
+            android:text="NEXT"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_below="@+id/harga"/>
+    </RelativeLayout>
+</ScrollView>
