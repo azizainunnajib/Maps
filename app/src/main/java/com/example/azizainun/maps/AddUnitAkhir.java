@@ -86,13 +86,13 @@ public class AddUnitAkhir extends Fragment implements View.OnClickListener{
                     final DatabaseReference push = mFirebaseInstance.getInstance().getReference().child("User/"+ UID + "/Tempat_sewa/" + nama_tempat);
                     DatabaseReference push1 = push.push();
                     final String postidkey = push1.getKey();
-                    final DatabaseReference pushHome = mFirebaseInstance.getInstance().getReference().child("Home/" + postidkey);
+                    final DatabaseReference pushHome = mFirebaseInstance.getInstance().getReference().child("home/" + postidkey);
 //                    push1.setValue(model);
 
                     int i = 1;
 
                     for (Uri photo:filePath) {
-                        StorageReference childRef = storageReference.child("User/"+ UID + "/Tempat_sewa/"+ nama_tempat +"/"+ i +".jpg");
+                        StorageReference childRef = storageReference.child("User/"+ UID + "/Tempat Sewa/"+ nama_tempat +"/"+ i +".jpg");
                         UploadTask uploadTask = childRef.putFile(photo);
                         /*if (i == 1){
 
@@ -110,13 +110,7 @@ public class AddUnitAkhir extends Fragment implements View.OnClickListener{
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 String rl = taskSnapshot.getDownloadUrl().toString();
                                 URi.add(rl);
-                                if (URi.size() == filePath.size()) {
-                                    model.setKeyid(postidkey);
-                                    model.setUrl(URi);
-                                    model.setUid_(UID);
-                                    push.setValue(model);
-                                    progressDialog.dismiss();
-                                } else if (URi.size() == 1) {
+                                if (URi.size() == 1) {
                                     modelHome.setHarga(harga);
                                     modelHome.setKotakab(kota);
                                     modelHome.setUrl(URi.get(0));
@@ -124,6 +118,18 @@ public class AddUnitAkhir extends Fragment implements View.OnClickListener{
                                     modelHome.setTipe_bangunan(tipe_bangunan);
                                     modelHome.setUid(UID);
                                     pushHome.setValue(modelHome);
+                                }
+
+                                if (URi.size() == filePath.size()) {
+                                    model.setKeyid(postidkey);
+                                    model.setUrl(URi);
+                                    model.setUid_(UID);
+                                    push.setValue(model);
+                                    progressDialog.dismiss();
+                                    Intent i = new Intent(getContext(), AddUnit0.class);
+                                    i.addFlags(i.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(i);
+                                    getActivity().finish();
                                 }
                             }
 

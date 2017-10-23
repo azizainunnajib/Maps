@@ -84,10 +84,10 @@ public class AddUnit4 extends Fragment implements View.OnClickListener {
         atm.setOnClickListener(this);
         next5.setOnClickListener(this);
 
-        sminimarket = minimarket.getText().toString();
-        sangkot = angkot.getText().toString();
-        sojek = ojek.getText().toString();
-        satm = atm.getText().toString();
+        sminimarket = "";
+        sangkot = "";
+        sojek = "";
+        satm = "";
 
         return view;
     }

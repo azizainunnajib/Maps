@@ -4,19 +4,29 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,14 +34,24 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import static android.R.attr.id;
+import static android.R.attr.visible;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     Button choose_image, upload_image;
     ImageView imageView;
     int PICK_IMAGE_REQUEST = 123;
     Uri filePath;
     ProgressDialog progressDialog;
+    ImageView profil;
+    ImageView explore;
+    ImageView search;
+    ImageView home;
+    ImageView trending;
+    LinearLayout lin_search;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     protected FirebaseAuth mFirebaseAuth;
@@ -39,24 +59,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String UIDp;
     protected FirebaseStorage storage = FirebaseStorage.getInstance();
     protected StorageReference storageReference = storage.getReferenceFromUrl("gs://my-project-1479543973833.appspot.com");
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nav);
-        setTitle("");
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.home_navigator);
 
-        choose_image = (Button) findViewById(R.id.choose_image);
-        upload_image = (Button) findViewById(R.id.upload_image);
-        imageView = (ImageView) findViewById(R.id.image_upload);
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("uploading");
+        //for R.id.home_navigator
+        profil = (ImageView) findViewById(R.id.profil);
+        explore = (ImageView) findViewById(R.id.explore);
+        search = (ImageView) findViewById(R.id.search);
+        home = (ImageView) findViewById(R.id.home);
+        trending = (ImageView) findViewById(R.id.trending);
+        lin_search = (LinearLayout) findViewById(R.id.linear_search);
+
+        profil.setOnClickListener(this);
+        explore.setOnClickListener(this);
+        search.setOnClickListener(this);
+        home.setOnClickListener(this);
+        trending.setOnClickListener(this);
+
+//        setTitle("");
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
+//        navigationView.setNavigationItemSelectedListener(this);
+//        EditText search = (EditText) findViewById(R.id.search);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+//
+//        choose_image = (Button) findViewById(R.id.choose_image);
+//        upload_image = (Button) findViewById(R.id.upload_image);
+//        imageView = (ImageView) findViewById(R.id.image_upload);
+//        progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("uploading");
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         if (mFirebaseUser == null) {
@@ -72,6 +115,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            Model userid= new Model();
 //            userid.setUID(UIDp);
         }
+
+        /*viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);*/
+    }
         /*Fragment f;
         f = new CardFragment();
         if (f != null) {
@@ -80,6 +130,83 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             ft.commit();
         }*/
 
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new CardFragment(), "ONE");
+        adapter.addFragment(new InsTranZit(), "TWO");
+        viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Fragment fragment = null;
+        int id = v.getId();
+        switch (v.getId()) {
+            case R.id.profil:
+                Log.d("mausk profil", "benar");
+                Toast.makeText(this, "profil", Toast.LENGTH_SHORT).show();
+                fragment = new Profil();
+                break;
+            case R.id.explore:
+                Log.d("mausk explore", "benar");
+                Toast.makeText(this, "explore", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.search:
+                if (lin_search.getVisibility() == View.GONE) {
+                    Log.d("mausk search", "benar");
+                    Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
+                    lin_search.setVisibility(View.VISIBLE);
+                } else {
+                    lin_search.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.home:
+                Log.d("mausk home", "benar");
+                Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
+                fragment = new CardFragment();
+                break;
+            case R.id.trending:
+                Log.d("mausk trending", "benar");
+                Toast.makeText(this, "trending", Toast.LENGTH_SHORT).show();
+                fragment = new InsTranZit();
+                break;
+        }
+
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment).addToBackStack(null);
+            ft.commit();
+        }
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
 
         /*choose_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +245,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });*/
-    }
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -151,10 +279,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }*/
 
     public void onBackPressed (){
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
-        drawer.closeDrawer(GravityCompat.START);
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
+//        drawer.closeDrawer(GravityCompat.START);
         if (getFragmentManager().getBackStackEntryCount() > 0){
             Toast.makeText(this, "onbackpresed", Toast.LENGTH_SHORT).show();
+        }
+        else if(lin_search.getVisibility() == View.VISIBLE){
+            lin_search.setVisibility(View.GONE);
         }
         else {
             super.onBackPressed();
@@ -172,11 +303,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment fragment = new CardFragment();
         switch (id) {
             case R.id.home:
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
                 fragment = new CardFragment();
                 break;
             case R.id.profil:
-                Toast.makeText(this, "Profil", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "profil", Toast.LENGTH_SHORT).show();
                 fragment = new Profil();
                 break;
             case R.id.setting:
@@ -184,7 +315,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new AddUnitAkhir();
                 break;
             case R.id.search:
-                Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
                 fragment = new Penyewa();
                 break;
             case R.id.logout:
@@ -215,6 +346,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment f;
         f = new CardFragment();
             if (f != null) {
+                Log.d("mausk Main display", "benar");
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, f);
                 ft.commit();

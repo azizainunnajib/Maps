@@ -10,72 +10,57 @@
         android:layout_height="wrap_content"
         android:id="@+id/profil"
         android:clickable="true"
-        android:layout_weight="3">
+        android:layout_weight="1">
 
-        <TextView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/gambar_profil"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:src="@drawable/sukses"
+            android:layout_centerInParent="true" />
+        <com.example.azizainun.maps.MyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="alghaefjaeoigtu"
+            android:text=""
             android:id="@+id/nama_profil"
             android:textSize="12dp"
-            android:textColor="@color/White"
             android:textStyle="bold"
             android:layout_below="@+id/gambar_profil"
             android:gravity="center"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/gambar_profil"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:src="@drawable/sukses"
-            android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <ViewSwitcher
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/my_switcher"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/clickable_text_view"
-            android:text="email" />
-
-        <EditText
-            android:id="@+id/hidden_edit_view"
+        <com.example.azizainun.maps.MyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email" />
-    </ViewSwitcher>
-    <TextView
+            android:text="Sentuh untuk edit profil"
+            android:textSize="5pt"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"/>
+    </RelativeLayout>
+    <com.example.azizainun.maps.MyTextView
+        android:id="@+id/kelola_tempat"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="nomor rekening"
-        android:id="@+id/rek_profil"
-        android:gravity="center_vertical"
-        android:layout_weight="1"/>
-    <TextView
+        android:layout_height="53sp"
+        android:background="@drawable/ripple_button_normal"
+        android:hint="Kelola Tempat Sewa"
+        android:gravity="center"/>
+    <com.example.azizainun.maps.MyTextView
+        android:id="@+id/setting"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Penyewa"
-        android:id="@+id/HP_profil"
-        android:gravity="center_vertical"
-        android:layout_weight="1"/>
-    <TextView
+        android:layout_height="53sp"
+        android:hint="Setting"
+        android:background="@drawable/ripple_button_normal"
+        android:gravity="center"/>
+    <com.example.azizainun.maps.MyTextView
+        android:id="@+id/bantuan"
         android:layout_width="match_parent"
+        android:layout_height="53sp"
+        android:hint="Bantuan"
+        android:background="@drawable/ripple_button_normal"
+        android:gravity="center"/>
+    <View
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Penyewa"
-        android:id="@+id/sewa_profil"
-        android:gravity="center_vertical"
-        android:layout_weight="1"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bantuan"
-        android:gravity="center_vertical"
         android:layout_weight="1"/>
 
 </LinearLayout>

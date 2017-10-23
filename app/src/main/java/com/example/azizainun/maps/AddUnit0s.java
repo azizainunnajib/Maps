@@ -29,6 +29,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static com.example.azizainun.maps.R.id.coverImageView;
@@ -38,9 +39,9 @@ import static com.example.azizainun.maps.R.id.thing_proto;
 /**
  * Created by aziza on 6/9/2017.
  */
-public class CardFragment extends Fragment {
+public class AddUnit0s extends Fragment {
     RecyclerView myRecyclerView;
-    ArrayList<Model> listunit = new ArrayList<>();
+    ArrayList<Model_Detail> listunit = new ArrayList<>();
     String Bangunan[] = {"Hotel", "Chichen Itza","Christ the Redeemer","Great Wall of China","Machu Picchu"};
     int Imag [] = {R.drawable.sukses, R.drawable.ic_exit, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses};
 
@@ -57,7 +58,7 @@ public class CardFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_card, container, false);
         myRecyclerView = (RecyclerView) view.findViewById(R.id.cardView);
         if (listunit.size() == 0) {
-            new Database().mReadDataOnce("home", new Database.OnGetDataListener() {
+            new Database().mReadDataOnce("User/" + UID + "/Tempat_sewa", new Database.OnGetDataListener() {
                 @Override
                 public void onStart() {
 
@@ -67,7 +68,7 @@ public class CardFragment extends Fragment {
                 public void onSuccess(DataSnapshot data) {
                     Model item = new Model();
                     for (DataSnapshot snapshot : data.getChildren()) {
-                        Model model = snapshot.getValue(Model.class);
+                        Model_Detail model = snapshot.getValue(Model_Detail.class);
                         listunit.add(model);
                     }
                     myRecyclerView.setHasFixedSize(true);
@@ -98,10 +99,10 @@ public class CardFragment extends Fragment {
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
-        private ArrayList<Model> list;
+        private ArrayList<Model_Detail> list;
         private Context context;
 
-        public MyAdapter(ArrayList<Model> Data) {
+        public MyAdapter(ArrayList<Model_Detail> Data) {
             this.list = Data;
         }
 
@@ -115,13 +116,14 @@ public class CardFragment extends Fragment {
         @Override
         public void onBindViewHolder(final MyViewHolder holder, int position) {
             holder.titlePrice.setText(list.get(position).getHarga() + " untuk " + list.get(position).getTipe_bangunan());
-            holder.titleName.setText(list.get(position).getNama_tempat());
+            holder.titleName.setText(list.get(position).getJudul());
             holder.titlePlace.setText("di " + list.get(position).getKotakab());
+            ArrayList<String> img0= list.get(position).getUrl();
 //            holder.coverImageView.setImageResource(list.get(position).getUrut());
 
             Glide
                     .with(getActivity())
-                    .load(list.get(position).getUrl())
+                    .load(img0.get(0))
                     .asBitmap()
                     .centerCrop()
 //                    .override(50, 50)
@@ -133,7 +135,7 @@ public class CardFragment extends Fragment {
                 public void onClick(View view, int position) {
                     Intent intent = new Intent(getContext(), DetailUnit.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("detail", list.get(position));
+                    bundle.putParcelable("detail", list.get(position));
                     intent.putExtras(bundle);
                     getContext().startActivity(intent);
 

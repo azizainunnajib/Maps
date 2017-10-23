@@ -98,14 +98,14 @@ public class AddUnit3 extends Fragment implements View.OnClickListener {
         MyTextView syariah = (MyTextView) view.findViewById(R.id.syariah);
         next4 = (MyTextView) view.findViewById(R.id.next4);
 
-        swifi = wifi.getText().toString();
-        sac = ac.getText().toString();
-        stv = tv.getText().toString();
-        sdapur = dapur.getText().toString();
-        skulkas = kulkas.getText().toString();
-        sparkir = parkir.getText().toString();
-        sairpanas = airpanas.getText().toString();
-        ssyariah = syariah.getText().toString();
+        swifi = "";
+        sac = "";
+        stv = "";
+        sdapur = "";
+        skulkas = "";
+        sparkir = "";
+        sairpanas = "";
+        ssyariah = "";
 
         wifi.setOnClickListener(this);
         ac.setOnClickListener(this);

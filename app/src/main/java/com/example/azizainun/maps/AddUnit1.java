@@ -110,7 +110,7 @@ public class AddUnit1 extends Fragment implements View.OnClickListener {
                     for (Uri temp : filePath) {
                         final String UID = User.getUID();
                         mFirebaseInstance = FirebaseDatabase.getInstance();
-                        final DatabaseReference refHome = mFirebaseInstance.getReference().child("Home").child(UID);
+                        final DatabaseReference refHome = mFirebaseInstance.getReference().child("home").child(UID);
                         final DatabaseReference refUser = mFirebaseInstance.getReference().child("User").child(UID).child("1");
                         final DatabaseReference refPush = refHome.push();
                         final String keynum = refPush.getKey();
