@@ -58,7 +58,7 @@ public class AddUnit0s extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_card, container, false);
         myRecyclerView = (RecyclerView) view.findViewById(R.id.cardView);
         if (listunit.size() == 0) {
-            new Database().mReadDataOnce("User/" + UID + "/Tempat_sewa", new Database.OnGetDataListener() {
+            new Database().mReadDataOnce("User/" + UID + "/Tempat Sewa", new Database.OnGetDataListener() {
                 @Override
                 public void onStart() {
 

@@ -44,9 +44,9 @@ public class Profil extends Fragment implements View.OnClickListener {
         kelola_tempat_sewa.setOnClickListener(this);
         setting.setOnClickListener(this);
         bantuan.setOnClickListener(this);
+        String UID = User.Userid;
 
-
-        StorageReference pathstorage = storage.getReference().child("images/image.jpg");
+        StorageReference pathstorage = storage.getReference().child("User/" + UID + "/profil.jpg");
         ImageView image = (ImageView) provilView.findViewById(R.id.gambar_profil);
 
 // Load the image using Glide
