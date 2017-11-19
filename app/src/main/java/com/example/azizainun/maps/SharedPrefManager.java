@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
 public class SharedPrefManager {
     private static SharedPrefManager mInstance;
     private static Context mCtx;
+    public static final String CLIENT_ID = "8b194ece7a3f4d53a6f5b9e0f46b5d20";
+    public static final String CLIENT_SECRET = "7b6aa0fc8a934856a34e234ff342b54e";
     private static final String SHARED_PREF_NAME = "mysharedpref12";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_USER_EMAIL = "useremail";

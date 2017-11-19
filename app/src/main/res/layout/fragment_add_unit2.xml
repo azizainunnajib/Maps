@@ -62,7 +62,7 @@
                     android:gravity="center"
                     android:background="@drawable/ripple_button"
                     android:text="Kapasitas Tamu"
-                    android:textSize="20sp"
+                    android:textSize="9pt"
                     android:layout_weight="0.75"/>
                 <com.example.azizainun.maps.MyTextView
                     android:layout_width="match_parent"

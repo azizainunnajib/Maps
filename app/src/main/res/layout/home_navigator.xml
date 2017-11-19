@@ -46,7 +46,7 @@
             android:layout_width="30dp"
             android:layout_height="70sp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/explor" />
+            app:srcCompat="@drawable/explore" />
 
         <ImageView
             android:id="@+id/search"
@@ -68,7 +68,7 @@
             android:layout_width="30dp"
             android:layout_height="70sp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/trending" />
+            app:srcCompat="@mipmap/ic_trending" />
 
     </LinearLayout>
 

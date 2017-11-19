@@ -12,7 +12,7 @@ public class AddUnit0 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_unit0);
 
-        Fragment fNext = new AddUnit0s();
+        Fragment fNext = new AddUnit1();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content_frame_next, fNext);
         ft.commit();

@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.profil:
                 Log.d("mausk profil", "benar");
                 Toast.makeText(this, "profil", Toast.LENGTH_SHORT).show();
-                fragment = new Profil();
+                fragment = new AddUnit0s();
                 break;
             case R.id.explore:
                 Log.d("mausk explore", "benar");
@@ -344,7 +344,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void MainDisplay () {
         Fragment f;
-        f = new CardFragment();
+        f = new HomeHori();
             if (f != null) {
                 Log.d("mausk Main display", "benar");
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
