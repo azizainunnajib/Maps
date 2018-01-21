@@ -16,7 +16,6 @@
             android:id="@+id/gambar_profil"
             android:layout_width="100sp"
             android:layout_height="100sp"
-            android:src="@drawable/sukses"
             android:layout_centerInParent="true" />
         <com.example.azizainun.maps.MyTextView
             android:layout_width="match_parent"

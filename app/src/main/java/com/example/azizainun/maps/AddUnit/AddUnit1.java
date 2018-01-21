@@ -1,4 +1,4 @@
-package com.example.azizainun.maps;
+package com.example.azizainun.maps.AddUnit;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,9 @@ import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
+import com.example.azizainun.maps.Model_Detail;
+import com.example.azizainun.maps.MyTextView;
+import com.example.azizainun.maps.R;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;

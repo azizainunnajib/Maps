@@ -1,24 +1,15 @@
-package com.example.azizainun.maps;
+package com.example.azizainun.maps.AddUnit;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckedTextView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import static com.example.azizainun.maps.R.drawable.ripple_hijau;
+import com.example.azizainun.maps.Model_Detail;
+import com.example.azizainun.maps.MyTextView;
+import com.example.azizainun.maps.R;
 
 
 /**

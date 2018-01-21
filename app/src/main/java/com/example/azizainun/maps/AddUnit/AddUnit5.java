@@ -1,4 +1,4 @@
-package com.example.azizainun.maps;
+package com.example.azizainun.maps.AddUnit;
 
 import android.app.TimePickerDialog;
 import android.net.Uri;
@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TimePicker;
+
+import com.example.azizainun.maps.Model_Detail;
+import com.example.azizainun.maps.MyTextView;
+import com.example.azizainun.maps.R;
 
 
 /**

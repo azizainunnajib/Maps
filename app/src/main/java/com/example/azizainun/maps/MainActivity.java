@@ -4,17 +4,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -29,6 +26,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.azizainun.maps.AddUnit.AddUnit0s;
+import com.example.azizainun.maps.AddUnit.AddUnitAkhir;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
@@ -36,9 +35,6 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.attr.id;
-import static android.R.attr.visible;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     Button choose_image, upload_image;
@@ -52,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ImageView home;
     ImageView trending;
     LinearLayout lin_search;
+    EditText text_search;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     protected FirebaseAuth mFirebaseAuth;
@@ -77,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         home = (ImageView) findViewById(R.id.home);
         trending = (ImageView) findViewById(R.id.trending);
         lin_search = (LinearLayout) findViewById(R.id.linear_search);
+        text_search = findViewById(R.id.search_bar);
 
         profil.setOnClickListener(this);
         explore.setOnClickListener(this);
@@ -145,13 +143,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.profil:
                 Log.d("mausk profil", "benar");
                 Toast.makeText(this, "profil", Toast.LENGTH_SHORT).show();
-                fragment = new AddUnit0s();
+                lin_search.setVisibility(View.GONE);
+                fragment = new Profil();
                 break;
             case R.id.explore:
                 Log.d("mausk explore", "benar");
                 Toast.makeText(this, "explore", Toast.LENGTH_SHORT).show();
+                lin_search.setVisibility(View.GONE);
                 break;
             case R.id.search:
+                text_search.getText().clear();
                 if (lin_search.getVisibility() == View.GONE) {
                     Log.d("mausk search", "benar");
                     Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
@@ -163,11 +164,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.home:
                 Log.d("mausk home", "benar");
                 Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
+                text_search.getText().clear();
+                lin_search.setVisibility(View.GONE);
                 fragment = new CardFragment();
                 break;
             case R.id.trending:
                 Log.d("mausk trending", "benar");
                 Toast.makeText(this, "trending", Toast.LENGTH_SHORT).show();
+                text_search.getText().clear();
+                lin_search.setVisibility(View.GONE);
                 fragment = new InsTranZit();
                 break;
         }
@@ -344,7 +349,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void MainDisplay () {
         Fragment f;
-        f = new HomeHori();
+        f = new CardFragment();
             if (f != null) {
                 Log.d("mausk Main display", "benar");
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

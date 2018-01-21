@@ -4,7 +4,7 @@
     android:background="@color/tema"
     android:clickable="true"
     android:layout_height="match_parent"
-    tools:context="com.example.azizainun.maps.AddUnit5">
+    tools:context="com.example.azizainun.maps.AddUnit.AddUnit5">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"

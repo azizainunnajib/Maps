@@ -1,15 +1,7 @@
-package com.example.azizainun.maps;
+package com.example.azizainun.maps.AddUnit;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Typeface;
 import android.net.Uri;
-import android.opengl.Visibility;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
@@ -17,22 +9,15 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.vision.text.Line;
+import com.example.azizainun.maps.Model_Detail;
+import com.example.azizainun.maps.MyTextView;
+import com.example.azizainun.maps.R;
 
-import static com.example.azizainun.maps.R.id.cancel_action;
-import static com.example.azizainun.maps.R.id.index_entity_types;
-import static com.example.azizainun.maps.R.id.nama_editprofil0;
-import static com.example.azizainun.maps.R.id.time;
-import static com.example.azizainun.maps.R.id.total_toilet;
-import static com.example.azizainun.maps.R.id.view_offset_helper;
 import static java.lang.Integer.parseInt;
 import static java.lang.Integer.valueOf;
 

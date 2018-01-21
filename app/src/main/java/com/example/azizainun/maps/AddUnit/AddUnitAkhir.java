@@ -1,4 +1,4 @@
-package com.example.azizainun.maps;
+package com.example.azizainun.maps.AddUnit;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,13 +20,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.azizainun.maps.Database_unggah;
+import com.example.azizainun.maps.GridView_Adapter;
+import com.example.azizainun.maps.Model;
+import com.example.azizainun.maps.Model_Detail;
+import com.example.azizainun.maps.R;
+import com.example.azizainun.maps.User;
+import com.example.azizainun.maps.memoryCache;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -36,7 +40,6 @@ import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 

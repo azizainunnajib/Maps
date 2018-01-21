@@ -10,13 +10,13 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 
 public class User {
-    static String FIREBASE_DATABASE = "https://my-project-1479543973833.firebaseio.com/";
-    static DatabaseReference mFirebaseDatabase;
-    static FirebaseDatabase mFirebaseInstance;
-    static FirebaseAuth mFirebaseAuth;
-    static FirebaseUser mFirebaseUser;
-    static String Userid;
-    static String getUID() {
+    public static String FIREBASE_DATABASE = "https://my-project-1479543973833.firebaseio.com/";
+    public static DatabaseReference mFirebaseDatabase;
+    public static FirebaseDatabase mFirebaseInstance;
+    public static FirebaseAuth mFirebaseAuth;
+    public static FirebaseUser mFirebaseUser;
+    public static String Userid;
+    public static String getUID() {
         return Userid;
     }
 

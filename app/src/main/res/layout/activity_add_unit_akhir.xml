@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:clickable="true"
     android:background="@color/tema"
-    tools:context="com.example.azizainun.maps.AddUnitAkhir">
+    tools:context="com.example.azizainun.maps.AddUnit.AddUnitAkhir">
 
     <com.example.azizainun.maps.MyTextView
         android:id="@+id/text1"

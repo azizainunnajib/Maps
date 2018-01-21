@@ -24,8 +24,24 @@
             android:id="@+id/upload_image"
             android:text="Upload Image" />
     </LinearLayout>
-
-    <LinearLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/editgambar_editprofil"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/image_upload" />
+        <com.example.azizainun.maps.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="change picture"
+            android:layout_below="@+id/gambarprofil_editprofil"
+            android:textSize="6pt"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"/>
+    </RelativeLayout>
+    <!--<LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -35,6 +51,6 @@
             android:id="@+id/image_upload"
             android:src="@drawable/sukses"/>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
 </LinearLayout>

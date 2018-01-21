@@ -1,4 +1,4 @@
-package com.example.azizainun.maps;
+package com.example.azizainun.maps.AddUnit;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.azizainun.maps.Database;
+import com.example.azizainun.maps.DetailUnit;
+import com.example.azizainun.maps.ItemClickCard;
+import com.example.azizainun.maps.Model;
+import com.example.azizainun.maps.Model_Detail;
+import com.example.azizainun.maps.R;
+import com.example.azizainun.maps.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -57,7 +57,7 @@ public class CardFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_card, container, false);
         myRecyclerView = (RecyclerView) view.findViewById(R.id.cardView);
         if (listunit.size() == 0) {
-            new Database().mReadDataOnce("Home", new Database.OnGetDataListener() {
+            new Database().mReadDataOnce("home", new Database.OnGetDataListener() {
                 @Override
                 public void onStart() {
 

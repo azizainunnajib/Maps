@@ -25,7 +25,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20sp">
                     <LinearLayout
                         android:layout_width="220sp"
                         android:layout_height="match_parent"
@@ -48,7 +49,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="10dp"
-                            android:layout_marginTop="3sp"
+                            android:layout_marginTop="1sp"
                             android:textColor="#000000"
                             android:textSize="17sp"
                             android:textStyle="bold"
@@ -292,7 +293,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="35sp"
-                android:text="Jakarta"
+                android:text="Bandung"
                 android:gravity="center_vertical"
                 android:textSize="22sp"/>
             <HorizontalScrollView
@@ -569,7 +570,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="35sp"
-                android:text="Jakarta"
+                android:text="Bogor"
                 android:gravity="center_vertical"
                 android:textSize="22sp"/>
             <HorizontalScrollView
@@ -846,7 +847,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="35sp"
-                android:text="Jakarta"
+                android:text="Malang"
                 android:gravity="center_vertical"
                 android:textSize="22sp"/>
             <HorizontalScrollView
@@ -1123,7 +1124,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="35sp"
-                android:text="Jakarta"
+                android:text="Jogjakarta"
                 android:gravity="center_vertical"
                 android:textSize="22sp"/>
             <HorizontalScrollView

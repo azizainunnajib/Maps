@@ -1,4 +1,4 @@
-package com.example.azizainun.maps;
+package com.example.azizainun.maps.AddUnit;
 
 import android.location.Location;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
+import com.example.azizainun.maps.Model_Detail;
+import com.example.azizainun.maps.MyTextView;
+import com.example.azizainun.maps.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;

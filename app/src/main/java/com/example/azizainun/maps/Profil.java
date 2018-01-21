@@ -2,24 +2,24 @@ package com.example.azizainun.maps;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-import android.widget.ViewSwitcher;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.StringSignature;
+import com.example.azizainun.maps.AddUnit.AddUnit0;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -47,14 +47,24 @@ public class Profil extends Fragment implements View.OnClickListener {
         String UID = User.Userid;
 
         StorageReference pathstorage = storage.getReference().child("User/" + UID + "/profil.jpg");
-        ImageView image = (ImageView) provilView.findViewById(R.id.gambar_profil);
+        final ImageView image = (ImageView) provilView.findViewById(R.id.gambar_profil);
 
+        pathstorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(getContext())
+                        .load(uri)
+                        .asBitmap()
+                        .signature(new StringSignature(String.valueOf(System.currentTimeMillis())))
+                        .into(image);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                image.setImageResource(R.drawable.foto_person);
+            }
+        });
 // Load the image using Glide
-        Glide.with(this)
-                .using(new FirebaseImageLoader())
-                .load(pathstorage)
-                .signature(new StringSignature(String.valueOf(System.currentTimeMillis())))
-                .into(image);
 
 //        penyewa.setText(User.getUID());
         return provilView;

@@ -10,7 +10,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:id="@+id/gambarprofil_editprofil" />
+        android:id="@+id/gambarprofil_editprofil"
+        android:src="@drawable/foto_person"/>
     <com.example.azizainun.maps.MyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

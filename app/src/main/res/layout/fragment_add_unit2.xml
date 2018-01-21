@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/add_unit2"
-    tools:context="com.example.azizainun.maps.AddUnit2">
+    tools:context="com.example.azizainun.maps.AddUnit.AddUnit2">
 <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"

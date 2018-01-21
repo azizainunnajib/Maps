@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:clickable="true"
     android:background="@color/tema"
-    tools:context="com.example.azizainun.maps.AddUnit3">
+    tools:context="com.example.azizainun.maps.AddUnit.AddUnit3">
     <FrameLayout
         android:layout_width="fill_parent" android:layout_height="fill_parent">
 
