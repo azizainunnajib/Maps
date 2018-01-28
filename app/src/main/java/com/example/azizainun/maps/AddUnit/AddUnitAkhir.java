@@ -89,7 +89,7 @@ public class AddUnitAkhir extends Fragment implements View.OnClickListener{
                     final DatabaseReference push = mFirebaseInstance.getInstance().getReference().child("User/"+ UID + "/Tempat_sewa/" + nama_tempat);
                     DatabaseReference push1 = push.push();
                     final String postidkey = push1.getKey();
-                    final DatabaseReference pushHome = mFirebaseInstance.getInstance().getReference().child("home/" + postidkey);
+                    final DatabaseReference pushHome = mFirebaseInstance.getInstance().getReference().child("Home/" + postidkey);
 //                    push1.setValue(model);
 
                     int i = 1;

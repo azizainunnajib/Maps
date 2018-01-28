@@ -11,26 +11,49 @@ import android.widget.TextView;
 
 public class MyTextView extends TextView {
 
+    public static final String ANDROID_SCHEMA = "http://schemas.android.com/apk/res/android";
+
     public MyTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
+        init(context, attrs);
     }
 
     public MyTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context, attrs);
     }
 
-    public MyTextView(Context context) {
+    /*public MyTextView(Context context) {
         super(context);
-        init();
-    }
+//        init();
+    }*/
 
-    private void init() {
+    /*private void init() {
         if (!isInEditMode()) {
             Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/Raleway-Light.ttf");
             setTypeface(tf);
         }
+    }*/
+
+    private void init(Context context, AttributeSet attrs) {
+        int typestyle = attrs.getAttributeIntValue(ANDROID_SCHEMA, "textStyle", Typeface.NORMAL);
+
+        Typeface tf = Typeface.createFromAsset(context.getAssets(), "font/Raleway-Bold.ttf");
+        Typeface typeface = selectStyle(context, typestyle);
+        setTypeface(tf);
     }
 
+    private Typeface selectStyle(Context context, int typestyle) {
+        switch (typestyle) {
+            case Typeface.BOLD:
+                return Typeface.createFromAsset(context.getAssets(), "font/Raleway-Bold.ttf");
+            case Typeface.BOLD_ITALIC:
+                return Typeface.createFromAsset(context.getAssets(), "font/Raleway-BoldItalic.ttf");
+            case Typeface.ITALIC:
+                return Typeface.createFromAsset(context.getAssets(), "font/Raleway-Italic.ttf");
+            case Typeface.NORMAL:
+            default:
+                return Typeface.createFromAsset(context.getAssets(), "font/Raleway-Light.ttf");
+        }
+    }
 }

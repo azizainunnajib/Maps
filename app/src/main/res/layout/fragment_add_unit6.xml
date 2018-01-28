@@ -14,7 +14,8 @@
     <com.example.azizainun.maps.MyTextView
         android:id="@+id/text_peraturan"
         android:layout_width="match_parent"
-        android:layout_height="206dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30sp"
         android:textSize="32.36sp"
         android:layout_margin="15sp"
         android:layout_marginTop="25sp"
@@ -49,7 +50,8 @@
     <com.example.azizainun.maps.MyTextView
         android:id="@+id/text_deskripsi"
         android:layout_width="match_parent"
-        android:layout_height="206dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30sp"
         android:textSize="32.36sp"
         android:layout_margin="15sp"
         android:layout_marginTop="25sp"

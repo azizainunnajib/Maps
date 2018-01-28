@@ -26,7 +26,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.azizainun.maps.AddUnit.AddUnit0s;
 import com.example.azizainun.maps.AddUnit.AddUnitAkhir;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -131,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new CardFragment(), "ONE");
-        adapter.addFragment(new InsTranZit(), "TWO");
+        adapter.addFragment(new TrendingInstagram(), "TWO");
         viewPager.setAdapter(adapter);
     }
 
@@ -173,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "trending", Toast.LENGTH_SHORT).show();
                 text_search.getText().clear();
                 lin_search.setVisibility(View.GONE);
-                fragment = new InsTranZit();
+                fragment = new TrendingInstagram();
                 break;
         }
 

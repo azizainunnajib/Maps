@@ -36,36 +36,37 @@
 
         <ImageView
             android:id="@+id/profil"
-            android:layout_width="30dp"
+            android:layout_width="match_parent"
             android:layout_height="70sp"
             android:layout_weight="1"
             app:srcCompat="@drawable/profil" />
 
         <ImageView
             android:id="@+id/explore"
-            android:layout_width="30dp"
+            android:layout_width="match_parent"
             android:layout_height="70sp"
             android:layout_weight="1"
             app:srcCompat="@drawable/explore" />
 
         <ImageView
             android:id="@+id/search"
-            android:layout_width="30dp"
+            android:layout_width="match_parent"
             android:layout_height="70sp"
             android:layout_weight="1"
             app:srcCompat="@drawable/search"
             android:visibility="visible"/>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/home"
-            android:layout_width="30dp"
+            android:layout_width="match_parent"
             android:layout_height="70sp"
+            android:background="@drawable/circle_background"
             android:layout_weight="1"
-            app:srcCompat="@drawable/home" />
+            android:src="@drawable/ic_home"/>
 
         <ImageView
             android:id="@+id/trending"
-            android:layout_width="30dp"
+            android:layout_width="match_parent"
             android:layout_height="70sp"
             android:layout_weight="1"
             app:srcCompat="@mipmap/ic_trending" />
