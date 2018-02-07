@@ -8,7 +8,8 @@
     tools:context="com.example.azizainun.maps.DetailUnit">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
         <ss.com.bannerslider.views.BannerSlider
             android:id="@+id/banner_slider1"
             android:layout_width="match_parent"
@@ -17,7 +18,7 @@
             android:id="@+id/text_judultempat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nama Tempat Atau Judul Tempat"
+            android:text=""
             android:layout_below="@id/banner_slider1"
             android:textSize="11pt"/>
         <View
@@ -35,6 +36,9 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/gambar_user"
                 android:layout_width="70sp"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="20sp"
                 android:layout_height="70sp"
                 android:layout_below="@id/text_judultempat"/>
             <LinearLayout
@@ -49,7 +53,7 @@
                     android:gravity="right"
                     android:textStyle="bold"
                     android:layout_marginEnd="30sp"
-                    android:text="tipe_tempat" />
+                    android:text="" />
                 <com.example.azizainun.maps.MyTextView
                     android:id="@+id/tipe_bangunan"
                     android:layout_width="match_parent"
@@ -57,7 +61,7 @@
                     android:gravity="end"
                     android:textStyle="bold"
                     android:layout_marginEnd="30sp"
-                    android:text="tipe_bangunan" />
+                    android:text="" />
                 <com.example.azizainun.maps.MyTextView
                     android:id="@+id/nama_user"
                     android:layout_width="match_parent"
@@ -65,7 +69,7 @@
                     android:gravity="right"
                     android:textStyle="bold"
                     android:layout_marginEnd="30sp"
-                    android:text="oleh nama_user"/>
+                    android:text=""/>
             </LinearLayout>
         </LinearLayout>
         <View
@@ -92,7 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Total Kasur"/>
+                    android:text=""/>
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -109,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Total Kamar"/>
+                    android:text=""/>
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Max Tamu"/>
+                    android:text=""/>
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -141,7 +145,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Total Toilet"/>
+                    android:text=""/>
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -175,7 +179,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="askdhgaksd"/>
+                android:text=""/>
 
         </LinearLayout>
 
@@ -183,6 +187,9 @@
             android:id="@+id/expand_fasilitas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:ael_duration="400"
+            app:ael_expanded="false"
+            app:ael_orientation="vertical"
             android:layout_below="@id/lay_fasilitas">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -444,14 +451,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/map"
             android:text="expandable text"/>
-
-
-
         <FrameLayout
-            android:id="@+id/content_frame_next"
+            android:visibility="visible"
+            android:id="@+id/frame_banner"
+            class="com.example.azizainun.maps.Detail_gambar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            android:layout_height="match_parent"/>
     </RelativeLayout>
 </ScrollView>

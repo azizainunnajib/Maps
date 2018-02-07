@@ -7,6 +7,7 @@ package com.example.azizainun.maps;
 public class Data_ig {
     private Images images;
     private User user;
+
     private Caption caption;
 
     public Images getImages() {

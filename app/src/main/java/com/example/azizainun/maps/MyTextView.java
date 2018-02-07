@@ -38,9 +38,9 @@ public class MyTextView extends TextView {
     private void init(Context context, AttributeSet attrs) {
         int typestyle = attrs.getAttributeIntValue(ANDROID_SCHEMA, "textStyle", Typeface.NORMAL);
 
-        Typeface tf = Typeface.createFromAsset(context.getAssets(), "font/Raleway-Bold.ttf");
+//        Typeface tf = Typeface.createFromAsset(context.getAssets(), "font/Raleway-Bold.ttf");
         Typeface typeface = selectStyle(context, typestyle);
-        setTypeface(tf);
+        setTypeface(typeface);
     }
 
     private Typeface selectStyle(Context context, int typestyle) {
@@ -52,6 +52,7 @@ public class MyTextView extends TextView {
             case Typeface.ITALIC:
                 return Typeface.createFromAsset(context.getAssets(), "font/Raleway-Italic.ttf");
             case Typeface.NORMAL:
+                return Typeface.createFromAsset(context.getAssets(), "font/Raleway-Light.ttf");
             default:
                 return Typeface.createFromAsset(context.getAssets(), "font/Raleway-Light.ttf");
         }

@@ -49,17 +49,15 @@
         </activity>
         <activity android:name=".Register" />
         <activity android:name=".EditProfil" />
-        <activity android:name=".EditProfil1">
-        </activity>
+        <activity android:name=".EditProfil1"></activity>
         <activity android:name=".DetailUnit" />
         <activity android:name=".AddUnit.AddUnit1" />
         <activity android:name=".AddUnit.AddUnitAkhir" />
         <activity android:name=".AddUnit.AddUnit0">
             android:windowSoftInputMode="stateVisible|adjustResize"
         </activity>
-        <activity android:name=".IG_upload">
-
-        </activity>
+        <activity android:name=".IG_upload"></activity>
+        <activity android:name=".DetailGambar"></activity>
     </application>
 
 </manifest>

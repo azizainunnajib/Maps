@@ -1,9 +1,10 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tema"
-    tools:context="com.example.azizainun.maps.Detail_gambar">
+    tools:context="com.example.azizainun.maps.DetailGambar">
 
     <ss.com.bannerslider.views.BannerSlider
         android:id="@+id/banner_slider1"
@@ -12,4 +13,4 @@
 
     </ss.com.bannerslider.views.BannerSlider>
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

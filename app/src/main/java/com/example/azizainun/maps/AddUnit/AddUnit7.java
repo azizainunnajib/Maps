@@ -51,6 +51,7 @@ public class AddUnit7 extends Fragment implements OnMapReadyCallback, SimpleLoca
     GoogleMap Gmap;
     Bundle next5_;
     Model_Detail argument;
+    Model_Detail argument1;
     String bkotakab;
 //    LocationRequest mLocationRequest;
 //    GoogleApiClient mGoogleApiClient;
@@ -108,6 +109,8 @@ public class AddUnit7 extends Fragment implements OnMapReadyCallback, SimpleLoca
             Bundle bundle2 = new Bundle();
             bundle2 = getArguments();
             bundle = bundle2.getBundle("b");
+//            argument1 = getArguments().getParcelable("b1");
+            argument1 = bundle2.getBundle("b1").getParcelable("nextakhir");
             kotakab.setText(bundle.getString("mkotkab"));
         }
         next6.setOnClickListener(new View.OnClickListener() {
@@ -126,11 +129,19 @@ public class AddUnit7 extends Fragment implements OnMapReadyCallback, SimpleLoca
                     Model_Detail m;
                     if (argument != null) {
                         m = argument;
-                    } else {
+                    } else if (bundle1.containsKey("nextakhir")){
                         m = bundle1.getParcelable("nextakhir");
+                    } else {
+                        m = argument;
                     }
-                    Long = bundle.getDouble("Long");
-                    Lat = bundle.getDouble("Lat");
+                    if(bundle != null) {
+                        Long = bundle.getDouble("Long");
+                        Lat = bundle.getDouble("Lat");
+                    } else if (bundle1 != null) {
+                        Long = bundle.getDouble("Long");
+                        Lat = bundle.getDouble("Lat");
+                    }
+                    Log.d("longitude", String.valueOf(Long));
                     String k = Double.toString(Long);
                     String l = Double.toString(Lat);
                     m.setLongi(Long);
@@ -241,7 +252,11 @@ public class AddUnit7 extends Fragment implements OnMapReadyCallback, SimpleLoca
         Bundle bundle1 = new Bundle();
         double k = Long;
         double l = Lat;
-        bundle1.putParcelable("nextakhir", argument);
+        if (argument != null) {
+            bundle1.putParcelable("nextakhir", argument);
+        } else {
+            bundle1.putParcelable("nextakhir", argument1);
+        }
         AutoCompleteTextView kotakab = (AutoCompleteTextView) getView().findViewById(R.id.kotakab);
         bundle.putString("kotkab", kotakab.getText().toString());
         bundle.putDouble("Long", Long);

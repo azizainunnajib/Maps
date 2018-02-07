@@ -13,7 +13,9 @@ import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.azizainun.maps.AddUnit.AddUnit1
 import com.example.azizainun.maps.R.id.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -54,6 +56,18 @@ class DetailUnit : AppCompatActivity(), OnMapReadyCallback {
         UID = model.getUid()
         nama_tempat = model.getNama_tempat()
 
+        gambar_user.setOnClickListener {
+//            supportFragmentManager
+//                    .beginTransaction()
+//                    .replace(R.id.frame_banner, fragment)*/
+            val fragment = ProfilUserLain()
+            supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frame_banner, fragment)
+                    .addToBackStack("settings")
+                    .commit()
+        }
+
         Database().mReadDataOnce("User/$UID/Tempat_sewa/$nama_tempat", object : Database.OnGetDataListener {
             override fun onStart() {
 
@@ -93,7 +107,6 @@ class DetailUnit : AppCompatActivity(), OnMapReadyCallback {
         max_tamu.text = model_detail?.getTotal_tamu().toString() + "\nTotal Tamu"
         total_toilet.text = model_detail?.getTotal_toilet().toString() + "\nTotal Toilet"
         deskripsi.text = model_detail?.getDeskripsi()
-        expand_fasilitas.expand()
         checkin.text =model_detail?.getCheckin()
         namaTempat = model_detail?.getJudul().toString()
         lat = model_detail!!.getLat()
@@ -130,13 +143,43 @@ class DetailUnit : AppCompatActivity(), OnMapReadyCallback {
         //add banner using image url
         bannerSlider.setBanners(banners)
         bannerSlider.setOnBannerClickListener {
-            val fNext = Detail_gambar()
-            val ft = supportFragmentManager.beginTransaction()
-            val args = Bundle()
-            args.putStringArrayList("list url", list_url)
-            fNext.arguments = args
-            ft.replace(R.id.content_frame_next, fNext).addToBackStack(null)
-            ft.commit()
+            Toast.makeText(this, "ini slider", Toast.LENGTH_SHORT).show()
+//            val fNext = Detail_gambar()
+//            val ft = supportFragmentManager.beginTransaction()
+//            val args = Bundle()
+//            args.putStringArrayList("list url", list_url)
+//            fNext.arguments = args
+//            Log.d("aserehe", "10")
+//            ft.replace(R.id.frame_banner, fNext).addToBackStack(null)
+//            Log.d("aserehe", "11")
+//            ft.commit()
+//            Log.d("aserehe", "12")
+
+//            val fragment: Detail_gambar = Detail_gambar()
+           /* var fragmentClass: Class<*>? = null
+            fragmentClass = Detail_gambar::class.java
+            try {
+                fragment = fragmentClass!!.newInstance() as Fragment
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+
+            supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frame_banner, fragment)*/
+//            val args = Bundle()
+//            args.putStringArrayList("list url", list_url)
+//            fragment.arguments = args
+//            supportFragmentManager
+//                    .beginTransaction()
+//                    .replace(R.id.frame_banner, fragment)
+//                    .addToBackStack("settings")
+//                    .commit()
+            val intent = Intent(this, DetailGambar::class.java)
+            intent.putExtra("list url", list_url)
+            startActivity(intent);
+            Log.d("aserehe", "10")
         }
     }
 }

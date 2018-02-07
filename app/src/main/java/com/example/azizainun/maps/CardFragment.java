@@ -39,7 +39,10 @@ import static com.example.azizainun.maps.R.id.thing_proto;
  * Created by aziza on 6/9/2017.
  */
 public class CardFragment extends Fragment {
+    private int currentPage = 0;
     RecyclerView myRecyclerView;
+    MyAdapter mAdapter;
+    private static final String TAG = "CardFragment";
     ArrayList<Model> listunit = new ArrayList<>();
     String Bangunan[] = {"Hotel", "Chichen Itza","Christ the Redeemer","Great Wall of China","Machu Picchu"};
     int Imag [] = {R.drawable.sukses, R.drawable.ic_exit, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses, R.drawable.ic_setting, R.drawable.ic_home, R.drawable.sukses};
@@ -48,6 +51,7 @@ public class CardFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         listunit.clear();
+        mAdapter = new MyAdapter(listunit);
     }
 
     @Nullable
@@ -56,40 +60,64 @@ public class CardFragment extends Fragment {
         String UID = User.getUID();
         final View view = inflater.inflate(R.layout.fragment_card, container, false);
         myRecyclerView = (RecyclerView) view.findViewById(R.id.cardView);
+        LinearLayoutManager mLayoutManager =
+                new LinearLayoutManager(getContext());
+        myRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
+            @Override
+            public void onLoadMore(int current_page) {
+                moredataload();
+            }
+        });
         if (listunit.size() == 0) {
-            new Database().mReadDataOnce("Home", new Database.OnGetDataListener() {
-                @Override
-                public void onStart() {
-
-                }
-
-                @Override
-                public void onSuccess(DataSnapshot data) {
-                    Model item = new Model();
-                    for (DataSnapshot snapshot : data.getChildren()) {
-                        Model model = snapshot.getValue(Model.class);
-                        listunit.add(model);
-                    }
-                    myRecyclerView.setHasFixedSize(true);
-                    LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
-                    MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                    myRecyclerView.setLayoutManager(MyLayoutManager);
-                    if (listunit.size() > 0 & myRecyclerView != null) {
-                        myRecyclerView.setAdapter(new MyAdapter(listunit));
-                    }
-                    int t = listunit.size();
-                    int v = t++;
-                }
-
-                @Override
-                public void onFailed(DatabaseError databaseError) {
-
-                }
-            });
+            dataload();
         } else {
             Initialist(myRecyclerView);
         }
         return view;
+    }
+
+    private void moredataload() {
+        currentPage++;
+        dataload();
+    }
+
+    private void dataload() {
+        new Database().mReadDataOnce("Home", new Database.OnGetDataListener() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onSuccess(DataSnapshot data) {
+                if(!data.hasChildren()) {
+                    Toast.makeText(getContext(), "ini yang terakhir", Toast.LENGTH_SHORT).show();
+                    currentPage--;
+                }
+
+                Model item = new Model();
+                for (DataSnapshot snapshot : data.getChildren()) {
+                    Model model = snapshot.getValue(Model.class);
+                    listunit.add(model);
+                }
+                myRecyclerView.setHasFixedSize(true);
+                LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
+                MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                myRecyclerView.setLayoutManager(MyLayoutManager);
+                if (listunit.size() > 0 & myRecyclerView != null) {
+                    myRecyclerView.setAdapter(mAdapter);
+                    mAdapter.notifyDataSetChanged();
+                    Log.d(TAG, "onSuccess: "+ listunit.get(1).getKotakab());
+                }
+                int t = listunit.size();
+                int v = t++;
+            }
+
+            @Override
+            public void onFailed(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
