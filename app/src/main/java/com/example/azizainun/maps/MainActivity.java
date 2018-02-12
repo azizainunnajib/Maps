@@ -20,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,6 +31,8 @@ import android.widget.Toast;
 import com.example.azizainun.maps.AddUnit.AddUnitAkhir;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -46,8 +50,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ImageView search;
     ImageView home;
     ImageView trending;
+    ImageView ic_search;
     LinearLayout lin_search;
-    EditText text_search;
+    AutoCompleteTextView text_search;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     protected FirebaseAuth mFirebaseAuth;
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected StorageReference storageReference = storage.getReferenceFromUrl("gs://my-project-1479543973833.appspot.com");
     private TabLayout tabLayout;
     private ViewPager viewPager;
-
+    private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         home = (ImageView) findViewById(R.id.home);
         trending = (ImageView) findViewById(R.id.trending);
         lin_search = (LinearLayout) findViewById(R.id.linear_search);
+        ic_search = (findViewById(R.id.ic_search));
         text_search = findViewById(R.id.search_bar);
 
         profil.setOnClickListener(this);
@@ -80,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         search.setOnClickListener(this);
         home.setOnClickListener(this);
         trending.setOnClickListener(this);
+        ic_search.setOnClickListener(this);
 
 //        setTitle("");
 //        toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -112,6 +119,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            Model userid= new Model();
 //            userid.setUID(UIDp);
         }
+
+//        final AutoCompleteTextView kotakab = (AutoCompleteTextView) view.findViewById(R.id.kotakab);
+        String[] Skotakab = getResources().getStringArray(R.array.kotakab);
+        ArrayAdapter<String> Akotakab = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Skotakab);
+        text_search.setAdapter(Akotakab);
 
         /*viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -174,6 +186,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 lin_search.setVisibility(View.GONE);
                 fragment = new TrendingInstagram();
                 break;
+            case R.id.ic_search:
+                Log.d("masuk ic_search", "onClick: ");
+                String text_sch = text_search.getText().toString();
+                if (!text_sch.equals("")){
+                    Log.d(TAG, "onClick: " + text_sch);
+                    getSearchText(text_sch);
+                }
         }
 
         if (fragment != null) {
@@ -181,6 +200,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             ft.replace(R.id.content_frame, fragment).addToBackStack(null);
             ft.commit();
         }
+    }
+
+    private void getSearchText(String text_sch) {
+        Log.d(TAG, "getSearchText: " + text_sch);
+        new Database().SearchDatabase("Home", "kotakab", text_sch, new Database.OnGetDataListener() {
+            @Override
+            public void onStart() {
+                Log.d(TAG, "onStart: masuk OnStart");
+            }
+
+            @Override
+            public void onSuccess(DataSnapshot data) {
+                for (DataSnapshot childSnapshot: data.getChildren()) {
+                    Log.d(TAG, "onSuccess: " + childSnapshot.toString());
+                }
+            }
+
+            @Override
+            public void onFailed(DatabaseError databaseError) {
+                Log.d(TAG, "onFailed: " + databaseError.getMessage());
+            }
+        });
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

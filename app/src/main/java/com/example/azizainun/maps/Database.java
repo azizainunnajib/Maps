@@ -38,7 +38,7 @@ public class Database {
         listener.onStart();
         Log.d(TAG, "mReadDataPagination: current page"+ String.valueOf(currentPage));
         Log.d(TAG, "mReadDataPagination: limit" + String.valueOf(limit));
-        FirebaseDatabase.getInstance().getReference().child(child).orderByChild("key").limitToFirst(limit).startAt(limit*currentPage).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Home").orderByChild("key").limitToFirst(limit).startAt(limit*currentPage).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listener.onSuccess(dataSnapshot);
@@ -49,5 +49,22 @@ public class Database {
                 listener.onFailed(databaseError);
             }
         });
+    }
+
+    public void SearchDatabase (String child, String order, String query, final OnGetDataListener listener) {
+        listener.onStart();
+        FirebaseDatabase.getInstance().getReference().child(child).orderByChild(order).equalTo(query)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Log.d(TAG, "onDataChange: " + dataSnapshot.getChildrenCount());
+                        listener.onSuccess(dataSnapshot);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        listener.onFailed(databaseError);
+                    }
+                });
     }
 }
