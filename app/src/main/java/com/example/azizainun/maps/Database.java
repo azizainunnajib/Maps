@@ -34,11 +34,11 @@ public class Database {
         });
     }
 
-    public void mReadDataPagination (String child, int limit, int currentPage, final OnGetDataListener listener) {
+    public void mReadDataPagination (String child, String key,int limit, int currentPage, final OnGetDataListener listener) {
         listener.onStart();
         Log.d(TAG, "mReadDataPagination: current page"+ String.valueOf(currentPage));
         Log.d(TAG, "mReadDataPagination: limit" + String.valueOf(limit));
-        FirebaseDatabase.getInstance().getReference("Home").orderByChild("key").limitToFirst(limit).startAt(limit*currentPage).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference(child).orderByChild(key).limitToFirst(limit).startAt(limit*currentPage).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listener.onSuccess(dataSnapshot);

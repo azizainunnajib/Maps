@@ -143,7 +143,7 @@ public class AddUnit6 extends Fragment implements View.OnClickListener {
 
         handphone_.addTextChangedListener(textWatcher);
         nama_tempat_.addTextChangedListener(textWatcher);
-        harga_.addTextChangedListener(textWatcher);
+//        harga_.addTextChangedListener(textWatcher);
         harga_.addTextChangedListener(textWatcher1);
 
         next8.setOnClickListener(this);

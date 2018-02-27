@@ -38,7 +38,8 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".MainActivity">
-            android:windowSoftInputMode="stateVisible|adjustResize">
+
+            <!-- android:windowSoftInputMode="stateVisible|adjustResize"> -->
             <!-- android:theme="@style/AppTheme.NoActionBar" > -->
             <!-- android:theme="@android:style/Theme.AppCompat.Light.NoActionBar"> -->
             <intent-filter>
@@ -49,15 +50,16 @@
         </activity>
         <activity android:name=".Register" />
         <activity android:name=".EditProfil" />
-        <activity android:name=".EditProfil1"></activity>
+        <activity android:name=".EditProfil1" />
         <activity android:name=".DetailUnit" />
         <activity android:name=".AddUnit.AddUnit1" />
         <activity android:name=".AddUnit.AddUnitAkhir" />
         <activity android:name=".AddUnit.AddUnit0">
             android:windowSoftInputMode="stateVisible|adjustResize"
         </activity>
-        <activity android:name=".IG_upload"></activity>
-        <activity android:name=".DetailGambar"></activity>
+        <activity android:name=".IG_upload" />
+        <activity android:name=".DetailGambar" />
+        <activity android:name=".BookingPage" />
     </application>
 
 </manifest>

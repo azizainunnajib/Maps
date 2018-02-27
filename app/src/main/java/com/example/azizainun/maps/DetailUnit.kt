@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -86,6 +87,14 @@ class DetailUnit : AppCompatActivity(), OnMapReadyCallback {
 
             }
         })
+
+        booking.setOnClickListener {
+            val intent = Intent(this, BookingPage::class.java)
+            intent.putExtra("UID", UID)
+            intent.putExtra("nama tempat", nama_tempat)
+            Log.d("Booking", nama_tempat)
+            startActivity(intent)
+        }
     }
 
     private fun putData(model_detail: Model_Detail?) {
@@ -178,7 +187,7 @@ class DetailUnit : AppCompatActivity(), OnMapReadyCallback {
 //                    .commit()
             val intent = Intent(this, DetailGambar::class.java)
             intent.putExtra("list url", list_url)
-            startActivity(intent);
+            startActivity(intent)
             Log.d("aserehe", "10")
         }
     }

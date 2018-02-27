@@ -91,7 +91,7 @@ public class TrendingInstagram extends Fragment {
 
     private void loadData() {
         Log.d(TAG, "loadData: ");
-        new Database().mReadDataPagination("Trending/data", 10, currentPage, new Database.OnGetDataListener() {
+        new Database().mReadDataPagination("Trending/data", "key",5, currentPage, new Database.OnGetDataListener() {
             @Override
             public void onStart() {
                 Log.d(TAG, "onStart: " + String.valueOf(currentPage));
@@ -100,7 +100,7 @@ public class TrendingInstagram extends Fragment {
 
             @Override
             public void onSuccess(DataSnapshot data) {
-                Log.d(TAG, "onSuccess0: ");
+                Log.d(TAG, "onSuccess0: " + data.getChildrenCount());
                 if(!data.hasChildren()) {
                     Toast.makeText(getContext(), "ini yang terakhir", Toast.LENGTH_SHORT).show();
                     currentPage--;
