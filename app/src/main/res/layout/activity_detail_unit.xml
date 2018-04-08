@@ -1,474 +1,484 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:map="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.azizainun.maps.DetailUnit">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    tools:context="com.example.azizainun.maps.ui.DetailUnit">
+    <data>
+        <variable
+            name="Detail"
+            type="com.example.azizainun.maps.Model.Model_Detail"/>
+    </data>
 
-        <ss.com.bannerslider.views.BannerSlider
-            android:id="@+id/banner_slider1"
+    <ScrollView
+
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300sp" />
-        <com.example.azizainun.maps.MyTextView
-            android:id="@+id/text_judultempat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_below="@id/banner_slider1"
-            android:textSize="11pt"/>
-        <View
-            android:id="@+id/separator0"
-            android:background="@color/colorPrimaryDark"
-            android:layout_width = "fill_parent"
-            android:layout_height="1dip"
-            android:layout_below="@id/text_judultempat"/>
-        <LinearLayout
-            android:id="@+id/deskripsi1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/text_judultempat">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/gambar_user"
-                android:layout_width="70sp"
-                android:layout_marginBottom="10sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginStart="20sp"
-                android:layout_height="70sp"
+            android:layout_height="match_parent">
+
+            <ss.com.bannerslider.views.BannerSlider
+                android:id="@+id/banner_slider1"
+                android:layout_width="match_parent"
+                android:layout_height="300sp" />
+            <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                android:id="@+id/text_judultempat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_below="@id/banner_slider1"
+                android:textSize="11pt"/>
+            <View
+                android:id="@+id/separator0"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width = "fill_parent"
+                android:layout_height="1dip"
                 android:layout_below="@id/text_judultempat"/>
             <LinearLayout
+                android:id="@+id/deskripsi1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-                <com.example.azizainun.maps.MyTextView
-                    android:id="@+id/tipe_tempat"
+                android:orientation="horizontal"
+                android:layout_below="@id/text_judultempat">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/gambar_user"
+                    android:layout_width="70sp"
+                    android:layout_marginBottom="10sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginStart="20sp"
+                    android:layout_height="70sp"
+                    android:layout_below="@id/text_judultempat" />
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textStyle="bold"
-                    android:layout_marginEnd="30sp"
-                    android:text="" />
-                <com.example.azizainun.maps.MyTextView
-                    android:id="@+id/tipe_bangunan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:textStyle="bold"
-                    android:layout_marginEnd="30sp"
-                    android:text="" />
-                <com.example.azizainun.maps.MyTextView
-                    android:id="@+id/nama_user"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textStyle="bold"
-                    android:layout_marginEnd="30sp"
-                    android:text=""/>
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+                    <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                        android:id="@+id/tipe_tempat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="30sp"
+                        android:text="@{detail.tipe_tempat}" />
+                    <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                        android:id="@+id/tipe_bangunan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="30sp"
+                        android:text="@{detail.tipe_bangunan}" />
+                    <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                        android:id="@+id/nama_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="30sp"
+                        android:text=""/>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-        <View
-            android:id="@+id/separator1"
-            android:background="@color/colorPrimaryDark"
-            android:layout_width = "fill_parent"
-            android:layout_height="1dip"
-            android:layout_marginBottom="4dp"
-            android:layout_below="@+id/deskripsi1" />
-
-        <LinearLayout
-            android:id="@+id/deskripsi2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/separator1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <com.example.azizainun.maps.MyTextView
-                    android:id="@+id/total_kasur"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text=""/>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_trending"/>
-            </LinearLayout>
+            <View
+                android:id="@+id/separator1"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width = "fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginBottom="4dp"
+                android:layout_below="@+id/deskripsi1" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <com.example.azizainun.maps.MyTextView
-                    android:id="@+id/total_kamar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text=""/>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_trending"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <com.example.azizainun.maps.MyTextView
-                    android:id="@+id/max_tamu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text=""/>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_trending"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <com.example.azizainun.maps.MyTextView
-                    android:id="@+id/total_toilet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text=""/>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_trending"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <View
-            android:id="@+id/separator2"
-            android:background="@color/colorPrimaryDark"
-            android:layout_width = "fill_parent"
-            android:layout_height="1dip"
-            android:layout_below="@+id/deskripsi2" />
-
-        <LinearLayout
-            android:id="@+id/lay_fasilitas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/separator2">
-            <com.example.azizainun.maps.MyTextView
-                android:layout_width="200dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_marginStart="20sp"
-                android:text="Fasilitas"
-                android:gravity="center_vertical"/>
-            <com.example.azizainun.maps.MyTextView
-                android:id="@+id/fasilitas"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text=""/>
-
-        </LinearLayout>
-
-        <com.github.aakira.expandablelayout.ExpandableRelativeLayout
-            android:id="@+id/expand_fasilitas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:ael_duration="400"
-            app:ael_expanded="false"
-            app:ael_orientation="vertical"
-            android:layout_below="@id/lay_fasilitas">
-            <LinearLayout
+                android:id="@+id/deskripsi2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_below="@+id/separator1">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
-                    <ImageView
-                        android:id="@+id/wifi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
+                    <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                        android:id="@+id/total_kasur"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="WIFI"/>
+                        android:text=""/>
                     <ImageView
-                        android:id="@+id/ac"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                        android:id="@+id/total_kamar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="AC"/>
+                        android:text=""/>
                     <ImageView
-                        android:id="@+id/tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:text="TV"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
-                    <ImageView
-                        android:id="@+id/dapur"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
+                    <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                        android:id="@+id/max_tamu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="DAPUR"/>
+                        android:text=""/>
                     <ImageView
-                        android:id="@+id/kulkas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="KULKAS"/>
-                    <ImageView
-                        android:id="@+id/parkir"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="PARKIR"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
-                    <ImageView
-                        android:id="@+id/airpanas"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
+                    <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                        android:id="@+id/total_toilet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="AIR PANAS"/>
+                        android:text=""/>
                     <ImageView
-                        android:id="@+id/syariah"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="SYARIAH"/>
-                    <ImageView
-                        android:id="@+id/minimarket"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="MINIMARKET"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:id="@+id/angkot"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="Angkot"/>
-                    <ImageView
-                        android:id="@+id/ojek_daring"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="Ojek Daring"/>
-                    <ImageView
-                        android:id="@+id/atm"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_trending"/>
-                    <com.example.azizainun.maps.MyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="10dp"
-                        android:text="ATM"/>
                 </LinearLayout>
             </LinearLayout>
-        </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-        <View
-            android:id="@+id/separator3"
-            android:background="@color/colorPrimaryDark"
-            android:layout_width = "fill_parent"
-            android:layout_height="1dip"
-            android:layout_below="@+id/expand_fasilitas" />
+            <View
+                android:id="@+id/separator2"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width = "fill_parent"
+                android:layout_height="1dip"
+                android:layout_below="@+id/deskripsi2" />
 
-        <LinearLayout
-            android:id="@+id/lay_checkin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_below="@id/separator3">
-            <com.example.azizainun.maps.MyTextView
+            <LinearLayout
+                android:id="@+id/lay_fasilitas"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:paddingStart="20sp"
-                android:gravity="center_vertical"
-                android:text="Check In"/>
-            <com.example.azizainun.maps.MyTextView
-                android:id="@+id/checkin"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/separator2">
+                <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="20sp"
+                    android:text="Fasilitas"
+                    android:gravity="center_vertical"/>
+                <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                    android:id="@+id/fasilitas"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text=""/>
+
+            </LinearLayout>
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expand_fasilitas"
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:layout_weight="1"
-                android:gravity="end|center_vertical"
-                android:paddingEnd="20sp"
-                android:textColor="@color/colorPrimary"
-                android:text="6:30"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                app:ael_duration="400"
+                app:ael_expanded="false"
+                app:ael_orientation="vertical"
+                android:layout_below="@id/lay_fasilitas">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/wifi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="WIFI"/>
+                        <ImageView
+                            android:id="@+id/ac"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="AC"/>
+                        <ImageView
+                            android:id="@+id/tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="TV"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/dapur"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="DAPUR"/>
+                        <ImageView
+                            android:id="@+id/kulkas"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="KULKAS"/>
+                        <ImageView
+                            android:id="@+id/parkir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="PARKIR"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/airpanas"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="AIR PANAS"/>
+                        <ImageView
+                            android:id="@+id/syariah"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="SYARIAH"/>
+                        <ImageView
+                            android:id="@+id/minimarket"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="MINIMARKET"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/angkot"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="Angkot"/>
+                        <ImageView
+                            android:id="@+id/ojek_daring"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="Ojek Daring"/>
+                        <ImageView
+                            android:id="@+id/atm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_trending"/>
+                        <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp"
+                            android:text="ATM"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
-        <View
-            android:id="@+id/separator4"
-            android:background="@color/colorPrimaryDark"
-            android:layout_width = "fill_parent"
-            android:layout_height="1dip"
-            android:layout_below="@+id/lay_checkin" />
+            <View
+                android:id="@+id/separator3"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width = "fill_parent"
+                android:layout_height="1dip"
+                android:layout_below="@+id/expand_fasilitas" />
 
-        <LinearLayout
-            android:id="@+id/lay_checkout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp"
-            android:layout_below="@id/separator4">
-            <com.example.azizainun.maps.MyTextView
+            <LinearLayout
+                android:id="@+id/lay_checkin"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:paddingStart="20sp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="Check Out"/>
-            <com.example.azizainun.maps.MyTextView
-                android:id="@+id/checkout"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/separator3">
+                <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:paddingStart="20sp"
+                    android:gravity="center_vertical"
+                    android:text="Check In"/>
+                <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                    android:id="@+id/checkin"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:layout_weight="1"
+                    android:gravity="end|center_vertical"
+                    android:paddingEnd="20sp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="6:30"/>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separator4"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width = "fill_parent"
+                android:layout_height="1dip"
+                android:layout_below="@+id/lay_checkin" />
+
+            <LinearLayout
+                android:id="@+id/lay_checkout"
                 android:layout_width="match_parent"
-                android:layout_height="40sp"
-                android:layout_weight="1"
-                android:gravity="end|center_vertical"
-                android:paddingEnd="20sp"
-                android:textColor="@color/colorPrimary"
-                android:text="6:30"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/separator4">
+                <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingStart="20sp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Check Out"/>
+                <com.example.azizainun.maps.ui.ui_custom.MyTextView
+                    android:id="@+id/checkout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:layout_weight="1"
+                    android:gravity="end|center_vertical"
+                    android:paddingEnd="20sp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="6:30"/>
+            </LinearLayout>
 
-        <View
-            android:id="@+id/separator5"
-            android:background="@color/colorPrimaryDark"
-            android:layout_width = "fill_parent"
-            android:layout_height="1dip"
-            android:layout_marginTop="4dp"
-            android:layout_below="@+id/lay_checkout" />
+            <View
+                android:id="@+id/separator5"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width = "fill_parent"
+                android:layout_height="1dip"
+                android:layout_marginTop="4dp"
+                android:layout_below="@+id/lay_checkout" />
 
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="200sp"
-            android:layout_marginTop="4dp"
-            android:layout_below="@id/separator5"
-            map:liteMode="true">
-        </com.google.android.gms.maps.MapView>
-        <com.example.azizainun.maps.ExpandableTextView
-            android:id="@+id/deskripsi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/map"
-            android:text="expandable text"/>
-        <Button
-            android:id="@+id/booking"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/deskripsi"
-            android:text="booking"
-            android:textSize="9pt"
-            android:background="@drawable/ripple_button_normal"
-            android:visibility="visible" />
-        <FrameLayout
-            android:visibility="visible"
-            android:id="@+id/frame_banner"
-            class="com.example.azizainun.maps.Detail_gambar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </RelativeLayout>
-</ScrollView>
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="200sp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/separator5"
+                map:liteMode="true">
+            </com.google.android.gms.maps.MapView>
+            <com.example.azizainun.maps.ui.ui_custom.ExpandableTextView
+                android:id="@+id/deskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/map"
+                android:text="expandable text"/>
+            <Button
+                android:id="@+id/booking"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/deskripsi"
+                android:text="booking"
+                android:textSize="9pt"
+                android:background="@drawable/ripple_button_normal"
+                android:visibility="visible" />
+            <FrameLayout
+                android:visibility="visible"
+                android:id="@+id/frame_banner"
+                class="com.example.azizainun.maps.ui.Detail_gambar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+    </ScrollView>
+
+</layout>

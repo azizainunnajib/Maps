@@ -33,11 +33,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Login" />
+        <activity android:name=".ui.Login" />
         <activity
-            android:name=".MapsActivity"
+            android:name=".ui.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
 
             <!-- android:windowSoftInputMode="stateVisible|adjustResize"> -->
             <!-- android:theme="@style/AppTheme.NoActionBar" > -->
@@ -48,18 +48,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register" />
-        <activity android:name=".EditProfil" />
-        <activity android:name=".EditProfil1" />
-        <activity android:name=".DetailUnit" />
-        <activity android:name=".AddUnit.AddUnit1" />
-        <activity android:name=".AddUnit.AddUnitAkhir" />
-        <activity android:name=".AddUnit.AddUnit0">
+        <activity android:name=".ui.Register" />
+        <activity android:name=".ui.EditProfil" />
+        <activity android:name=".ui.EditProfil1" />
+        <activity android:name=".ui.DetailUnit" />
+        <activity android:name=".ui.AddUnit.AddUnit1" />
+        <activity android:name=".ui.AddUnit.AddUnitAkhir" />
+        <activity android:name=".ui.AddUnit.AddUnit0">
             android:windowSoftInputMode="stateVisible|adjustResize"
         </activity>
-        <activity android:name=".IG_upload" />
-        <activity android:name=".DetailGambar" />
-        <activity android:name=".BookingPage" />
+        <activity android:name=".services.IG_upload" />
+        <activity android:name=".ui.DetailGambar" />
+        <activity android:name=".ui.BookingPage" />
     </application>
 
 </manifest>

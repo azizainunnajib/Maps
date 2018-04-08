@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingBottom="20dp">
-    <com.example.azizainun.maps.SquareImageView
+    <com.example.azizainun.maps.ui.ui_custom.SquareImageView
         android:id="@+id/gambar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/nama_tempat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:layout_marginStart="20sp"
             android:layout_weight="1"/>
 
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/nama_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             android:layout_marginStart="20sp"
             android:layout_marginTop="2sp"/>
 
-        <com.example.azizainun.maps.ExpandableTextView
+        <com.example.azizainun.maps.ui.ui_custom.ExpandableTextView
             android:id="@+id/caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:id="@+id/gambarprofil_editprofil"
         android:src="@drawable/foto_person"/>
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="change picture"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10sp">
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp">
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/email_editprofil0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp">
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/rek_editprofil0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp">
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -150,7 +150,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp">
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"

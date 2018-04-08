@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/tema"
     android:clickable="true"
-    tools:context="com.example.azizainun.maps.AddUnit.AddUnit7">
+    tools:context=".ui.AddUnit.AddUnit7">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/kota"
         android:layout_width="match_parent"
         android:layout_height="128sp"
@@ -30,7 +30,7 @@
         android:textColor="@android:color/black"
         android:layout_below="@id/kota"/>
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/text"
         android:layout_below="@id/kotakab"
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/next6"
         android:layout_width="match_parent"
         android:layout_height="53sp"

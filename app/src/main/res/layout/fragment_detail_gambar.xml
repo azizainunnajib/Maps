@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/tema"
-    tools:context="com.example.azizainun.maps.Detail_gambar">
+    tools:context="com.example.azizainun.maps.ui.Detail_gambar">
 
     <ss.com.bannerslider.views.BannerSlider
         android:id="@+id/banner_slider1"

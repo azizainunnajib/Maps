@@ -52,7 +52,7 @@
             android:background="@color/putih_trans"
             android:orientation="vertical">
 
-            <com.example.azizainun.maps.MyTextView
+            <com.example.azizainun.maps.ui.ui_custom.MyTextView
                 android:id="@+id/titlePrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:layout_weight="1"
                 android:textStyle="bold" />
 
-            <com.example.azizainun.maps.MyTextView
+            <com.example.azizainun.maps.ui.ui_custom.MyTextView
                 android:id="@+id/titlePlace"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
-            <com.example.azizainun.maps.MyTextView
+            <com.example.azizainun.maps.ui.ui_custom.MyTextView
                 android:id="@+id/kotakab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

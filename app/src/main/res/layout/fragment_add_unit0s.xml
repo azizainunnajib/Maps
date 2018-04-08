@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/textView0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         android:layout_margin="15sp"
         android:layout_marginTop="25sp"
         android:layout_weight="1" />
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/textView0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:layout_marginTop="25sp"
         android:layout_weight="2"/>
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="53sp"
@@ -29,7 +29,7 @@
         android:layout_marginBottom="10sp"
         android:textSize="20sp" />
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="53sp"
@@ -40,7 +40,7 @@
         android:layout_marginBottom="10sp"
         android:background="@drawable/ripple_button" />
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="53sp"

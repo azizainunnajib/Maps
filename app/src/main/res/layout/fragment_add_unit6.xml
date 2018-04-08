@@ -4,14 +4,14 @@
     android:background="@color/tema"
     android:clickable="true"
     android:layout_height="match_parent"
-    tools:context="com.example.azizainun.maps.AddUnit.AddUnit5">
+    tools:context=".ui.AddUnit.AddUnit5">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/text_peraturan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             android:inputType="textMultiLine"/>
     </ScrollView>
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/text_deskripsi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
             android:inputType="textMultiLine"/>
     </ScrollView>
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/checkin_"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
         android:textSize="32.36sp"
         android:layout_below="@+id/deskripsi_"/>
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/checkin"
         android:layout_width="match_parent"
         android:layout_height="53sp"
@@ -105,7 +105,7 @@
         android:background="@drawable/shape"
         android:layout_below="@+id/checkin_"/>
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/checkout_"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
         android:layout_margin="15sp"
         android:layout_below="@+id/checkin"/>
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/checkout"
         android:layout_width="match_parent"
         android:layout_height="53sp"
@@ -126,7 +126,7 @@
         android:layout_marginBottom="40sp"
         android:layout_below="@+id/checkout_"/>
 
-    <com.example.azizainun.maps.MyTextView
+    <com.example.azizainun.maps.ui.ui_custom.MyTextView
         android:id="@+id/next7"
         android:layout_width="match_parent"
         android:layout_height="53sp"

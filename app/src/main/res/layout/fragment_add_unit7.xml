@@ -4,12 +4,12 @@
     android:layout_height="fill_parent"
     android:background="@color/tema"
     android:clickable="true"
-    tools:context="com.example.azizainun.maps.AddUnit.AddUnit6">
+    tools:context=".ui.AddUnit.AddUnit6">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/text_handphone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
             android:layout_margin="15sp"
             android:layout_marginTop="25sp"
             android:text="Nomor Handphone"/>
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/ketHP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             android:layout_margin="15sp"
             android:inputType="phone"
             android:layout_below="@+id/ketHP"/>
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/text_judultempat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             android:layout_margin="15sp"
             android:layout_marginTop="25sp"
             android:layout_below="@+id/handphone"/>
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/ketjudul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
             android:hint="Nama Tempat"
             android:layout_margin="15sp"
             android:layout_below="@+id/ketjudul"/>
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/text_harga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             android:layout_marginTop="25sp"
             android:text="Harga"
             android:layout_below="@+id/nama_tempat"/>
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/ketharga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             android:inputType="phone"
             android:layout_below="@+id/ketharga"/>
 
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/next8"
             android:layout_width="match_parent"
             android:layout_height="53sp"

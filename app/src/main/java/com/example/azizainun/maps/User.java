@@ -20,7 +20,7 @@ public class User {
         return Userid;
     }
 
-    static void setUID() {
+    public static void setUID() {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         Userid = mFirebaseUser.getUid();

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context=".Profil">
+    tools:context=".ui.Profil">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:id="@+id/image_upload" />
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="change picture"

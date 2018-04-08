@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/add_unit2"
-    tools:context="com.example.azizainun.maps.AddUnit.AddUnit2">
+    tools:context=".ui.AddUnit.AddUnit2">
 <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:layout_weight="29">
 
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15sp"
@@ -37,7 +37,7 @@
             android:layout_height="match_parent"
             android:id="@+id/all"/>
 
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/next3"
             android:layout_width="match_parent"
             android:layout_height="53sp"
@@ -55,7 +55,7 @@
                 android:weightSum="2"
                 android:id="@+id/total_tamu">
 
-                <com.example.azizainun.maps.MyTextView
+                <com.example.azizainun.maps.ui.ui_custom.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="53sp"
                     android:layout_marginBottom="10sp"
@@ -64,7 +64,7 @@
                     android:text="Kapasitas Tamu"
                     android:textSize="9pt"
                     android:layout_weight="0.75"/>
-                <com.example.azizainun.maps.MyTextView
+                <com.example.azizainun.maps.ui.ui_custom.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="53sp"
                     android:layout_marginBottom="10sp"
@@ -82,7 +82,7 @@
         android:layout_below="@+id/total_tamu"
         android:weightSum="2">
 
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="match_parent"
             android:layout_height="53sp"
             android:layout_marginBottom="10sp"
@@ -91,7 +91,7 @@
             android:text="Total Kamar"
             android:textSize="9pt"
             android:layout_weight="0.75"/>
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="match_parent"
             android:layout_height="53sp"
             android:layout_marginBottom="10sp"
@@ -111,7 +111,7 @@
         android:layout_below="@+id/total_kamar"
         android:weightSum="2">
 
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="match_parent"
             android:layout_height="53sp"
             android:layout_marginBottom="10sp"
@@ -120,7 +120,7 @@
             android:text="Total Kasur"
             android:textSize="9pt"
             android:layout_weight="0.75"/>
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="match_parent"
             android:layout_height="53sp"
             android:layout_marginBottom="10sp"
@@ -140,7 +140,7 @@
         android:layout_below="@+id/total_kasur"
         android:weightSum="2">
 
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="match_parent"
             android:layout_height="53sp"
             android:layout_marginBottom="10sp"
@@ -149,7 +149,7 @@
             android:text="Jenis Kasur"
             android:textSize="9pt"
             android:layout_weight="0.75"/>
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="match_parent"
             android:layout_height="53sp"
             android:layout_marginBottom="10sp"
@@ -170,7 +170,7 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:layout_width="match_parent"
             android:layout_height="53sp"
             android:layout_marginBottom="10sp"
@@ -180,7 +180,7 @@
             android:text="Total Toilet"
             android:textSize="9pt" />
 
-        <com.example.azizainun.maps.MyTextView
+        <com.example.azizainun.maps.ui.ui_custom.MyTextView
             android:id="@+id/total_toilet_0"
             android:layout_width="match_parent"
             android:layout_height="53sp"
